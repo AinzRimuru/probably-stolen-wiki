@@ -1,0 +1,419 @@
+{
+ "system": "净水与集水",
+ "version": "0.46D",
+ "source_files": [
+  "WaterHelper.cs",
+  "WaterFeatureHelper.cs",
+  "Liquid.cs",
+  "WaterPremadeHelper.cs",
+  "WaterTankHelper.cs",
+  "WaterTestHelper.cs",
+  "WaterLiquidHelper.cs",
+  "LiquidContainerHelper.cs",
+  "CanteenHelper.cs",
+  "GutterflowPelletHelper.cs",
+  "MachinePurifier.cs",
+  "MachineMoistureFarm.cs",
+  "MachineEvaporator.cs",
+  "MachineHeatingPlate.cs",
+  "ChemicalHelper.cs",
+  "ChemicalFeedbackHelper.cs",
+  "PlantWaterQuality.cs",
+  "FoodItemDirectory.cs",
+  "AmenitiesItemDirectory.cs",
+  "MiscItemDirectory.cs",
+  "ModuleDirectory.cs",
+  "FurnitureItemDirectory.cs",
+  "StoreStation.cs",
+  "NetworkUpgradeList.cs",
+  "PowerHelper.cs",
+  "MachineryHelper.cs",
+  "ModuleHelper.cs",
+  "PreBuiltItemHelper.cs",
+  "StoreClientListWater.cs",
+  "StoreClientListStory.cs",
+  "WaterScannerUIManager.cs",
+  "WaterStripUIManager.cs",
+  "VendingFountainHelper.cs",
+  "WineHelper.cs",
+  "AquacultureHelper.cs",
+  "IngotPurityHelper.cs",
+  "GameItem.cs"
+ ],
+ "machines": [
+  {
+   "id": "water_purifier",
+   "name_zh": "净水器",
+   "desc_zh": "夜间净化放入储水容器槽的水，把污染物按预算转化为水，可装通用模组提升净化量与纯度上限。",
+   "value": 250,
+   "power": "每游戏日(夜间结算)耗电4点（仅在实际去除污染物时消耗）；电池槽需放入能量电池（energy_credit 100点电力）",
+   "recipes": [
+    {
+     "name": "净化储水容器",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "任意已持有的非空液体容器（水瓶/水罐/储水罐等）",
+       "amount": 1,
+       "note": "bottleInv 槽位过滤条件：GeneralHelper. 且"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "same_container",
+       "name_zh": "同一容器（污染物被移除并转化为等体积的水）",
+       "amount": 1,
+       "note": "不消耗容器本身；无滤芯类消耗品"
+      }
+     ],
+     "time": "1游戏日（onCycleEndSlotItemFunc 夜间结算一次）",
+     "conditions": "容器非空且水中确有可移除污染物；电池槽电力≥4",
+     "notes": "每夜移除量预算 = ( min(液体总量, 10L=10000000µL) × 3‰ + 25000µL ) × 越脏加成 × 1.25。越脏加成按当前纯度查表线性插值：≥9800→1.0、9400→2.0、8850→5.0、8000→10.0、6250→15.0、3750→20.0（低于3750取20.0），再加上性能模组加成%/100（负值按0计）。移除顺序：先按粒径从大到小移除普通污染物（粒径200的碎屑/植物质/菇泥→物理污染物100→微生物50→有机废物40→微塑料25），最后才动 mineral/chemical_contaminant/heavy_metal。移除停止条件：剩余污染物总量 ≤ 液体总量×(10000-纯度上限)/10000。纯度上限 纯度上限 = 10000 - round(100×)：品质加成<15→上限99.00%；15-24→99.15%；25-49→99.35%；50-74→99.65%；75-99→99.80%；100-199→99.90%(纯水档)；≥200→100.00%。即裸机(品质加成0)最高只能净化到优质水(9900)。模组槽9格（仅 通用模组）。工具提示显示昨夜去除污染物毫升数(mech_purifier_tooltip_removed)与纯度上限(mech_purifier_tooltip_max_purity)。"
+    }
+   ]
+  },
+  {
+   "id": "moisture_farm",
+   "name_zh": "水分收集器",
+   "desc_zh": "夜间从空间站潮湿空气中集水灌入容器；多台同时运行会分摊空气导致单台减产。",
+   "value": 350,
+   "power": "每游戏日(夜间结算)耗电6点；电池槽需放入能量电池",
+   "recipes": [
+    {
+     "name": "空气集水",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "任意已持有的、有剩余容量的液体容器",
+       "amount": 1,
+       "note": "容器已满时不运行也不耗电"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "same_container",
+       "name_zh": "同一容器，注入新生成的水",
+       "amount": 850,
+       "note": "产量单位为毫升：基础 850ml/游戏日 （即850000µL) × (100+性能加成%)/100，再除以共享空气系数 1+0.25×(运行台数-1)（向下取整到整数ml）"
+      }
+     ],
+     "time": "1游戏日（夜间结算一次）",
+     "conditions": "电池槽电力≥6 且容器有剩余容量",
+     "notes": "产出水质由 产出水质 决定：品质加成+50 后 <0→沟渠水、<50→铁锈水、<100→幽灵水、<150→基础水、<200→优质水、≥200→纯水。裸机(品质加成0)产出幽灵水(96%-98%)。生成时按 WaterHelper. 对应档位随机纯度（幽灵水档 9600-9799， 偏向低端）并按 waterContaminantDistribution 分配污染物（有机废物20%/微生物15%/物理10%/化学30%/矿物15%/重金属10%）。同时运行的台数越多产量越低：n台时每台产量=标称产量×100/(100+25(n-1))%。模组槽9格。"
+    }
+   ]
+  },
+  {
+   "id": "evaporator",
+   "name_zh": "蒸发器",
+   "desc_zh": "每夜利用低温干燥空气蒸发容器中的可挥发液体（水/酒精/脂合剂），配合馏出液槽与品质模组可回收蒸馏液，用于浓缩或分离溶剂。",
+   "value": 300,
+   "power": "每游戏日(夜间结算)耗电6点（仅在实际蒸发时消耗）",
+   "recipes": [
+    {
+     "name": "蒸发/蒸馏",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "任意已持有的、含可挥发液体的容器（放入『容器』槽）",
+       "amount": 300,
+       "note": "可挥发液体=isEvaporative：水(沸点100°C)、酒精(78.37°C)、脂合剂 lipobond_agent(55°C)。300 为每夜蒸发基础量 300000µL=300ml，实际=300ml×(1+性能加成%/100)（负性能可减产，最低0），不超过容器内可挥发液体总量"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "same_container",
+       "name_zh": "容器槽中的同一容器（可挥发液体按比例减少）",
+       "amount": 1,
+       "note": "非可挥发成分（污染物、萃取液等）保留在原容器中，起到浓缩作用"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "馏出液槽中的容器（可选）",
+       "amount": 0,
+       "note": "每种被蒸发液体的 round(蒸发量×回收率) µL 转入馏出液容器；回收率=品质加成%（clamp 0-100）。裸机品质加成0→蒸发即损失；装蒸发器模组或品质模组后才能回收。若装有 evaporator_module_solvent_recovery（蒸发器溶剂回收模组，品质+50/效率-25），则只有酒精会被回收，其余蒸发液体回收量强制为0"
+      }
+     ],
+     "time": "1游戏日（夜间结算一次）",
+     "conditions": "电池槽电力≥6 且容器含可挥发液体且馏出液槽回收时需有容器",
+     "notes": "模组槽为4×4（ 与 两类可用）。机器带 （可被涡轮加速器加速）。典型用途：回收酒精（如咖啡溶剂萃取后）、把 nudka 酒稀释液再浓缩、或把水蒸发掉以浓缩污染物/萃取液。"
+    }
+   ]
+  },
+  {
+   "id": "water_tank",
+   "name_zh": "储水罐",
+   "desc_zh": "大型带刻度液体容器（初始20L，最大50L），对其使用废金属或金属锭可扩容；本身不耗电。",
+   "value": 350,
+   "power": "无（纯容器，无电池槽）",
+   "recipes": [
+    {
+     "name": "扩容",
+     "inputs": [
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 1,
+       "note": "扩容 +2000ml"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "water_tank",
+       "name_zh": "储水罐（容量提升，罐价值 += 材料价值）",
+       "amount": 1,
+       "note": "也可用金属锭：按锭的纯度等级 PurityLevel 加 4000/6000/8000/10000/14000ml（等级6/7/8/9/10），等级5(极低纯度)或未知材料按默认6000ml。容量上限50000ml，达到上限后不可再扩"
+      }
+     ],
+     "time": "即时（对目标使用材料）",
+     "conditions": "罐为已持有物品且当前容量<50000ml",
+     "notes": "初始容量20000ml，带刻度（可看到精确ml读数）。注册于 AmenitiesItemDirectory， 工厂。"
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "液体成分模型：所有水质容器按成分以 µL 为单位存储（1000µL=1ml，容量标签 单位为µL）。成分全集见 的 36 种液体：水 water、重金属 heavy_metal、有机废物 organic_waste、微塑料 microplastic、微生物 microbe、化学污染物 chemical_contaminant、物理污染物 physical_contaminant、矿物质 mineral、梦帽菇泥/萃取液、植物质、酒精 alcohol、咖啡因、蛋白质、脂肪、淀粉、糖、咖啡豆泥、避孕激素、氰化物 zyanide、噩梦萃取液/菇泥、氯 chlorine、synaprest、fanta、methylol、还原剂、酸、碱、稳定剂、碎屑 debris、脂合剂 lipobond_agent、畜牧类固醇/免疫剂、果酿萃取液 wine_extract、nomore 等。水质相关的6大污染物参数（particleSize 粒径 / filterMinimumPurity 滤后保留比例 / filterVolumeRemoved 每点耐久滤除量µL / filterDurabilityUsage 每次滤除耗耐久 / baseMaxPurityFromMachine / basePurifierRemoveAmount）见 wiki 机制表。",
+  "纯度定义：纯度 = water成分µL ÷ 全部液体µL × 10000（万分比）。纯度低于 3500显示为『未知的水』。",
+  "水质档位表（档位阈值 + 纯度档位，从高到低首个满足 purity≥阈值 的档位）：①纯水 ≥9990（99.9%+）②优质水 ≥9900（99%-99.9%）③基础水 ≥9800（98%-99%）④幽灵水 ≥9600（96%-98%）⑤铁锈水 ≥9000（90%-96%）⑥沟渠水 ≥3500（90%-）。",
+  "水的售价：售价 = = 40信用点/升（按全部液体体积计，硬编码 num=40，与纯度无关）；容器另有基础价（即空瓶价）计入最终售价（StagedValue）。WaterFeatureHelper. = {200,100,40,27,20,10} 每升分档价数组空容器归类 ，装水后自动改为 类商品（UpdateContainerGoodType）。",
+  "标贴/检测机制：每个水容器有『标称纯度』(customIntValue1/fakeCondition) 与『实际纯度』。水质检测试纸对容器使用后写入 并记录实测纯度；水质扫描仪(aquascan)显示精确纯度百分比与全部成分占比并写入 ；紫外线手电照射(<9600)也能暴露水质。向非空容器倒水会清除其已测标记；向空容器倒水会继承来源容器的标称纯度与已测状态（OnLiquidContainerPourInto）。标称≠实际时 isFeatureMatch=false，卖给客户会触发对质对话（实际高于标称+3声望，低于则按档位触发差评）。可用标签机改标（OnWaterLabelUpdated）。危险水判定：标称或实测 <9800（低于基础水）视为危险水。",
+  "生成水的纯度分布（WaterHelper.，grade→[低,高]万分比）：grade0 纯水 9990-9999（均匀）；grade1 优质水 9900-9989（ 偏向低端）；grade2 基础水 9800-9899（偏低端）；grade3 幽灵水 9600-9799（偏低端）；grade4 铁锈水 9000-9599（均匀）；grade5 沟渠水 3500-8999（均匀）。grade0/1/3 的污染物按 waterContaminantDistribution 分配（有机废物20%、微生物15%、物理10%、化学30%、矿物15%、重金属10%）；grade2 按 baseWaterContaminantDistribution（微生物10%、重金属15%）；grade4 按 rustWaterContaminantDistribution（有机22%、重金属8%）；grade5 按 gutterflowContaminantDistribution（有机29.9%、重金属0.1%）。WaterPremadeHelper.ghostwaterContaminantDistribution 已定义但未被 引用。",
+  "造假水源（WaterPremadeHelper）：商贩售卖的水瓶有几率标签造假——GhostWaterAsBaseWater（幽灵水贴基础水标签，标称9800-9899）、BaseWaterAsHQWater（基础水贴优质水标签，标称9900-9989）、RustWaterAsBaseWater、GutterflowAsBaseWater、GhostWaterAsPureWater（幽灵水贴纯水标签，标称9990-9999）。随机水质 概率权重 waterOdds={30,20,10,10,10}：准确基础水30/准确幽灵水20/准确铁锈水10/幽灵水贴基础标10/基础水贴优质标10。",
+  "液体转移规则（TransferLiquid）：把源容器的液体倒进目标容器至其剩余容量，各成分按比例分配（SplitProportionally，整数余数按余项从大到小补齐）；混合温度按体积加权。滴管容器行为相反：空滴管点大容器是吸取、非空滴管点容器是滴出。倒进下水道(drain)清空容器；水龙头(faucet)见下条。",
+  "店内水龙头（faucet）：网络升级 『沟渠水直供』（250信用点，前置 ）后可无限灌沟渠水，当日纯度每天随机 8000-8999（todayGutterflowPurity）；『铁锈水直供』（350信用点，前置 ）后优先灌铁锈水，当日纯度每天随机 9000-9150（todayRustwaterPurity）。灌入量无限制（addAmount=9999999，实际受容器容量限制）。『水资源交易』升级（300信用点）赠送水质检测试剂盒(10条)、净水药片瓶(9片)、水罐、滤水器、水牌与微型净水器(75耐久)。",
+  "滤芯系统（装入 容器——目前仅水罐 water_pitcher 的滤芯槽，或 灌水时）：①紫外线灯 uv_filter 为特殊滤芯：microbe 全部去除（但作为『对容器使用』的道具时走 OnUVUsed，直接把微生物全部转为水）；②普通滤芯不能滤 microbe；③仅当滤芯 ≤ 液体 particleSize 时起效：water_filter/water_filter_adv/hydroreed_filter 的 （可滤粒径≥22的成分：碎屑/植物质/菇泥200、物理污染物100、微生物50(除外)、有机废物40、矿物30、微塑料25），kotton_fabric （只能滤粒径≥150的粗粒：碎屑/植物质/菇泥）；④每次滤除按 filterVolumeRemoved(默认1000µL) 扣 1 次耐久（filterDurabilityUsage，微塑料/物理污染物为2），直到体积降到保留下限 amount×filterMinimumPurity（有机废物/物理污染物/矿物为0.16%，微塑料0.2%）或耐久耗尽。滤芯耐久：滤水器 water_filter 400、高级滤水器 water_filter_adv 400（每日开始+50）、水培芦苇滤芯 hydroreed_filter 200、韧棉织物 kotton_fabric 1000。",
+  "净水药片（water_tablet）：本质是含 15ml 氯(chlorine)的可溶化学物品，对水容器使用即溶解入水（Into）。氯反应（每温度tick）：每 tick 最多 15000µL 氯参与反应，每 1µL 氯可消灭 5.1µL 污染物——优先清除超出总量0.7%的化学污染物，剩余效力杀灭微生物；未参与反应的氯每 tick 自降解 max(1000µL, 20%)。WaterPurificationTabletAdded/Added2（药片直接移除 75000µL 微生物/10000µL 化学污染物的逻辑）在当前为遗留代码。",
+  "紫外线灯（uv_filter，150信用点）：对非空水容器使用→微生物全部转为水（OnUVUsed），不消耗、不限次数。",
+  "海德拉科技微型净水器（portable_water_purifier，325信用点，300耐久）：对容器使用→PurifyToBaseWater：目标纯度=(总量×9800+9999)/10000（即约98%），按比例压缩各污染物（先压非化学/重金属成分，不够再压 chemical_contaminant/heavy_metal），差额补为水。每净化100ml耗1点耐久（总液体量向上取整到100ml 计费）；纯度≥9800 的容器不可使用。",
+  "热力净化（ChemicalHelper，配合加热板 heating_plate 99°C/升级后160°C；夜间 夜间化学模拟 对全店物品模拟360个1秒tick）：温度≥70°C 微生物每tick×0.8，≥100°C 微生物全灭；≥80°C 有机废物每tick转化15%（其中33%变为物理污染物），≥100°C 全部转化；酒精体积≥总量40%时每tick杀灭等量微生物；温度超过液体沸点（水100/酒精78.37/脂合剂55°C）时该液体每tick蒸发2%（至少100µL）。常温(26°C)容器会缓慢回温。",
+  "净水器之外的其他净化途径汇总：①水培植物（rank级）：每周期移除各污染物 max(1000µL, 存量×min(0.95, 0.1×rank))，保留下限=baseMaxPurityFromMachine/rank；②水产养殖 循环水养殖系统 系统（AquacultureHelper.水质修复）：按修复量移除污染物，下限=baseMaxPurityFromMachine×1.0；③倒入带滤芯的水罐过滤；④净水药片（氯）；⑤紫外线灯；⑥微型净水器；⑦加热煮沸；⑧水培营养片(nutrient_tablet，含15ml mineral)则相反，是向水中加矿物质。",
+  "酿酒影响（WineHelper）：水源水质按档位序号(0纯水…5沟渠水)计入酿酒品质分 水质分表 = {1, 1, 0, -1, -2, -3}（水质分，加入 品质分）；发酵最少需 749ml 水。",
+  "饮用/摄食影响（ChemicalFeedbackHelper）：水容器均带 化学意图；饮用反馈会检查『标称档位与实际档位差』，差1档轻度差评、差2档以上更重。毒性判定 致死判定：Σ(成分µL×lethality)≥1000 即致命——氰化物 lethality=1.66、噩梦萃取液4.0、fanta 2.0，微量即可超标。",
+  "水分收集器共享空气：同时运行 n 台水分收集器时每台产量=基础产量/(1+0.25×(n-1))，即2台80%、3台66.7%、4台57.1%…（共享空气占比 为百分比显示值）。判定『今晚运行』需同时满足：未损坏、已持有、电池可支付6电、容器槽有容器且未满。",
+  "能量电池（energy_credit）：100点电力、基准价10信用点（即1点电力≈0.1信用点）。净水器4电/夜≈0.4信用点，水分收集器/蒸发器6电/夜≈0.6信用点。",
+  "水供应商与买家（StoreClientListWater / StoreClientListStory）：水贩分4类——普通拾荒水贩(3-5瓶随机水, 批发-15%~-20%)、水务公司(批量随机水+概率大瓶, -20%~-25%)、奸诈水贩(高概率贴错标签的水, -30%~-40%)、诚实水贩(75%概率真基础水否则真幽灵水)。剧情买家 story_water_buyer 只收基础水标签的 类商品或水配给，预算120。",
+  "量筒与刻度：带 的容器（量筒、水罐、储水罐、滴管）显示精确ml刻度；其余水瓶只显示约量（Full/Half Full等）；『资深化学家』开局特长可让所有容器显示精确刻度（StartingPerk.经验化学家开局）。",
+  "另一套并存的简单水系统（LiquidContainerHelper / CanteenHelper，均标记 Obsolete 或用于舰船/角色生存）：按『口』为单位的 /MAX 定量水（如 ShipHelper、StationMachinery、Survival 的角色口渴），与上述µL纯度模型互不相干；CanteenHelper 全部方法已标 Obsolete。 为空文件。GutterflowPelletHelper（污泥饲料粒）属于水产养殖系统，与水质无直接关系。"
+ ],
+ "items": [
+  {
+   "id": "mini_bottle",
+   "name_zh": "瓶装水（微型）",
+   "desc_zh": "250ml 透明水瓶",
+   "value": 3,
+   "note": "液体容器，容量250ml，空瓶基础价3"
+  },
+  {
+   "id": "small_bottled_water",
+   "name_zh": "瓶装水（小）",
+   "desc_zh": "450ml 透明水瓶",
+   "value": 4,
+   "note": "液体容器，容量450ml"
+  },
+  {
+   "id": "bottled_water",
+   "name_zh": "瓶装水（标准）",
+   "desc_zh": "750ml 透明水瓶",
+   "value": 5,
+   "note": "液体容器，容量750ml；商贩随机水默认用此规格"
+  },
+  {
+   "id": "large_bottled_water",
+   "name_zh": "瓶装水（大）",
+   "desc_zh": "2000ml 透明水瓶",
+   "value": 9,
+   "note": "液体容器，容量2L"
+  },
+  {
+   "id": "water_jug",
+   "name_zh": "桶装水",
+   "desc_zh": "6000ml 大容量水瓶",
+   "value": 15,
+   "note": "液体容器，容量6L；水分收集器/净水器/蒸发器演示与集水常用容器"
+  },
+  {
+   "id": "25ml_cylinder",
+   "name_zh": "25毫升量筒",
+   "desc_zh": "带刻度的25ml量筒",
+   "value": 7,
+   "note": "刻度容器，精确读数"
+  },
+  {
+   "id": "50ml_cylinder",
+   "name_zh": "50毫升量筒",
+   "desc_zh": "带刻度的50ml量筒",
+   "value": 10,
+   "note": "刻度容器"
+  },
+  {
+   "id": "100ml_cylinder",
+   "name_zh": "100毫升量筒",
+   "desc_zh": "带刻度的100ml量筒",
+   "value": 15,
+   "note": "刻度容器"
+  },
+  {
+   "id": "1ml_dropper",
+   "name_zh": "1毫升滴管",
+   "desc_zh": "精确滴管，空时点大容器吸取、满时点容器滴出",
+   "value": 120,
+   "note": "容量1ml，带刻度"
+  },
+  {
+   "id": "5ml_dropper",
+   "name_zh": "5毫升滴管",
+   "desc_zh": "精确滴管",
+   "value": 10,
+   "note": "滴管容器，容量5ml，带刻度"
+  },
+  {
+   "id": "water_pitcher",
+   "name_zh": "水罐",
+   "desc_zh": "可装入滤水器，对倒入的水进行过滤，去除部分污染物",
+   "value": 25,
+   "note": "唯一 滤芯容器（滤芯槽只收非UV的 物品），容量3000ml，带刻度"
+  },
+  {
+   "id": "bottled_water_premium",
+   "name_zh": "瓶装泉水",
+   "desc_zh": "密封奢侈瓶装水，非液体容器",
+   "value": 325,
+   "note": "+ 类商品，不可开盖、无纯度模型"
+  },
+  {
+   "id": "water_ration",
+   "name_zh": "密封水配给包（标准）",
+   "desc_zh": "可倒入液体容器，转化为750毫升基础水",
+   "value": 30,
+   "note": "对容器使用→ 750ml（纯度9800-9899），一次性"
+  },
+  {
+   "id": "water_ration_small",
+   "name_zh": "密封水配给包（小）",
+   "desc_zh": "可倒入液体容器，转化为375毫升基础水",
+   "value": 15,
+   "note": "对容器使用→ 375ml"
+  },
+  {
+   "id": "water_test_container",
+   "name_zh": "水质检测试剂盒",
+   "desc_zh": "存放水质检测试纸的盒子",
+   "value": 1,
+   "note": "10×2格容器，只收 ；WaterTestStripBox 装10条试纸"
+  },
+  {
+   "id": "water_test_strip",
+   "name_zh": "水质检测试纸",
+   "desc_zh": "对非空水容器使用，测出实际纯度并标记已测",
+   "value": 3,
+   "note": "一次性，记录实测纯度与关联容器ID（WaterTestHelper），可用在非持有物品上"
+  },
+  {
+   "id": "aquascan",
+   "name_zh": "水质扫描仪",
+   "desc_zh": "扫描水容器，显示精确纯度与全部成分占比",
+   "value": 200,
+   "note": "写入 （[上次扫描]: xx.xx% 档位名），可重复使用不消耗"
+  },
+  {
+   "id": "uv_filter",
+   "name_zh": "紫外线灯",
+   "desc_zh": "可用于水容器",
+   "value": 150,
+   "note": "对容器使用→微生物全部转为水（OnUVUsed）；不可装入水罐滤芯槽"
+  },
+  {
+   "id": "water_tablet_container",
+   "name_zh": "一瓶净水药片",
+   "desc_zh": "存放净水药片的药瓶（9格）",
+   "value": 1,
+   "note": "FullWaterPurificationTabletBox 装9片"
+  },
+  {
+   "id": "water_tablet",
+   "name_zh": "净水药片",
+   "desc_zh": "可消除大量微生物污染物，并部分减少化学污染物。对其他类型的污染物无效",
+   "value": 6,
+   "note": "含15ml氯的可溶药片，对水容器使用即溶解；净化靠氯反应（见机制），一次性"
+  },
+  {
+   "id": "water_filter",
+   "name_zh": "滤水器",
+   "desc_zh": "安装在过滤系统内使用时，可略微提高水质纯度。水质纯度超过一定阈值后将不再生效",
+   "value": 25,
+   "note": "滤芯，耐久400"
+  },
+  {
+   "id": "water_filter_adv",
+   "name_zh": "高级滤水器",
+   "desc_zh": "在每天开始时将恢复50点耐久度",
+   "value": 350,
+   "note": "耐久400，每日+50；"
+  },
+  {
+   "id": "portable_water_purifier",
+   "name_zh": "海德拉科技微型净水器",
+   "desc_zh": "对水容器使用，无论内容物是什么，都能将其纯度提升至基础水级别。每净化100毫升将消耗1点耐久度",
+   "value": 325,
+   "note": "耐久300（0耐久残值25）"
+  },
+  {
+   "id": "hydroreed_filter",
+   "name_zh": "水培芦苇滤芯",
+   "desc_zh": "装入过滤系统后，可去除特定类型的污染物",
+   "value": 20,
+   "note": "耐久200，自带水培芦苇基因（可种植再生）"
+  },
+  {
+   "id": "kotton_fabric",
+   "name_zh": "韧棉织物",
+   "desc_zh": "厚织物滤材",
+   "value": 65,
+   "note": "（只滤粒径≥150的粗粒），耐久1000"
+  },
+  {
+   "id": "nutrient_tablet",
+   "name_zh": "水培营养片",
+   "desc_zh": "含有植物生长所必需的矿物质，可加入水容器中",
+   "value": 5,
+   "note": "含15ml mineral 的可溶药片；也可经 OnHydroponicNutrientTabletAdded 向容器加 15000µL 矿物质（挤占水量），属水培系统但改变水成分"
+  },
+  {
+   "id": "nutrient_tablet_container",
+   "name_zh": "水培营养片药瓶",
+   "desc_zh": "存放水培营养片的药瓶（9格）",
+   "value": 1,
+   "note": "FullNutrientTabletBox 装9片"
+  },
+  {
+   "id": "water_guide",
+   "name_zh": "水资源交易手册",
+   "desc_zh": "讲解水质档位与交易规则的指南书",
+   "value": 25,
+   "note": "/，双击打开多页UI（水质教学）"
+  },
+  {
+   "id": "energy_credit",
+   "name_zh": "能量电池",
+   "desc_zh": "100点电力的通用电池",
+   "value": 10,
+   "note": "power_source_item，100点电力；净水器/水分收集器/蒸发器的电池槽燃料"
+  },
+  {
+   "id": "evaporator_module_solvent_recovery",
+   "name_zh": "蒸发器溶剂回收模组",
+   "desc_zh": "仅回收溶剂",
+   "value": 275,
+   "note": "蒸发器专用模组：性能+0/效率-25/品质+50；装入后蒸发器只回收酒精，其余蒸发液体尽数损失"
+  },
+  {
+   "id": "heating_plate",
+   "name_zh": "加热板",
+   "desc_zh": "对槽内液体容器加热（默认99°C，化学模组升级后160°C），用于煮沸灭菌/蒸发",
+   "value": 250,
+   "note": "属化学系统的机器，此处作为热力净水途径收录；加热速率受升级等级影响（3级×4、4级×16）"
+  }
+ ],
+ "unresolved": []
+}

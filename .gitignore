@@ -1,0 +1,19 @@
+# AssetRipper 导出的完整 Unity 工程（约 2GB），不入库
+tools/rip/
+
+# AssetRipper 安装包
+tools/assetripper/
+
+# 浏览器截图
+tools/shots/
+
+# Node / wrangler
+node_modules/
+.wrangler/
+deploy/wrangler.jsonc
+
+# OS
+Thumbs.db
+Desktop.ini
+tools/wrangler-login.log
+_check.js

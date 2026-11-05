@@ -1,0 +1,1380 @@
+{
+ "system": "枪支打印",
+ "version": "0.46D",
+ "source_files": [
+  "MachinePrinter.cs",
+  "GunHelper.cs",
+  "GunFactory.cs",
+  "GunFrameHelper.cs",
+  "GunModHelper.cs",
+  "GunModDirectory.cs",
+  "GunmodPosition.cs",
+  "GunsItemDirectory.cs",
+  "ModItemDirectory.cs",
+  "GunOrderData.cs",
+  "GunOrderRequirement.cs",
+  "GunOrderDebug.cs",
+  "AmmoBoxHelper.cs",
+  "AugHelper.cs",
+  "ModuleDirectory.cs",
+  "MaterialDirectory.cs",
+  "ModuleHelper.cs",
+  "MachineProgressHelper.cs",
+  "MachineryHelper.cs",
+  "PowerHelper.cs",
+  "IngotPurityHelper.cs",
+  "ContrabandHelper.cs",
+  "FurnitureItemDirectory.cs",
+  "StoreClientListGun.cs",
+  "StoreClientListSpec.cs",
+  "NegociationUIManager.cs",
+  "ToolDirectory.cs",
+  "NetworkUpgradeList.cs"
+ ],
+ "machines": [
+  {
+   "id": "printer",
+   "name_zh": "3D打印机",
+   "desc_zh": "放入打印芯片与材料，每个游戏日结算进度，完成后产出物品（枪械、枪架、改装件、弹匣、近战武器、瓶子等）。夜间运作。",
+   "value": 350,
+   "power": "每个运作日从电池槽抽取8kW（基准 machinery_drawn_power=8；模组效率按 8-8×效率%/100 修正，最低1；须放任意 power_source_item 物品如能量电池）",
+   "recipes": [
+    {
+     "name": "打印 .22手枪（“解放者”3D打印手枪）",
+     "inputs": [
+      {
+       "id": "printer_chip_pistol",
+       "name_zh": ".22手枪3D打印机芯片",
+       "amount": 1,
+       "note": "芯片锁定于芯片槽，打印完成后返还，可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 2,
+       "note": "放入输入托盘，开印时消耗"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "printed_gun",
+       "name_zh": "“解放者”3D打印手枪",
+       "amount": 1,
+       "note": "出厂状态 New；属性×(100+打印品质)/100，打印品质=打印机质量加成/4"
+      }
+     ],
+     "time": "工作量50，基准速度24/日 → 3游戏日（含开印当日）",
+     "conditions": "无需任何模组；电池须有足够电力",
+     "notes": "printed_gun 为违禁品等级1（低级）。完成时按 分支应用 BaseStat(ajustedQuality)。"
+    },
+    {
+     "name": "打印 .22手枪×2（双份芯片）",
+     "inputs": [
+      {
+       "id": "printer_chip_pistol_double",
+       "name_zh": "3D打印机芯片（.22手枪×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 3,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "printed_gun",
+       "name_zh": "“解放者”3D打印手枪",
+       "amount": 2,
+       "note": "同上，均受打印品质加成"
+      }
+     ],
+     "time": "工作量60 → 3游戏日",
+     "conditions": "无需任何模组",
+     "notes": "芯片单价400，比单份芯片更划算。"
+    },
+    {
+     "name": "打印 枪械零件",
+     "inputs": [
+      {
+       "id": "printer_chip_gun_part",
+       "name_zh": "3D打印机芯片（枪械零件）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "开印时读取该锭纯度决定产出数量"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "gun_part",
+       "name_zh": "枪械零件",
+       "amount": 3,
+       "note": "数量随金属锭纯度变化：极低纯2 / 低、一般3 / 高、极高4 / 完美5"
+      }
+     ],
+     "time": "工作量30 → 2游戏日",
+     "conditions": "需要安装 金属打印模组（printer_module_metal）+ 计算机数控模组（printer_module_cnc）",
+     "notes": "枪械零件用于：完成枪架组装（消耗1个）、修理/改装枪械（消耗1个/次）。"
+    },
+    {
+     "name": "打印 “巢火”紧凑型手枪框架",
+     "inputs": [
+      {
+       "id": "printer_chip_handmade_pistol_frame",
+       "name_zh": "3D打印机芯片（“巢火”紧凑型手枪框架）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "纯度影响框架打印品质"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "handmade_pistol_frame",
+       "name_zh": "“巢火”紧凑型手枪框架",
+       "amount": 1,
+       "note": "记录打印品质 = 打印机质量加成/4 + 锭纯度加成（平均值）"
+      }
+     ],
+     "time": "工作量60 → 3游戏日",
+     "conditions": "需要 金属打印模组 + 计算机数控模组",
+     "notes": "框架+1枪械零件 → 组装成“巢火”紧凑型手枪（状态New、属性×品质倍率）。"
+    },
+    {
+     "name": "打印 “铁铸10”手枪框架",
+     "inputs": [
+      {
+       "id": "printer_chip_heavy_handmade_pistol_frame",
+       "name_zh": "3D打印机芯片（“铁铸10”手枪框架）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "纯度影响框架打印品质"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "heavy_handmade_pistol_frame",
+       "name_zh": "“铁铸10”手枪框架",
+       "amount": 1,
+       "note": "同上记录打印品质"
+      }
+     ],
+     "time": "工作量70 → 3游戏日",
+     "conditions": "需要 金属打印模组 + 计算机数控模组",
+     "notes": "框架+1枪械零件 → 组装成“铁铸10”手枪。"
+    },
+    {
+     "name": "打印 改良内部弹簧组×4",
+     "inputs": [
+      {
+       "id": "printer_chip_internal_springs_improved",
+       "name_zh": "3D打印机芯片（改良内部弹簧组×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 2,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "internal_springs_improved",
+       "name_zh": "改良内部弹簧组",
+       "amount": 4,
+       "note": "特殊槽改装件"
+      }
+     ],
+     "time": "工作量20 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": "与高耐久内部弹簧组互斥（RegisterExclusiveGroup(\"internal_springs\")）。"
+    },
+    {
+     "name": "打印 简易红点瞄准镜×4",
+     "inputs": [
+      {
+       "id": "printer_chip_makeshift_rds",
+       "name_zh": "3D打印机芯片（简易红点瞄准镜×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      },
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "rds_makeshift",
+       "name_zh": "简易红点瞄准镜",
+       "amount": 4,
+       "note": "导轨槽，"
+      }
+     ],
+     "time": "工作量20 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 玩具激光笔×4",
+     "inputs": [
+      {
+       "id": "printer_chip_makeshift_toy_laser",
+       "name_zh": "3D打印机芯片（玩具激光笔×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      },
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "laser_toy",
+       "name_zh": "玩具激光笔",
+       "amount": 4,
+       "note": "下挂槽，"
+      }
+     ],
+     "time": "工作量20 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 红点瞄准镜×2",
+     "inputs": [
+      {
+       "id": "printer_chip_rds",
+       "name_zh": "3D打印机芯片（红点瞄准镜×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 3,
+       "note": ""
+      },
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "rds",
+       "name_zh": "红点瞄准镜",
+       "amount": 2,
+       "note": "导轨槽"
+      }
+     ],
+     "time": "工作量24 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 激光瞄准器×2",
+     "inputs": [
+      {
+       "id": "printer_chip_laser_sight",
+       "name_zh": "3D打印机芯片（激光瞄准器×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 2,
+       "note": ""
+      },
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "laser",
+       "name_zh": "激光瞄准器",
+       "amount": 2,
+       "note": "下挂槽"
+      }
+     ],
+     "time": "工作量24 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 消音器×2",
+     "inputs": [
+      {
+       "id": "printer_chip_silencer",
+       "name_zh": "3D打印机芯片（消音器×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 5,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "silencer",
+       "name_zh": "消音器",
+       "amount": 2,
+       "note": "枪管槽，正规消音（压制等级2）"
+      }
+     ],
+     "time": "工作量24 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": "压制等级2 > 简易消音器等级1，订单奖金更高。"
+    },
+    {
+     "name": "打印 .22弹匣×2",
+     "inputs": [
+      {
+       "id": "printer_chip_22_mag",
+       "name_zh": "3D打印机芯片（.22弹匣×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_22",
+       "name_zh": ".22弹匣",
+       "amount": 2,
+       "note": "弹匣槽，仅 printed_gun / handmade_pistol"
+      }
+     ],
+     "time": "工作量24 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 大容量.22弹匣×2",
+     "inputs": [
+      {
+       "id": "printer_chip_22_mag_high",
+       "name_zh": "3D打印机芯片（大容量.22弹匣×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 2,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_22_high",
+       "name_zh": "大容量.22弹匣",
+       "amount": 2,
+       "note": "弹匣槽"
+      }
+     ],
+     "time": "工作量36 → 2游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 加长.22弹匣×2",
+     "inputs": [
+      {
+       "id": "printer_chip_22_mag_ext",
+       "name_zh": "3D打印机芯片（加长.22弹匣×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 3,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_22_ext",
+       "name_zh": "加长.22弹匣",
+       "amount": 2,
+       "note": "弹匣槽"
+      }
+     ],
+     "time": "工作量48 → 2游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 10毫米弹匣×2",
+     "inputs": [
+      {
+       "id": "printer_chip_10_mag",
+       "name_zh": "3D打印机芯片（10毫米弹匣×2）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 3,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_10mm",
+       "name_zh": "10毫米弹匣",
+       "amount": 2,
+       "note": "弹匣槽，仅 heavy_handmade_pistol / glock_receiver"
+      }
+     ],
+     "time": "工作量36 → 2游戏日",
+     "conditions": "需要 金属打印模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 大容量10毫米弹匣×1",
+     "inputs": [
+      {
+       "id": "printer_chip_10_mag_high",
+       "name_zh": "3D打印机芯片（大容量10毫米弹匣×1）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 2,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_10mm_high",
+       "name_zh": "大容量10毫米弹匣",
+       "amount": 1,
+       "note": "弹匣槽"
+      }
+     ],
+     "time": "工作量48 → 2游戏日",
+     "conditions": "需要 金属打印模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 加长10毫米弹匣×1",
+     "inputs": [
+      {
+       "id": "printer_chip_10_mag_ext",
+       "name_zh": "3D打印机芯片（加长10毫米弹匣×1）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 3,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "mag_10mm_ext",
+       "name_zh": "加长10毫米弹匣",
+       "amount": 1,
+       "note": "弹匣槽"
+      }
+     ],
+     "time": "工作量60 → 3游戏日",
+     "conditions": "需要 金属打印模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 小塑料瓶×6（杂项）",
+     "inputs": [
+      {
+       "id": "printer_chip_small_bottle",
+       "name_zh": "3D打印机芯片（小塑料瓶×6）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "small_bottled_water",
+       "name_zh": "瓶装水（小）",
+       "amount": 6,
+       "note": "非枪械产物"
+      }
+     ],
+     "time": "工作量10 → 1游戏日",
+     "conditions": "无需任何模组",
+     "notes": "瓶装水+废金属可手工合成简易消音器。"
+    },
+    {
+     "name": "打印 美工刀×3（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_box_cutter",
+       "name_zh": "3D打印机芯片（美工刀×3）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 2,
+       "note": ""
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "box_cutter",
+       "name_zh": "美工刀",
+       "amount": 3,
+       "note": "近战武器，打印时随机roll状态"
+      }
+     ],
+     "time": "工作量34 → 2游戏日",
+     "conditions": "无需任何模组",
+     "notes": "近战打印结果状态 = RNG(20~30)+打印品质+锭纯度加成：<25差 / <60一般 / <90良好 / ≥90优秀。批量模组每件+1产出。"
+    },
+    {
+     "name": "打印 厨刀×4（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_kitchen_knife",
+       "name_zh": "3D打印机芯片（厨刀×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 3,
+       "note": ""
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "kitchen_knife",
+       "name_zh": "厨刀",
+       "amount": 4,
+       "note": "近战武器"
+      }
+     ],
+     "time": "工作量64 → 3游戏日",
+     "conditions": "无需任何模组",
+     "notes": "同上状态roll。"
+    },
+    {
+     "name": "打印 短柄斧×4（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_hatchet",
+       "name_zh": "3D打印机芯片（短柄斧×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 4,
+       "note": ""
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "hatchet",
+       "name_zh": "短柄斧",
+       "amount": 4,
+       "note": "近战武器"
+      }
+     ],
+     "time": "工作量75 → 4游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 切肉刀×4（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_kitchen_cleaver",
+       "name_zh": "3D打印机芯片（切肉刀×4）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 5,
+       "note": ""
+      },
+      {
+       "id": "printer_plastic",
+       "name_zh": "3D打印耗材",
+       "amount": 2,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "kitchen_cleaver",
+       "name_zh": "切肉刀",
+       "amount": 4,
+       "note": "近战武器"
+      }
+     ],
+     "time": "工作量82 → 4游戏日",
+     "conditions": "无需任何模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 战斗匕首×5（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_combat_knife",
+       "name_zh": "3D打印机芯片（战斗匕首×5）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 2,
+       "note": "纯度参与状态roll"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "combat_knife",
+       "name_zh": "战斗匕首",
+       "amount": 5,
+       "note": "近战武器"
+      }
+     ],
+     "time": "工作量98 → 5游戏日",
+     "conditions": "需要 金属打印模组",
+     "notes": ""
+    },
+    {
+     "name": "打印 战斗砍刀×3（近战）",
+     "inputs": [
+      {
+       "id": "printer_chip_combat_machete",
+       "name_zh": "3D打印机芯片（战斗砍刀×3）",
+       "amount": 1,
+       "note": "可重复使用"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 3,
+       "note": "纯度参与状态roll"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "combat_machete",
+       "name_zh": "战斗砍刀",
+       "amount": 3,
+       "note": "近战武器"
+      }
+     ],
+     "time": "工作量120 → 5游戏日",
+     "conditions": "需要 金属打印模组",
+     "notes": ""
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "【打印流程】3D打印机窗口含：电池槽（任意 power_source_item）、模组槽（ 或 ）、输入托盘9×6（仅自有非容器物品）、芯片槽（仅 ）、输出区9×5、便签槽。放入芯片+对应材料+电池后，每日结算（onCycleEndSlotItemFunc）： 时校验材料与机器标签→消耗材料→锁定芯片→扣电→开始； 时扣电并使进度+当前处理速度；进度≥目标工作量即完成，产物进输出区并解锁芯片。芯片与模组栏在工作期间锁定。芯片不消耗，可无限复用。",
+  "【打印耗时】基准处理速度 /日。耗时=ceil(工作量/当前速度)个游戏日（开印当日计1日）。性能模组加成：速度=24+24×性能%/100；金属打印模组性能0/效率-50，CNC模组性能-25/效率-25，近战批量模组性能-50/效率-50（三者都会拖慢打印、增加耗电）。",
+  "【耗电】基准 machinery_drawn_power=8/日，从电池槽物品扣除（PowerHelper.）。效率修正：耗电=8-8×效率%/100，最低1。例如装金属打印模组（效率-50）后为12/日。电池没电则当日不推进进度。",
+  "【打印品质】打印机 品质系数=4。打印品质 ajustedQuality=模组总质量加成/4。对直接打印的枪：六维基础属性×(100+ajustedQuality)/100（MultiplyBaseStat）。例：品质模组+8%→ajustedQuality=2→属性×102%；精细模组+25%→25/4=6→×106%。",
+  "【锭纯度加成】开印时 CaptureIngotQuality：枪械零件芯片按首个金属锭纯度决定产量（LOW/、/、）；框架与近战芯片则取托盘中所有锭纯度加成的平均值存入 （=-30、LOW=-20，=+20、=+30、=+100）。",
+  "【枪架机制】框架物品带 与目标枪ID，基准状态New。打印出的框架额外记录 +锭纯度加成。将1个枪械零件（gun_part）拖到框架上即完成组装（）：生成目标枪；打印框架→状态New且属性×(100+打印品质)/100；非打印框架→状态沿用框架当前状态。框架与零件均销毁。可打印框架：handmade_pistol_frame（70cr，违禁1→巢火紧凑型手枪）、heavy_handmade_pistol_frame（100cr，违禁2→铁铸10手枪）。",
+  "【枪械属性模型】每把枪六维：火力/风格/可靠性/后坐力控制/人机工效/精准度（*_TAG），另有口径、大小、压制等级（ 0无/1简易/2正规）、可修复性。当前值=基础值×(100+状态修正+Σ改装件百分比)/100+Σ改装件固定值（整数除法）。状态修正：全新+30、优秀+15、良好0、一般-15、差-30（equipment_condition_*）。",
+  "【改装槽位】可改装枪有8槽：枪托/导轨/弹匣/下挂/枪管/特殊×3（GunModHelper.，标签 / / / / / ）。仅可对自有枪或客户委托的服务枪改装（MayModGun）。特殊槽不可装同名重复件；internal_springs 与 internal_springs_improved 互斥。部分改装件限定枪型（AllowOnlyWeapon，见物品表）。",
+  "【消音/压制】带 的枪管件使枪获得压制等级： 类=1，正规=2，取已装最高值。订单奖金：压制>0（任意消音）与>1（正规消音）分档。",
+  "【枪械修理】将枪械零件拖到可修复（状态低于优秀）的枪上：成功率=当前可修复性+基础可修复性（翻新成功率，随机判定）。成功→状态提升一档（差→一般→良好→优秀）且当前可修复性归零；失败→当前可修复性累加基础值（下次成功率提高，怜悯机制）。每次消耗1个枪械零件。服务枪另会记账（见服务订单）。",
+  "【拆解】用螺丝刀（screwdriver）对着自有枪使用：printed_gun→3D打印耗材×2；handmade_pistol→零件×2+耗材×1+废金属×2；heavy_handmade_pistol→零件×2+耗材×1+废金属×4；glock_receiver→零件×4；revolver→零件×5；smg→零件×6；shotgun→零件×7。枪与其内容物全部销毁（DisassembleWeapon）。",
+  "【简易消音器合成】废金属拖到瓶装水（小）上：销毁两者→简易消音器（silencer_makeshift）（ScrapMetalTargetItem），无需机器。",
+  "【枪械订单总览】持枪订单的客户（ClientIntent.）三种：下层居民 ll_gun_buyer（tier1）、佣兵 merc_gun_buyer（tier2）、上层居民 ul_gun_buyer（tier3），另有对应卖枪客户 ll/merc/ul_gun_seller。接单：谈判界面把符合条件的枪放到柜台（或后屋货架会自动匹配 ResolveOrderGun），所有强制要求满足（严格大于）后可成交；成交即销毁交付枪并付款（OnOrderAccepted），随后有概率触发加购弹药（预算=枪价值×33%，50%概率+每满足一条奖金要求+5%）、近战武器（预算60/120/250，40%）、军械（预算0/150/350，tier≥2，30%）。",
+  "【订单报酬公式】普通订单：报酬=(基础赏金+Σ已满足奖金要求奖励)×(100+/市场事件%+零售加价%)/100。最佳订单：报酬=枪市场价+50%溢价（市场价=当前价值 含子件与事件）。服务订单：报酬=服务费+零件费（客户枪上玩家所装改装件价值合计+修理消耗零件价值记账 ）。",
+  "【tier1订单模板】(基础赏金+0~9随机)：精准（86+，强制 火力>17；奖金：精准>20/24/30各46、可靠性>24为46）；消音（86+，强制 火力>17；奖金：精准>20/24/30各46、可靠性>24为46、压制>0为22、>1为53）；大件（98+，强制 火力>11；奖金：大小>10为12、>12为17、>14为23）；火力（63+，强制 火力>11；奖金：火力>14为34、>17为40、>20为40、>22为40）；风格（69+，强制 风格>4；奖金：风格>7为34、>14为63、>17为57、>20为52、>23为46）；全能（92+，强制 火力>15、可靠性>23、精准>23；奖金9条：火力>21为29、风格>17为29、可靠性>32为34、后坐>69为29、人机>54为29、精准>32为34、大小>11为23、压制>0为17、>1为40）；操控（100+，强制 人机>44、后坐>54；奖金：人机>59为35、>69为40、后坐>74为35、>84为40、精准>29为25）。另有1/9概率最佳订单（口径.22）。",
+  "【tier2订单模板】（190~209+）：可靠消音（强制 可靠>32；奖金 可靠>39为37、>41为45、>45为50、>47为50、压制>0为27、>1为63）；风格（强制 风格>25；奖金 31/34/41/47/51→25/30/35/45/55）；大件（强制 火力>25；奖金 大小>10/11/12/13→40/45/50/55）；火力（强制 火力>26；奖金 28/32/35/38→40/45/50/55）；全能（200+，强制 火力>25、可靠>29、精准>33；奖金9条类似tier1）；操控（200+，强制口径10mm、人机>39、后坐>29；奖金 人机>49/59、后坐>34/44/52→35/40/45）。最佳订单口径10mm。",
+  "【tier3订单模板】（350~369+）：火力（强制 火力>59；奖金 64/69/74/79→65/70/75/80）；风格（强制 风格>52；奖金 55/58/63/68→65/70/75/80）；大件（强制 大小>16；奖金 17/19/22/25→80/85/90/95）；可靠（强制 可靠>59；奖金 64/67/70/74→75/80/95/100、压制>0为33、>1为77）；操控（360+，强制口径10mm、人机>54、后坐>24；奖金 人机>69/79、后坐>39/54/69→60/65/70）；全能（360+，强制 火力>57、可靠>57、精准>44；奖金：火力>74为65、风格>64为65、可靠>71为70、后坐>39为60、人机>69为60、精准>61为65、大小>19为60、压制>0为30、>1为70）。最佳订单口径10mm。",
+  "【服务（维修/改装）订单】：若玩家没有该档枪有50%概率改为服务单，普通池内也各有约1/9。客户自带枪：tier1=巢火70%/解放者30%；tier2=铁铸10 60%/哨兵3型40%；tier3=和平使者60%/壁垒40%。状态roll：40%差、40%一般、20%良好。服务费=30/60/100+0~9。要求：从六维随机抽（霰弹枪剔除火力），强制条数tier1=1、tier2/3=2，门槛=该枪当前值+步长-1（步长8/10/12，判定为严格大于→实际需+8/10/12）；对应第二档奖金（+2×步长）奖励15/25/40；另有侧属性奖金条数2/2/3（+1×步长）各12/20/32。成交时玩家装在枪上的改装件按价值计入报酬并随枪交付；客户离开则返还玩家改装件并补发等量枪械零件（ReturnPlayerParts）。",
+  "【要求判定】GunOrderRequirement.判定：属性要求为严格大于（>）；口径要求为完全相等（isCaliber）；压制要求>0=任意消音、>1=正规消音。",
+  "【弹药】无弹药打印芯片——弹药不可打印，只能购买（退休枪匠等）或从客户/搜刮获得。弹药口径：.22 SR(22)配解放者/巢火；10mm(10)配铁铸10/哨兵3型/和平使者；.45 AFP(45)配兰斯维尔左轮；12号(12)配壁垒霰弹枪（未见对应弹药物品，疑似未实装）。弹药盒（ammo_box，特殊弹药箱）：可装6发同类弹药后打包成整盒出售（价值=单价×6）；对不匹配的客户出售假货/缺货会被识破并扣声望-5。",
+  "【违禁品】自制/打印枪械全部为违禁品：解放者、巢火=1(低级)；铁铸10、哨兵3型、左轮、两型框架=2(中级)；和平使者、壁垒=3(高级)。弹药：普通.22/10mm=1(低级)、穿甲=2(中级)、非致命=无标记。向保安系/上城客户等出售违禁枪会经 CheckSoldContraband 触发安全热度。StolenHelper 的失窃热度系统针对偷来的物品，与打印枪无直接关联。",
+  "【获取渠道】网络升级“退休枪匠”（650cr）立即送：破旧3D打印机（含100电能电池+.22手枪芯片）+螺丝刀+耗材×2+消音器/红点/.22弹匣×2/大容量.22弹匣/玩具激光笔/简易消音器/激光瞄准器/改良内部弹簧组/枪械零件各1。退休枪匠次日到访、其后每周一次出售打印设备、芯片与改装件：常驻卖打印机/螺丝刀/耗材×4/简易红点、玩具激光、小塑料瓶、.22手枪、改良弹簧、美工刀、厨刀芯片；第20天起红点/激光/消音/短柄斧/切肉刀芯片40%出货、双份手枪芯片25%（之前15%/不出）；金属打印模组33%、CNC 25%、批量模组25%、战斗匕首20%、砍刀15%、巢火框架20%、铁铸框架15%、零件芯片25%出货，且各随武器许可证II/III每级+15%/+10%；各类弹匣芯片与高级改装件按独立概率出货。",
+  "【打印机模组】仅接受 （通用系统模组：性能+16 / 效率+16 / 质量+8 / 超频+36性能-44效率 / 环保-16性能+32效率 / 精细-8性能-15效率+25质量 等）与 ：金属打印模组（300cr，性能0效率-50，开启 Metal Printing Machine 标签）、计算机数控模组（400cr，性能-25效率-25，开启 CNC Module 标签）、近战批量模组（250cr，性能-50效率-50，每件使近战打印+1产出）。打印期间模组栏锁定。"
+ ],
+ "items": [
+  {
+   "id": "printer",
+   "name_zh": "3D打印机",
+   "desc_zh": "使用芯片与材料打印物品的机器，夜间运作",
+   "value": 350,
+   "note": "FurnitureItemDirectory 注册；随机器/退休枪匠出售"
+  },
+  {
+   "id": "printer_module_metal",
+   "name_zh": "金属打印模组",
+   "desc_zh": "让打印机可用金属芯片（10mm弹匣、战斗匕首/砍刀芯片及全部CNC芯片的前置）",
+   "value": 300,
+   "note": "性能0/效率-50"
+  },
+  {
+   "id": "printer_module_cnc",
+   "name_zh": "计算机数控模组",
+   "desc_zh": "与金属打印模组配合后可用枪械框架/枪械零件芯片",
+   "value": 400,
+   "note": "性能-25/效率-25"
+  },
+  {
+   "id": "printer_module_melee_batch",
+   "name_zh": "近战武器批量打印模组",
+   "desc_zh": "每次近战打印+1产出",
+   "value": 250,
+   "note": "性能-50/效率-50；每台可叠多件"
+  },
+  {
+   "id": "screwdriver",
+   "name_zh": "螺丝刀",
+   "desc_zh": "对枪使用可拆解；对废机器/损坏模组使用可回收",
+   "value": 25,
+   "note": "枪械拆解入口"
+  },
+  {
+   "id": "printer_plastic",
+   "name_zh": "3D打印耗材",
+   "desc_zh": "打印塑料类物品的基础材料",
+   "value": 12,
+   "note": ""
+  },
+  {
+   "id": "metal_ingot",
+   "name_zh": "金属锭",
+   "desc_zh": "熔炉冶炼产物；纯度影响打印产量与品质",
+   "value": 50,
+   "note": "纯度 ~，价值修正-25%~+200%"
+  },
+  {
+   "id": "scrap_metal",
+   "name_zh": "废金属",
+   "desc_zh": "基础材料",
+   "value": 10,
+   "note": ""
+  },
+  {
+   "id": "common_electronic",
+   "name_zh": "电子元件（普通）",
+   "desc_zh": "电子类打印材料",
+   "value": 33,
+   "note": ""
+  },
+  {
+   "id": "gun_part",
+   "name_zh": "枪械零件",
+   "desc_zh": "完成枪架组装、修理枪械；螺丝刀拆枪获得",
+   "value": 25,
+   "note": "可打印（CNC+金属）或拆枪获得"
+  },
+  {
+   "id": "printed_gun",
+   "name_zh": "“解放者”3D打印手枪",
+   "desc_zh": "低成本塑料手枪，.22 SR口径",
+   "value": 40,
+   "note": "六维 15/5/15/55/40/15，可修复性100，违禁1，状态New，可直接打印"
+  },
+  {
+   "id": "handmade_pistol",
+   "name_zh": "“巢火”紧凑型手枪",
+   "desc_zh": ".22 SR开源手枪",
+   "value": 120,
+   "note": "六维 20/15/30/65/50/30，可修复性100，违禁1；经框架打印组装"
+  },
+  {
+   "id": "heavy_handmade_pistol",
+   "name_zh": "“铁铸10”手枪",
+   "desc_zh": "10毫米重型开源手枪",
+   "value": 160,
+   "note": "六维 30/30/34/30/40/40，可修复性80，违禁2；经框架打印组装"
+  },
+  {
+   "id": "glock_receiver",
+   "name_zh": "哨兵3型。",
+   "desc_zh": "治安部制式10毫米手枪（meridian制造）",
+   "value": 200,
+   "note": "六维 30/40/42/35/50/45，可修复性65，违禁2；不可打印，仅购买/缴获"
+  },
+  {
+   "id": "smg",
+   "name_zh": "“和平使者”重型冲锋枪",
+   "desc_zh": "10毫米重型冲锋枪（meridian）",
+   "value": 280,
+   "note": "六维 65/55/65/25/60/50，可修复性40，违禁3；不可打印"
+  },
+  {
+   "id": "shotgun",
+   "name_zh": "“壁垒”双动式霰弹枪",
+   "desc_zh": "12号口径执法霰弹枪（meridian）",
+   "value": 310,
+   "note": "六维 85/75/75/30/45/50，可修复性35，违禁3；不可打印"
+  },
+  {
+   "id": "revolver",
+   "name_zh": "兰斯维尔左轮手枪",
+   "desc_zh": ".45 AFP左轮（frontier）",
+   "value": 240,
+   "note": "六维 36/50/50/38/55/52，可修复性60，违禁2；moddable:false 不可改装，不可打印"
+  },
+  {
+   "id": "stun_gun",
+   "name_zh": "“脉冲卫士”电击枪",
+   "desc_zh": "自卫武器，非（republic_navy）",
+   "value": 250,
+   "note": "与打印无关，列入备查"
+  },
+  {
+   "id": "tazer",
+   "name_zh": "电击枪",
+   "desc_zh": "近战武器（blueshield）",
+   "value": 100,
+   "note": "与打印无关，列入备查"
+  },
+  {
+   "id": "handmade_pistol_frame",
+   "name_zh": "“巢火”紧凑型手枪框架",
+   "desc_zh": "未完成枪架，+1枪械零件→巢火紧凑型手枪",
+   "value": 70,
+   "note": "违禁1；可打印（金属+CNC）"
+  },
+  {
+   "id": "heavy_handmade_pistol_frame",
+   "name_zh": "“铁铸10”手枪框架",
+   "desc_zh": "未完成枪架，+1枪械零件→铁铸10手枪",
+   "value": 100,
+   "note": "违禁2；可打印（金属+CNC）"
+  },
+  {
+   "id": "printer_chip_pistol",
+   "name_zh": ".22手枪3D打印机芯片",
+   "desc_zh": "打印解放者×1",
+   "value": 250,
+   "note": "耗材×2，工作量50"
+  },
+  {
+   "id": "printer_chip_pistol_double",
+   "name_zh": "3D打印机芯片（.22手枪×2）",
+   "desc_zh": "打印解放者×2",
+   "value": 400,
+   "note": "耗材×3，工作量60"
+  },
+  {
+   "id": "printer_chip_gun_part",
+   "name_zh": "3D打印机芯片（枪械零件）",
+   "desc_zh": "打印枪械零件×3（纯度2~5）",
+   "value": 300,
+   "note": "金属锭×1，工作量30，需金属+CNC"
+  },
+  {
+   "id": "printer_chip_handmade_pistol_frame",
+   "name_zh": "3D打印机芯片（“巢火”紧凑型手枪框架）",
+   "desc_zh": "打印巢火框架×1",
+   "value": 350,
+   "note": "金属锭×1，工作量60，需金属+CNC"
+  },
+  {
+   "id": "printer_chip_heavy_handmade_pistol_frame",
+   "name_zh": "3D打印机芯片（“铁铸10”手枪框架）",
+   "desc_zh": "打印铁铸10框架×1",
+   "value": 450,
+   "note": "金属锭×1+废金属×1，工作量70，需金属+CNC"
+  },
+  {
+   "id": "printer_chip_internal_springs_improved",
+   "name_zh": "3D打印机芯片（改良内部弹簧组×4）",
+   "desc_zh": "打印改良内部弹簧组×4",
+   "value": 150,
+   "note": "废金属×2，工作量20"
+  },
+  {
+   "id": "printer_chip_makeshift_rds",
+   "name_zh": "3D打印机芯片（简易红点瞄准镜×4）",
+   "desc_zh": "打印简易红点×4",
+   "value": 200,
+   "note": "耗材×1+电子元件×1，工作量20"
+  },
+  {
+   "id": "printer_chip_makeshift_toy_laser",
+   "name_zh": "3D打印机芯片（玩具激光笔×4）",
+   "desc_zh": "打印玩具激光笔×4",
+   "value": 200,
+   "note": "耗材×1+电子元件×1，工作量20"
+  },
+  {
+   "id": "printer_chip_small_bottle",
+   "name_zh": "3D打印机芯片（小塑料瓶×6）",
+   "desc_zh": "打印瓶装水（小）×6",
+   "value": 100,
+   "note": "耗材×1，工作量10"
+  },
+  {
+   "id": "printer_chip_rds",
+   "name_zh": "3D打印机芯片（红点瞄准镜×2）",
+   "desc_zh": "打印红点瞄准镜×2",
+   "value": 300,
+   "note": "废金属×3+电子元件×1，工作量24"
+  },
+  {
+   "id": "printer_chip_laser_sight",
+   "name_zh": "3D打印机芯片（激光瞄准器×2）",
+   "desc_zh": "打印激光瞄准器×2",
+   "value": 300,
+   "note": "废金属×2+电子元件×1，工作量24"
+  },
+  {
+   "id": "printer_chip_silencer",
+   "name_zh": "3D打印机芯片（消音器×2）",
+   "desc_zh": "打印消音器×2",
+   "value": 300,
+   "note": "废金属×5，工作量24"
+  },
+  {
+   "id": "printer_chip_22_mag",
+   "name_zh": "3D打印机芯片（.22弹匣×2）",
+   "desc_zh": "打印.22弹匣×2",
+   "value": 250,
+   "note": "耗材×1，工作量24"
+  },
+  {
+   "id": "printer_chip_22_mag_high",
+   "name_zh": "3D打印机芯片（大容量.22弹匣×2）",
+   "desc_zh": "打印大容量.22弹匣×2",
+   "value": 300,
+   "note": "耗材×2，工作量36"
+  },
+  {
+   "id": "printer_chip_22_mag_ext",
+   "name_zh": "3D打印机芯片（加长.22弹匣×2）",
+   "desc_zh": "打印加长.22弹匣×2",
+   "value": 350,
+   "note": "耗材×3，工作量48"
+  },
+  {
+   "id": "printer_chip_10_mag",
+   "name_zh": "3D打印机芯片（10毫米弹匣×2）",
+   "desc_zh": "打印10毫米弹匣×2",
+   "value": 300,
+   "note": "废金属×3，工作量36，需金属"
+  },
+  {
+   "id": "printer_chip_10_mag_high",
+   "name_zh": "3D打印机芯片（大容量10毫米弹匣×1）",
+   "desc_zh": "打印大容量10毫米弹匣×1",
+   "value": 350,
+   "note": "废金属×2，工作量48，需金属"
+  },
+  {
+   "id": "printer_chip_10_mag_ext",
+   "name_zh": "3D打印机芯片（加长10毫米弹匣×1）",
+   "desc_zh": "打印加长10毫米弹匣×1",
+   "value": 400,
+   "note": "废金属×3，工作量60，需金属"
+  },
+  {
+   "id": "printer_chip_box_cutter",
+   "name_zh": "3D打印机芯片（美工刀×3）",
+   "desc_zh": "近战打印",
+   "value": 150,
+   "note": "废金属×2+耗材×1，工作量34"
+  },
+  {
+   "id": "printer_chip_kitchen_knife",
+   "name_zh": "3D打印机芯片（厨刀×4）",
+   "desc_zh": "近战打印",
+   "value": 200,
+   "note": "废金属×3+耗材×1，工作量64"
+  },
+  {
+   "id": "printer_chip_hatchet",
+   "name_zh": "3D打印机芯片（短柄斧×4）",
+   "desc_zh": "近战打印",
+   "value": 250,
+   "note": "废金属×4+耗材×1，工作量75"
+  },
+  {
+   "id": "printer_chip_kitchen_cleaver",
+   "name_zh": "3D打印机芯片（切肉刀×4）",
+   "desc_zh": "近战打印",
+   "value": 300,
+   "note": "废金属×5+耗材×2，工作量82"
+  },
+  {
+   "id": "printer_chip_combat_knife",
+   "name_zh": "3D打印机芯片（战斗匕首×5）",
+   "desc_zh": "近战打印",
+   "value": 380,
+   "note": "金属锭×2，工作量98，需金属"
+  },
+  {
+   "id": "printer_chip_combat_machete",
+   "name_zh": "3D打印机芯片（战斗砍刀×3）",
+   "desc_zh": "近战打印",
+   "value": 480,
+   "note": "金属锭×3，工作量120，需金属"
+  },
+  {
+   "id": "rds",
+   "name_zh": "红点瞄准镜",
+   "desc_zh": "导轨槽瞄准镜",
+   "value": 60,
+   "note": "百分比：风格+20% 精准+25%；固定：风格+5 精准+10"
+  },
+  {
+   "id": "rds_makeshift",
+   "name_zh": "简易红点瞄准镜",
+   "desc_zh": "导轨槽，",
+   "value": 25,
+   "note": "百分比：风格-5% 可靠-15% 精准+15%；固定：风格-2 可靠-5 精准+5；可打印"
+  },
+  {
+   "id": "silencer",
+   "name_zh": "消音器",
+   "desc_zh": "枪管槽，压制等级2",
+   "value": 55,
+   "note": "百分比：风格+25% 后坐+15% 人机-5%；固定：风格+8 后坐+5 人机-2；可打印"
+  },
+  {
+   "id": "silencer2",
+   "name_zh": "夜枭消音器",
+   "desc_zh": "枪管槽，压制等级2",
+   "value": 90,
+   "note": "百分比：风格+40% 后坐+25% 人机-10%；固定：风格+12 后坐+8 人机-3"
+  },
+  {
+   "id": "silencer_makeshift",
+   "name_zh": "简易消音器",
+   "desc_zh": "枪管槽，压制等级1",
+   "value": 15,
+   "note": "百分比：风格-50% 可靠-35% 后坐+10% 人机-30%；固定：风格-15 可靠-10 后坐+3 人机-9；可用废金属+瓶装水合成"
+  },
+  {
+   "id": "barrel",
+   "name_zh": "外接式加长枪管",
+   "desc_zh": "枪管槽，仅smg",
+   "value": 60,
+   "note": "百分比：人机-20% 精准+25%；固定：人机-6 精准+8"
+  },
+  {
+   "id": "compensator",
+   "name_zh": "补偿器",
+   "desc_zh": "枪管槽",
+   "value": 50,
+   "note": "百分比：风格+10% 后坐+30% 人机-5%；固定：风格+3 后坐+9 人机-2"
+  },
+  {
+   "id": "mag_22",
+   "name_zh": ".22弹匣",
+   "desc_zh": "弹匣槽，仅printed_gun/handmade_pistol",
+   "value": 15,
+   "note": "百分比：火力+15%；固定：火力+5；可打印"
+  },
+  {
+   "id": "mag_22_high",
+   "name_zh": "大容量.22弹匣",
+   "desc_zh": "弹匣槽",
+   "value": 25,
+   "note": "百分比：火力+30% 风格+10% 人机-10%；固定：火力+9 风格+3 人机-3；可打印"
+  },
+  {
+   "id": "mag_22_ext",
+   "name_zh": "加长.22弹匣",
+   "desc_zh": "弹匣槽",
+   "value": 35,
+   "note": "百分比：火力+60% 风格+20% 人机-20%；固定：火力+18 风格+6 人机-6；可打印"
+  },
+  {
+   "id": "mag_10mm",
+   "name_zh": "10毫米弹匣",
+   "desc_zh": "弹匣槽，仅heavy_handmade_pistol/glock_receiver",
+   "value": 30,
+   "note": "百分比：火力+10%；固定：火力+3；可打印"
+  },
+  {
+   "id": "mag_10mm_high",
+   "name_zh": "大容量10毫米弹匣",
+   "desc_zh": "弹匣槽",
+   "value": 40,
+   "note": "百分比：火力+20% 风格+10% 人机-10%；固定：火力+6 风格+3 人机-3；可打印"
+  },
+  {
+   "id": "mag_10mm_ext",
+   "name_zh": "加长10毫米弹匣",
+   "desc_zh": "弹匣槽",
+   "value": 50,
+   "note": "百分比：火力+40% 风格+20% 人机-15%；固定：火力+12 风格+6 人机-5；可打印"
+  },
+  {
+   "id": "mag_10mm_smg",
+   "name_zh": "10毫米冲锋枪弹匣",
+   "desc_zh": "弹匣槽，仅smg（meridian）",
+   "value": 55,
+   "note": "百分比：火力+12%；固定：火力+4"
+  },
+  {
+   "id": "mag_10mm_smg_high",
+   "name_zh": "大容量10毫米冲锋枪弹匣",
+   "desc_zh": "弹匣槽，仅smg",
+   "value": 70,
+   "note": "百分比：火力+25% 风格+10% 人机-10%；固定：火力+8 风格+3 人机-3"
+  },
+  {
+   "id": "mag_10mm_smg_box",
+   "name_zh": "10毫米冲锋枪箱式弹匣",
+   "desc_zh": "弹匣槽，仅smg",
+   "value": 85,
+   "note": "百分比：火力+75% 风格+20% 可靠-15% 人机-20%；固定：火力+20 风格+6 可靠-5 人机-6"
+  },
+  {
+   "id": "laser",
+   "name_zh": "激光瞄准器",
+   "desc_zh": "下挂槽",
+   "value": 50,
+   "note": "百分比：风格+20% 人机+20%；固定：风格+6 人机+6；可打印"
+  },
+  {
+   "id": "laser2",
+   "name_zh": "目标捕获装置",
+   "desc_zh": "下挂槽",
+   "value": 100,
+   "note": "百分比：风格+25% 人机+25% 精准+10%；固定：风格+8 人机+8 精准+3"
+  },
+  {
+   "id": "laser_toy",
+   "name_zh": "玩具激光笔",
+   "desc_zh": "下挂槽，",
+   "value": 18,
+   "note": "百分比：风格-10% 可靠-15% 人机+15%；固定：风格-3 可靠-5 人机+5；可打印"
+  },
+  {
+   "id": "bipod",
+   "name_zh": "两脚架",
+   "desc_zh": "下挂槽，仅smg",
+   "value": 40,
+   "note": "百分比：后坐+40% 人机-20%；固定：后坐+12 人机-6"
+  },
+  {
+   "id": "gl",
+   "name_zh": "25毫米下挂式榴弹发射器",
+   "desc_zh": "下挂槽，仅smg",
+   "value": 150,
+   "note": "百分比：火力+75% 风格+30% 后坐+25% 人机-75%；固定：火力+20 风格+9 后坐+8 人机-20"
+  },
+  {
+   "id": "grip",
+   "name_zh": "前握把",
+   "desc_zh": "下挂槽，仅smg/shotgun",
+   "value": 40,
+   "note": "百分比：风格+15% 后坐+15% 人机+15%；固定：风格+5 后坐+5 人机+5"
+  },
+  {
+   "id": "stock",
+   "name_zh": "“守护者”枪托",
+   "desc_zh": "枪托槽，仅smg/shotgun（meridian）",
+   "value": 40,
+   "note": "百分比：风格+20% 后坐+50% 人机-30%；固定：风格+6 后坐+15 人机-9"
+  },
+  {
+   "id": "short_stock",
+   "name_zh": "“小圆盾”枪托",
+   "desc_zh": "枪托槽，仅smg/shotgun",
+   "value": 35,
+   "note": "百分比：风格+20% 后坐+20% 人机+10%；固定：风格+6 后坐+6 人机+3"
+  },
+  {
+   "id": "internal_springs",
+   "name_zh": "高耐久内部弹簧组",
+   "desc_zh": "特殊槽",
+   "value": 40,
+   "note": "百分比：可靠+25%；固定：可靠+10；与改良版互斥"
+  },
+  {
+   "id": "internal_springs_improved",
+   "name_zh": "改良内部弹簧组",
+   "desc_zh": "特殊槽",
+   "value": 20,
+   "note": "百分比：可靠+12%；固定：可靠+5；可打印；与高耐久版互斥"
+  },
+  {
+   "id": "trigger_group",
+   "name_zh": "精调扳机组",
+   "desc_zh": "特殊槽",
+   "value": 50,
+   "note": "百分比：人机+25%；固定：人机+8"
+  },
+  {
+   "id": "match_barrel",
+   "name_zh": "比赛级枪管",
+   "desc_zh": "特殊槽",
+   "value": 75,
+   "note": "百分比：精准+35%；固定：精准+10"
+  },
+  {
+   "id": "pistol_switch",
+   "name_zh": "手枪自动阻铁",
+   "desc_zh": "特殊槽，仅printed_gun/handmade_pistol/heavy_handmade_pistol/glock_receiver",
+   "value": 40,
+   "note": "百分比：火力+90% 可靠-25% 后坐-90%；固定：火力+25 可靠-8 后坐-25"
+  },
+  {
+   "id": "ammo_display",
+   "name_zh": "弹药显示器",
+   "desc_zh": "特殊槽",
+   "value": 70,
+   "note": "百分比：风格+30% 可靠+15% 人机+15%；固定：风格+9 可靠+5 人机+5"
+  },
+  {
+   "id": "grip_gel",
+   "name_zh": "触感记忆握把凝胶",
+   "desc_zh": "特殊槽",
+   "value": 70,
+   "note": "百分比：人机+30%；固定：人机+9"
+  },
+  {
+   "id": "small_pistol_ammo",
+   "name_zh": ".22 SR弹药",
+   "desc_zh": ".22口径普通弹",
+   "value": 20,
+   "note": "违禁1"
+  },
+  {
+   "id": "small_pistol_ammo_p",
+   "name_zh": ".22 SR弹药（穿甲）",
+   "desc_zh": ".22口径穿甲弹",
+   "value": 26,
+   "note": "违禁2"
+  },
+  {
+   "id": "small_pistol_ammo_nl",
+   "name_zh": ".22 SR弹药（非致命）",
+   "desc_zh": ".22口径非致命弹",
+   "value": 14,
+   "note": "非违禁"
+  },
+  {
+   "id": "heavy_pistol_ammo",
+   "name_zh": "10毫米弹药",
+   "desc_zh": "10mm普通弹",
+   "value": 30,
+   "note": "违禁1"
+  },
+  {
+   "id": "heavy_pistol_ammo_p",
+   "name_zh": "10毫米弹药（穿甲弹）",
+   "desc_zh": "10mm穿甲弹",
+   "value": 36,
+   "note": "违禁2"
+  },
+  {
+   "id": "heavy_pistol_ammo_nl",
+   "name_zh": "10毫米弹药（非致命）",
+   "desc_zh": "10mm非致命弹",
+   "value": 24,
+   "note": "非违禁"
+  },
+  {
+   "id": "box_dispenser",
+   "name_zh": "Box Dispenser（无中文翻译）",
+   "desc_zh": "按钮发放弹药盒并耗1电",
+   "value": 250,
+   "note": "疑似开发用机器"
+  }
+ ],
+ "unresolved": []
+}

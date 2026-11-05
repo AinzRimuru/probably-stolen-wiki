@@ -1,0 +1,6013 @@
+[
+ {
+  "id": "box_tampon",
+  "name_zh": "一盒帕克斯卫生棉条",
+  "desc_zh": null,
+  "flavor_zh": "此类卫生用品主打安全与私密，是下层区鲜有人能消费得起的奢侈品。",
+  "value": 100,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "packet_red_cigarette",
+  "name_zh": "一包海明威香烟",
+  "desc_zh": null,
+  "flavor_zh": "极致奢华的吸烟体验，它的口感和它的价格一样，绝对让你终生难忘。",
+  "value": 80,
+  "types": [
+   "SUBSTANCE"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "pack_condom",
+  "name_zh": "一盒瑞克斯避孕套",
+  "desc_zh": null,
+  "flavor_zh": "得益于一项补贴分发计划，这东西在下层区极为常见。毕竟，控制人口可比镇压暴乱便宜多了。",
+  "value": 35,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "shampoo",
+  "name_zh": "一瓶四合一洗涤剂",
+  "desc_zh": null,
+  "flavor_zh": "集洗发水、护发素、沐浴露和牙膏于一瓶的便捷洗护产品，更添加了提神醒脑的营养果萃取物。",
+  "value": 30,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "toothpaste",
+  "name_zh": "一支牙膏",
+  "desc_zh": null,
+  "flavor_zh": "能带来清新口气的薄荷凝胶。",
+  "value": 15,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "paper_towel",
+  "name_zh": "一卷纸巾",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "toilet_paper",
+  "name_zh": "一卷厕纸",
+  "desc_zh": null,
+  "flavor_zh": "价格亲民的厕纸，结实耐用。在下层区，双层纸也已然是一种奢侈。",
+  "value": 25,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_test_container",
+  "name_zh": "水质检测试剂盒",
+  "desc_zh": "包含水质检测试纸的小瓶。",
+  "value": 1,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_test_strip",
+  "name_zh": "水质检测试纸",
+  "desc_zh": "用于准确测定水样质量的检测试纸。",
+  "value": 3,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "aquascan",
+  "name_zh": "水质扫描仪",
+  "desc_zh": "一种用于准确测定水样质量的设备。可显示检测到的杂质。",
+  "value": 200,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "uv_filter",
+  "name_zh": "紫外线灯",
+  "desc_zh": "可用于水容器。",
+  "flavor_zh": "一种发射紫外线以杀灭细菌和其他微生物的灯具。",
+  "value": 150,
+  "types": [
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "metal_scanner",
+  "name_zh": "拾荒扫描仪",
+  "desc_zh": "一种能提高你在拾荒时发现贵重物品几率的设备。（你同时只能获得一台拾荒扫描仪的增益效果。）",
+  "flavor_zh": "曾经幻想过拥有第三只眼吗？或者是第二只鼻子？用拾荒扫描仪穿透杂物，寻找宝藏吧！",
+  "value": 250,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "gene_scanner",
+  "name_zh": "基因扫描仪",
+  "desc_zh": "开启后可查看动物的完整基因信息。",
+  "value": 500,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_tablet_container",
+  "name_zh": "一瓶净水药片",
+  "desc_zh": "一小瓶用于净化水质的药片。",
+  "value": 1,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_tablet",
+  "name_zh": "净水药片",
+  "desc_zh": "可消除大量微生物污染物，并部分减少化学污染物。对其他类型的污染物无效。",
+  "value": 6,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_filter",
+  "name_zh": "滤水器",
+  "desc_zh": "安装在过滤系统内使用时，可略微提高水质纯度。水质纯度超过一定阈值后将不再生效。",
+  "flavor_zh": "轻量化的民用级过滤器。",
+  "value": 25,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "FILTER",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_filter_adv",
+  "name_zh": "高级滤水器",
+  "desc_zh": "在每天开始时将恢复50点耐久度。",
+  "flavor_zh": "上层区水壶使用的优质滤水器。能够缓慢地进行自我清洁。",
+  "value": 350,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "FILTER",
+   "WATER_PURIFICATION_SUPPLY",
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "portable_water_purifier",
+  "name_zh": "海德拉科技微型净水器",
+  "desc_zh": "对水容器使用，无论内容物是什么，都能将其纯度提升至基础水级别。每净化100毫升将消耗1点耐久度。",
+  "flavor_zh": "在上层区很常见的抛弃式高级净水器。被丢弃后，会被冲刷到垃圾场里，还能勉强再过滤几次。",
+  "value": 325,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY",
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_pitcher",
+  "name_zh": "水罐",
+  "desc_zh": "可装入滤水器，对倒入的水进行过滤，去除部分污染物。",
+  "value": null,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "water_tank",
+  "name_zh": "储水罐",
+  "desc_zh": "大型液体容器。对其使用废金属或金属锭可以扩大容量。",
+  "value": null,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "hydroreed_filter",
+  "name_zh": "水培芦苇滤芯",
+  "desc_zh": "装入过滤系统后，可去除特定类型的污染物。",
+  "flavor_zh": "由水培芦苇培育而成的生物滤芯。",
+  "value": 20,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "FILTER",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "kotton_fabric",
+  "name_zh": "韧棉织物",
+  "desc_zh": "用于化学实验，可滤除液体中的大颗粒物。织孔太粗，完全无法用于净水。",
+  "flavor_zh": "用途广泛的有机纤维布料。常用于制作加固工作服和减震内衬。",
+  "value": 65,
+  "types": [
+   "MATERIAL",
+   "FILTER"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "nutrient_tablet",
+  "name_zh": "水培营养片",
+  "desc_zh": "含有植物生长所必需的矿物质，可加入水容器中。",
+  "flavor_zh": "严禁食用。仅限水培使用。",
+  "value": 5,
+  "types": [
+   "FARMING_SUPPLIES"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "nutrient_tablet_container",
+  "name_zh": "水培营养片药瓶",
+  "desc_zh": "装有水培营养片的瓶子。",
+  "flavor_zh": "严禁吞食。仅限水培农业使用。",
+  "value": 1,
+  "types": [
+   "FARMING_SUPPLIES"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "lottery_ticket",
+  "name_zh": "彩票",
+  "desc_zh": "每周六上午公布中奖号码。",
+  "flavor_zh": "如果中了头奖，足以让你在安全舒适的上层区度过余生。",
+  "value": 25,
+  "types": [
+   "LOTTERY"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "lottery_ticket_old",
+  "name_zh": "旧彩票",
+  "desc_zh": "一张毫无价值的下层区旧彩票。没有中奖号码，只有褪色的希望。",
+  "flavor_zh": "一张中了头奖的彩票，足以让你在安全舒适的上层区度过余生。",
+  "value": 1,
+  "types": [],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "skincare_cream",
+  "name_zh": "“永恒”焕活精华液",
+  "desc_zh": "备受追捧的奢华精华液，所用干细胞均来自符合伦理规范的渠道，可焕活并修复肌肤。",
+  "flavor_zh": "一只流线型玻璃罐，内盛微光闪烁的精华液。",
+  "value": 500,
+  "types": [
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "neuroactive_perfume",
+  "name_zh": "“同步”神经活性香水",
+  "desc_zh": "使用后，与当前顾客的交易收益将提升15%。你同时只能获得一种香水效果的增益。",
+  "flavor_zh": "脱胎于心理创伤治疗研究，采用自适应气味映射技术来唤起个人的美好回忆。常见于高端服务场所，那里的员工发现，喷这款香水能换来的小费远超它的售价。",
+  "value": 150,
+  "types": [
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "self_refilling_neuroactive_perfume",
+  "name_zh": "“同步”自动补充神经活性香水",
+  "desc_zh": "使用后，与当前顾客的交易收益将提升15%。你同时只能获得一种香水效果的增益。会自动补充。",
+  "flavor_zh": "“同步”香水的高端版本。瓶盖里的密封储液仓会慢慢合成新的一剂，所以瓶子永远不会真正见底。",
+  "value": 1000,
+  "types": [
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "pheromone_perfume",
+  "name_zh": "“本源”费洛蒙香水",
+  "desc_zh": "使用后，与当前顾客的交易收益将提升25%。你同时只能获得一种香水效果的增益。",
+  "flavor_zh": "以人工改造的人类信息素调制出的违禁香水，能增强吸引力与情感接受度。尽管属于违禁品，但它依然受到上层区那些攀附权贵者的极力追捧。",
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "LUXURY_ITEM"
+  ],
+  "directory": "AmenitiesItemDirectory",
+  "note": "生活设施/装饰"
+ },
+ {
+  "id": "armor_lining",
+  "name_zh": "韧棉衬垫",
+  "desc_zh": "由韧棉织物制成的衬垫，可为穿戴者提供一定防护。叠加多层后能够抵御轻武器射击。",
+  "flavor_zh": "专为危险环境中的工人设计，也是拾荒者必不可少的装备。",
+  "value": 60,
+  "types": [
+   "ARMOR"
+  ],
+  "directory": "ArmorItemDirectory",
+  "note": "护甲"
+ },
+ {
+  "id": "nuts_metal",
+  "name_zh": "金属螺丝",
+  "desc_zh": null,
+  "value": 14,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "ConstructionItemDirectory",
+  "note": "建筑材料"
+ },
+ {
+  "id": "save_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "back_inv_save_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "hidden_save_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "showcase_save_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "sold_save_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "fanny_pack",
+  "name_zh": "腰包",
+  "desc_zh": null,
+  "value": 50,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "satchel",
+  "name_zh": "挎包（小）",
+  "desc_zh": null,
+  "value": 150,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "kids_backpack",
+  "name_zh": "儿童背包",
+  "desc_zh": null,
+  "value": 200,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "kids_backpack_large",
+  "name_zh": "儿童背包（大）",
+  "desc_zh": null,
+  "value": 250,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "backpack_small",
+  "name_zh": "背包（小）",
+  "desc_zh": "款式紧凑、饱经磨砺的背包，配有加固缝线。重量虽轻，但足以装下各种基本物资。",
+  "value": 300,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "backpack_medium",
+  "name_zh": "背包（基础）",
+  "desc_zh": null,
+  "value": 450,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "backpack_medium_military",
+  "name_zh": "背包（军用）",
+  "desc_zh": "专为军事用途设计的重型背包。布料极为耐用，以至于有些士兵在战斗中会把它背在胸前当作额外护甲使用。",
+  "value": 130,
+  "types": [
+   "ARMOR"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "backpack_large",
+  "name_zh": "背包（大）",
+  "desc_zh": null,
+  "value": 650,
+  "types": [],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "backpack_large_military",
+  "name_zh": "大型军用背包",
+  "desc_zh": "专为军事用途设计的重型背包。面料极其耐用，有些士兵会在战斗中将其背在胸前，充当额外护甲。",
+  "value": 280,
+  "types": [
+   "ARMOR"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "nutrifruit_seed_packet",
+  "name_zh": "一包营养果种子",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "SEED"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "sec_box",
+  "name_zh": "治安部物资箱",
+  "desc_zh": "一个上锁的板条箱，标签上写着归空间站治安部军械库所有。里面装满了物资。需要识别卡才能打开。",
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "SUPPLY_CRATE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "evidence_box",
+  "name_zh": "治安部物证柜",
+  "desc_zh": "一个上锁的板条箱，标签上写着归空间站治安部证物库所有。内含贵重物品。需要识别卡才能打开。",
+  "flavor_zh": "这里面的东西足够把整个下层区的人都送进大牢了。",
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "SUPPLY_CRATE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "med_box",
+  "name_zh": "医疗舱物资箱",
+  "desc_zh": "一个上锁的板条箱，标签上写着归空间站医疗舱所有。里面装满了物资。需要识别卡才能打开。",
+  "flavor_zh": "弄丢了这批物资应该不至于闹出人命吧……对吧？",
+  "value": 200,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "eng_box",
+  "name_zh": "工程铸造厂物资箱",
+  "desc_zh": "一个上锁的板条箱，标签上写着归空间站工程铸造厂所有。里面装满了物资。需要识别卡才能打开。",
+  "flavor_zh": "那些戴安全帽的家伙一定会为弄丢了工具而追悔莫及……",
+  "value": 200,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "service_box",
+  "name_zh": "后勤服务部物资箱",
+  "desc_zh": "一个坚固的板条箱，标签上写着归空间站后勤服务部所有。里面装满了物资。需要识别卡才能打开。",
+  "flavor_zh": "空间站后勤服务部负责将公共设施物资分发给那些有需要……或者说，付得起钱的人。",
+  "value": 175,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "beerCase",
+  "name_zh": "红魔鬼啤酒箱",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "SUBSTANCE",
+   "ALCOHOL",
+   "BREVAGE"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "luxury_supply_crate",
+  "name_zh": "给埃莉诺的慰问包裹",
+  "desc_zh": "一只密封的箱子，装满了来自上层区的高档货。打包的人可真舍得花钱。奇怪的是，你的治安部通报里把它列为失窃物品。",
+  "value": 300,
+  "types": [
+   "LUXURY_ITEM",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "ContainerItemDirectory",
+  "note": "容器"
+ },
+ {
+  "id": "expedition_box",
+  "name_zh": "探险补给箱",
+  "desc_zh": "将补给品和装备放入此箱，供雇工在探险期间使用。未使用的装备会退还给你。",
+  "value": 0,
+  "types": [],
+  "directory": "EquipmentDirectory",
+  "note": "装备配件"
+ },
+ {
+  "id": "smoke_grenade",
+  "name_zh": "烟雾弹",
+  "desc_zh": null,
+  "value": 60,
+  "types": [
+   "CONTRABAND",
+   "WEAPON",
+   "MUNITION"
+  ],
+  "directory": "ExplosiveItemDirectory",
+  "note": "爆炸物"
+ },
+ {
+  "id": "flashbang_grenade",
+  "name_zh": "闪光弹",
+  "desc_zh": null,
+  "value": 85,
+  "types": [
+   "CONTRABAND",
+   "WEAPON",
+   "MUNITION"
+  ],
+  "directory": "ExplosiveItemDirectory",
+  "note": "爆炸物"
+ },
+ {
+  "id": "c4",
+  "name_zh": "塑性炸药",
+  "desc_zh": "轻拿轻放。",
+  "value": 250,
+  "types": [
+   "WEAPON",
+   "MUNITION",
+   "CONTRABAND"
+  ],
+  "directory": "ExplosiveItemDirectory",
+  "note": "爆炸物"
+ },
+ {
+  "id": "c4_set",
+  "name_zh": "塑性炸药（已激活）",
+  "desc_zh": "3……2……1……轰！！",
+  "value": 250,
+  "types": [
+   "WEAPON",
+   "MUNITION",
+   "CONTRABAND"
+  ],
+  "directory": "ExplosiveItemDirectory",
+  "note": "爆炸物"
+ },
+ {
+  "id": "lou_bomb",
+  "name_zh": "已激活的塑性炸药",
+  "desc_zh": "这是卢藏起来的东西。计时器显示，它会在午夜爆炸。你最好赶紧把它拆了。",
+  "value": 0,
+  "types": [],
+  "directory": "ExplosiveItemDirectory",
+  "note": "爆炸物"
+ },
+ {
+  "id": "processed_milk",
+  "name_zh": "碳酸代乳",
+  "desc_zh": null,
+  "flavor_zh": "一盒加工奶，或者说，一种甜味的碳酸“乳基”饮料。味道意外地还不错。",
+  "value": 16,
+  "types": [
+   "PROCESSED_FOOD",
+   "BREVAGE",
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "processed_juice",
+  "name_zh": "代糖果汁",
+  "desc_zh": "一盒加工果汁。所有的天然糖分都已被提取出来，换成了精制糖。含有0.1%的真果汁！",
+  "flavor_zh": "一盒加工果汁。所有的天然糖分都已被提取出来，换成了精制糖。含有0.1%的真果汁！",
+  "value": 14,
+  "types": [
+   "PROCESSED_FOOD",
+   "BREVAGE",
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "processed_meat",
+  "name_zh": "“泥炭”合成肉",
+  "desc_zh": "一罐达夫雷公司生产的咸味合成肉。它便宜、容易买到而且管饱。只要你不在乎它是用什么肉做的。",
+  "flavor_zh": "一罐达夫雷公司生产的咸味合成肉。它便宜、容易买到而且管饱。只要你不在乎它是用什么肉做的。",
+  "value": 25,
+  "types": [
+   "FOOD",
+   "PROCESSED_FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "bottle_hot_sauce",
+  "name_zh": "辣酱",
+  "desc_zh": null,
+  "value": 50,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "bottled_water_premium",
+  "name_zh": "瓶装泉水",
+  "desc_zh": "一瓶密封的水，据说取自一个遥远且未受任何工业活动污染的星球上的天然活泉。",
+  "flavor_zh": "哪怕渴到奄奄一息，下层区的人也绝对不会喝这种水，毕竟它的价格摆在那里。",
+  "value": 325,
+  "types": [
+   "LUXURY_ITEM",
+   "WATER"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "red_beer",
+  "name_zh": "红魔鬼啤酒",
+  "desc_zh": null,
+  "flavor_zh": "下层区酿造的畅销啤酒。虽说每批的口味都不太一样，但这绝对是最便宜的酒了。酒精度3.5%。",
+  "value": 18,
+  "types": [
+   "SUBSTANCE",
+   "ALCOHOL",
+   "BREVAGE"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "empty_beer_bottle",
+  "name_zh": "空啤酒瓶",
+  "desc_zh": "一滴都不剩了。为防止浪费，酿酒厂一般都有针对空瓶的“回购”业务。",
+  "value": 5,
+  "types": [
+   "JUNK"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "bottled_water",
+  "name_zh": "瓶装水（标准）",
+  "desc_zh": null,
+  "value": 5,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "small_bottled_water",
+  "name_zh": "瓶装水（小）",
+  "desc_zh": null,
+  "value": 4,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "mini_bottle",
+  "name_zh": "瓶装水（微型）",
+  "desc_zh": null,
+  "value": 3,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "liquid_luck",
+  "name_zh": "液体好运",
+  "desc_zh": null,
+  "flavor_zh": "三天内运气百分百暴涨！乔治奥亲口担保！喝起来一股铁锈水味。",
+  "value": 100,
+  "types": [
+   "WATER_RATION"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "med_bottle_red",
+  "name_zh": "酸性溶液瓶",
+  "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和碱性物质。",
+  "flavor_zh": "警告：具有腐蚀性。请小心处理。",
+  "value": 3,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "med_bottle_blue",
+  "name_zh": "碱性溶液瓶",
+  "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和酸性物质。",
+  "flavor_zh": "警告：具有强腐蚀性。请小心处理。",
+  "value": 3,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "med_bottle_violet",
+  "name_zh": "N-羟甲基碱溶液瓶",
+  "desc_zh": "一种用途广泛的碱性化合物，常用于合法化工生产，也是常见的芬太前体。",
+  "value": 3,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "med_bottle_orange",
+  "name_zh": "还原剂瓶",
+  "desc_zh": "某些化学反应不可或缺的试剂。",
+  "flavor_zh": "向另一种物质提供电子，从而改变该物质的化学状态。",
+  "value": 3,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "med_bottle_small_pink",
+  "name_zh": "脂合剂瓶",
+  "desc_zh": "使油脂凝聚成团，以便轻松过滤。随后可通过蒸发去除这种试剂。",
+  "value": 1,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "1ml_dropper",
+  "name_zh": "1毫升滴管",
+  "desc_zh": null,
+  "flavor_zh": "用于精确分配少量液体的高精度滴管。",
+  "value": 120,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "5ml_dropper",
+  "name_zh": "5毫升滴管",
+  "desc_zh": null,
+  "value": 10,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "25ml_cylinder",
+  "name_zh": "25毫升量筒",
+  "desc_zh": null,
+  "value": 7,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "50ml_cylinder",
+  "name_zh": "50毫升量筒",
+  "desc_zh": null,
+  "value": 10,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "100ml_cylinder",
+  "name_zh": "100毫升量筒",
+  "desc_zh": null,
+  "value": 15,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "large_bottled_water",
+  "name_zh": "瓶装水（大）",
+  "desc_zh": null,
+  "value": 9,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "water_jug",
+  "name_zh": "桶装水",
+  "desc_zh": null,
+  "value": 15,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "soda_red",
+  "name_zh": "汽水",
+  "desc_zh": "甜味碳酸饮料。在空间站的某些区域，它甚至比干净的水还要便宜。",
+  "value": 15,
+  "types": [
+   "FOOD",
+   "TREAT",
+   "BREVAGE"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "energy_drink",
+  "name_zh": "能量饮料",
+  "desc_zh": null,
+  "value": 18,
+  "types": [
+   "FOOD",
+   "TREAT",
+   "BREVAGE"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "nudka",
+  "name_zh": "努特加",
+  "desc_zh": "由营养果酿制而成的烈性酒。最初是作为重型脱漆剂而研发的。",
+  "value": 85,
+  "types": [
+   "ALCOHOL",
+   "SUBSTANCE"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "galaxy_blend",
+  "name_zh": "繁星果糊",
+  "desc_zh": null,
+  "flavor_zh": "由帕斯泰尔公司的营养果制成，并额外添加了维生素和矿物质的营养糊。下层区能买到的最健康、但也最不受欢迎的食物之一。",
+  "value": 25,
+  "types": [
+   "FOOD",
+   "PROCESSED_FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "cat_bar",
+  "name_zh": "猫咪巧克力棒",
+  "desc_zh": null,
+  "flavor_zh": "裹着巧克力的威化棒。虽然设计初衷是为了分享，但大多都是被一个人孤独地吃掉。",
+  "value": 15,
+  "types": [
+   "TREAT",
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "li_eat_snackbar",
+  "name_zh": "轻食能量棒",
+  "desc_zh": "高蛋白巧克力味糖果棒。",
+  "value": 17,
+  "types": [
+   "TREAT",
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "small_raw_meat",
+  "name_zh": "生肉（小）",
+  "desc_zh": "一小块生肉。",
+  "flavor_zh": "新鲜肉类在下层区难得一见，至于它是从哪里来的，不太会有人在乎。",
+  "value": 65,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "morsel",
+  "name_zh": "一口食物",
+  "desc_zh": null,
+  "value": 30,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "small_morsel",
+  "name_zh": "一小口食物",
+  "desc_zh": null,
+  "value": 15,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "raw_meat",
+  "name_zh": "生肉（标准）",
+  "desc_zh": "一块生肉。",
+  "flavor_zh": "新鲜肉类在下层区难得一见，至于它是从哪里来的，不太会有人在乎。",
+  "value": 159,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "fat_meat",
+  "name_zh": "动物脂肪",
+  "desc_zh": "一磅板油。价格低廉，通常用于熬制成动物油或给肉汤增添风味。",
+  "value": 40,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "meat_scrap",
+  "name_zh": "动物下水",
+  "desc_zh": "器官、肠子、软骨和边角料。虽然可食用且有营养，但一向不招大多数菜系待见。",
+  "value": 12,
+  "types": [],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "cup_noodle",
+  "name_zh": "速食拉面",
+  "desc_zh": "内含一次性无明火加热器。只需加水即可加热烹饪。",
+  "flavor_zh": "人工红烧牛肉风味，公认的下层区经典美食。味精、白胡椒和四川花椒赋予了这款方便面辛辣的刺激。",
+  "value": 20,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "water_ration",
+  "name_zh": "密封水配给包（标准）",
+  "desc_zh": "可倒入液体容器中，转化为750毫升的基础水。",
+  "flavor_zh": "已通过认证并密封的一份配给基础水。",
+  "value": 30,
+  "types": [
+   "WATER_RATION"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "water_ration_small",
+  "name_zh": "密封水配给包（小）",
+  "desc_zh": "可倒入液体容器中，转化为375毫升的基础水。",
+  "flavor_zh": "已通过认证并密封的一份配给基础水。",
+  "value": 15,
+  "types": [
+   "WATER_RATION"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "processed_cheese",
+  "name_zh": "合成奶酪",
+  "desc_zh": null,
+  "flavor_zh": "奶酪上钻了孔以模仿经典的造型，顺便还能降低生产成本。",
+  "value": 20,
+  "types": [
+   "FOOD",
+   "PROCESSED_FOOD"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "beis_icecream",
+  "name_zh": "贝氏优质香草冰淇淋",
+  "desc_zh": "放入冰箱冷冻后，可以更高的价格出售。冷冻过程耗时一夜。",
+  "flavor_zh": "一种美味零食，按法律分类属于“人工香料调味冷冻乳制品”。不知为何，即使不冷藏也不会融化。",
+  "value": 40,
+  "types": [
+   "FOOD",
+   "TREAT"
+  ],
+  "directory": "FoodItemDirectory",
+  "note": "食物/饮料"
+ },
+ {
+  "id": "furnace",
+  "name_zh": "熔炉",
+  "desc_zh": "将2块废金属或金属矿石提炼成金属锭。需要能量。夜间运行。",
+  "value": 200,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "hydroponic",
+  "name_zh": "水培系统",
+  "desc_zh": "一套紧凑型水培系统，需要专用电源才能运行。在夜间运作。",
+  "value": 300,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "plant_dna_manipulator",
+  "name_zh": "DNA编辑器",
+  "desc_zh": "可将DNA数据提取到DNA数据盘中，也可将盘中的特性应用于目标。目标的基因复杂度越高，成功率越低。",
+  "value": 1000,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "printer",
+  "name_zh": "3D打印机",
+  "desc_zh": "一台可使用塑料打印多种物品的机器。夜间运作。",
+  "value": 350,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "deal_maker",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 400,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具；无中文翻译"
+ },
+ {
+  "id": "recharger",
+  "name_zh": "充能器",
+  "desc_zh": "能量电池的充电设备。只要支付了电力服务费，就会缓慢地为能量电池充电。夜间运行。",
+  "value": 150,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "powerblock",
+  "name_zh": "能量阵列",
+  "desc_zh": "只要支付了电力服务费，每晚即可为相邻的能量电池，或相邻机器内的能量电池（不包括充能器）恢复+2电量。此效果可叠加。",
+  "flavor_zh": "可以为相邻能量电池充电的紧凑型电源。",
+  "value": 200,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "makeshift_reactor",
+  "name_zh": "简易微型核反应堆",
+  "desc_zh": "完好度高于时，可为店铺供电。每晚都会损失完好度，降至0时会爆炸。废金属可恢复{1}点完好度。垃圾可恢复{2}点完好度，但会使完好度上限降低{3}点。每个普通电子元件都能使每晚损失的完好度减少1点。",
+  "value": 0,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "security_alarm",
+  "name_zh": "警报系统",
+  "desc_zh": "极大降低夜间发生盗窃的几率。需要专门的电源才能运作。",
+  "flavor_zh": "一套智能安全警报系统，配备了一整套传感器，并且能连接到前任店主安装的摄像头上。",
+  "value": 150,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "storage_coordinator",
+  "name_zh": "储物协调器",
+  "desc_zh": "把容器和机器分配到预设里，再给每个预设设一个快捷键，就能一键打开。",
+  "value": 400,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "mirage_projector",
+  "name_zh": "幻影投影仪",
+  "desc_zh": "需要充电一晚，但会在第二天提高你店铺的临街吸引力。",
+  "flavor_zh": "一种精密的设备，能投射出迷人的全息投影，使你的店铺对顾客更具吸引力。",
+  "value": 400,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "moisture_farm",
+  "name_zh": "水分收集器",
+  "desc_zh": "放入容器后即可产出水。需要能量。夜间运行。",
+  "flavor_zh": "一种用于从空间站潮湿环境空气中提取水分的机器。",
+  "value": 350,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "water_purifier",
+  "name_zh": "净水器",
+  "desc_zh": "净化置入储水容器中的内容物。需要能量。用于为能量电池充电的设备。夜间运行。",
+  "flavor_zh": "利用反渗透技术净化水的机器。",
+  "value": 250,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "desequencer",
+  "name_zh": "密码解序器",
+  "desc_zh": "需要一块解序器芯片和一张识别卡。需要能量。彻夜工作。",
+  "flavor_zh": "可用于将各种权限写入空白钥匙卡中。",
+  "value": 350,
+  "types": [
+   "MACHINE",
+   "CONTRABAND"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "bottle_printer",
+  "name_zh": "水瓶打印机",
+  "desc_zh": null,
+  "flavor_zh": "预设了程序的3D打印机，能够制造小型水瓶。",
+  "value": 100,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "box_dispenser",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 250,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "heating_plate",
+  "name_zh": "加热板",
+  "desc_zh": "一台看起来破旧、功率不足且控温不准的加热板。",
+  "value": 250,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "blender",
+  "name_zh": "搅拌机",
+  "desc_zh": "一台看起来很不结实的搅拌机。",
+  "value": 200,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "evaporator",
+  "name_zh": "蒸发器",
+  "desc_zh": "一台运作缓慢的机器，每晚会利用低温和干燥空气，使溶液中的液体蒸发。",
+  "value": 300,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "chem_finisher",
+  "name_zh": "化学制剂成型机",
+  "desc_zh": "将化学品加工成药片，或灌装进药剂瓶等容器。",
+  "value": 300,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "cassette_player",
+  "name_zh": "磁带播放器",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "vending_machine",
+  "name_zh": "自动售货机",
+  "desc_zh": "物品售价将额外提高10%，并在适用时计入零售加价，但不受事件修正影响。",
+  "flavor_zh": "一台每晚自动出售物品的自动售货机。",
+  "value": null,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "vending_fountain",
+  "name_zh": "自动售水机",
+  "desc_zh": "物品售价将额外提高10%，并在适用时计入零售加价，但不受事件修正影响。",
+  "flavor_zh": "一台每晚自动售水的机器。只能出售基础水、优质水和纯水。",
+  "value": null,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "vending_machine_core",
+  "name_zh": "自动售货机核心",
+  "desc_zh": null,
+  "value": null,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "vending_fountain_core",
+  "name_zh": "自动售水机核心",
+  "desc_zh": null,
+  "value": null,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "test_gizmo",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": null,
+  "types": [],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "wine_rack",
+  "name_zh": "催陈器",
+  "desc_zh": "加速置于其中的特定物品的陈化过程。每个周期可使葡萄酒、奶酪等物品额外陈化一天。",
+  "value": 350,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "fridge",
+  "name_zh": "冰箱",
+  "desc_zh": "可在夜间冰镇饮品。冰镇后的商品可以卖出更高的价格。葡萄酒和未密封的水不受影响。",
+  "value": 100,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "FurnitureItemDirectory",
+  "note": "机器/家具"
+ },
+ {
+  "id": "rds",
+  "name_zh": "红点瞄准镜",
+  "desc_zh": "一款老式紧凑型红点瞄准镜，便于快速瞄准目标。",
+  "value": 60,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "rds_makeshift",
+  "name_zh": "简易红点瞄准镜",
+  "desc_zh": "一款3D打印的红点瞄准镜，配有红色LED和塑料镜片。可靠性不高，但效果出奇地不错。",
+  "value": 25,
+  "types": [
+   "GUN_MOD",
+   "MAKESHIFT"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "silencer",
+  "name_zh": "消音器",
+  "desc_zh": "一款简易的多口径消音器，可降低枪声，使开火更难被察觉。",
+  "value": 55,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "silencer2",
+  "name_zh": "夜枭消音器",
+  "desc_zh": "一款精密的多口径消音器，可降低枪声，使开火更难被察觉。",
+  "value": 90,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "silencer_makeshift",
+  "name_zh": "简易消音器",
+  "desc_zh": "用塑料瓶和废金属拼成的简易消音器。",
+  "value": 15,
+  "types": [
+   "GUN_MOD",
+   "MAKESHIFT"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "barrel",
+  "name_zh": "外接式加长枪管",
+  "desc_zh": "一款多口径加长枪管，可提高弹丸初速和射击精度。",
+  "value": 60,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "compensator",
+  "name_zh": "补偿器",
+  "desc_zh": "一种枪口装置，通过改变火药燃气的逸出方向来降低射击时的枪口上跳。",
+  "value": 50,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm",
+  "name_zh": "10毫米弹匣",
+  "desc_zh": "可容纳9发10毫米弹药的紧凑型弹匣。",
+  "value": 30,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm_high",
+  "name_zh": "大容量10毫米弹匣",
+  "desc_zh": "可容纳14发10毫米弹药的大容量弹匣。",
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm_ext",
+  "name_zh": "加长10毫米弹匣",
+  "desc_zh": "可容纳19发10毫米弹药的加长弹匣。",
+  "value": 50,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_22",
+  "name_zh": ".22弹匣",
+  "desc_zh": "廉价的3D打印紧凑型.22弹匣，容量12发。",
+  "value": 15,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_22_high",
+  "name_zh": "大容量.22弹匣",
+  "desc_zh": "廉价的3D打印紧凑型.22弹匣，容量24发。",
+  "value": 25,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_22_ext",
+  "name_zh": "加长.22弹匣",
+  "desc_zh": "廉价的3D打印紧凑型.22弹匣，容量48发。",
+  "value": 35,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm_smg",
+  "name_zh": "10毫米冲锋枪弹匣",
+  "desc_zh": "专为“和平使者”重型冲锋枪制造的20发装10毫米弹匣。",
+  "value": 55,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm_smg_high",
+  "name_zh": "大容量10毫米冲锋枪弹匣",
+  "desc_zh": "专为“和平使者”重型冲锋枪制造的35发装10毫米弹匣。",
+  "value": 70,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "mag_10mm_smg_box",
+  "name_zh": "10毫米冲锋枪箱式弹匣",
+  "desc_zh": "专为“和平使者”重型冲锋枪制造的150发装10毫米箱式弹匣。",
+  "value": 85,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "laser",
+  "name_zh": "激光瞄准器",
+  "desc_zh": "一款简易激光瞄准器，可向目标投射光束，改善枪械操控性。",
+  "value": 50,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "laser2",
+  "name_zh": "目标捕获装置",
+  "desc_zh": "一种智能战术装置，可根据多种条件向目标投射光束。",
+  "value": 100,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "laser_toy",
+  "name_zh": "玩具激光笔",
+  "desc_zh": "一支低功率玩具激光笔。",
+  "value": 18,
+  "types": [
+   "GUN_MOD",
+   "MAKESHIFT"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "bipod",
+  "name_zh": "两脚架",
+  "desc_zh": "可安装在枪械上以增强稳定性的两脚架。",
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "gl",
+  "name_zh": "25毫米下挂式榴弹发射器",
+  "desc_zh": "一款紧凑型25毫米下挂式榴弹发射器。",
+  "value": 150,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "grip",
+  "name_zh": "前握把",
+  "desc_zh": null,
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "stock",
+  "name_zh": "“守护者”枪托",
+  "desc_zh": "适配子午线兵工枪械的坚固枪托，旨在改善后坐力控制。",
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "short_stock",
+  "name_zh": "“小圆盾”枪托",
+  "desc_zh": "适配子午线兵工枪械的短枪托，可在不牺牲操控性的前提下改善后坐力控制。",
+  "value": 35,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "internal_springs",
+  "name_zh": "高耐久内部弹簧组",
+  "desc_zh": "一套先进的内部弹簧，可改善枪机循环，并提高枪械在高负荷状态下的可靠性。",
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "internal_springs_improved",
+  "name_zh": "改良内部弹簧组",
+  "desc_zh": "一套更坚固的内部弹簧，让枪机循环更加可靠。",
+  "value": 20,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "trigger_group",
+  "name_zh": "精调扳机组",
+  "desc_zh": "一套可改善扳机手感的扳机组件，能够减轻扣压重量并缩短空行程。",
+  "value": 50,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "match_barrel",
+  "name_zh": "比赛级枪管",
+  "desc_zh": "可提高射击精度的高精度枪管。",
+  "value": 75,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "pistol_switch",
+  "name_zh": "手枪自动阻铁",
+  "desc_zh": "一种特殊的手枪改装件。安装后会改变枪械内部机构，使其在持续扣住扳机时连续射击。",
+  "value": 40,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "ammo_display",
+  "name_zh": "弹药显示器",
+  "desc_zh": "可显示当前弹药数量和类型的智能显示器。",
+  "value": 70,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "grip_gel",
+  "name_zh": "触感记忆握把凝胶",
+  "desc_zh": "位于握把表面下方的生物反应凝胶，能细致贴合使用者的手形。",
+  "value": 70,
+  "types": [
+   "GUN_MOD"
+  ],
+  "directory": "GunModDirectory",
+  "note": "枪械配件"
+ },
+ {
+  "id": "printed_gun",
+  "name_zh": "“解放者”3D打印手枪",
+  "desc_zh": "一把低成本的塑料制3D打印手枪。",
+  "flavor_zh": "找不到比这更便宜的了。开上几枪还是没问题的。",
+  "value": 40,
+  "types": [
+   "WEAPON",
+   "FIREARM",
+   "MAKESHIFT",
+   "CONTRABAND",
+   "MODDABLE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "handmade_pistol",
+  "name_zh": "“巢火”紧凑型手枪",
+  "desc_zh": "一把采用.22 SR弹药的小型开源手枪。",
+  "flavor_zh": "在下层区广泛用于居家防卫，治安部通常对此睁一只眼闭一只眼。大概出自某位下层区枪械师之手。",
+  "value": 120,
+  "types": [
+   "WEAPON",
+   "FIREARM",
+   "LOWTECH",
+   "CONTRABAND",
+   "MODDABLE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "heavy_handmade_pistol",
+  "name_zh": "“铁铸10”手枪",
+  "desc_zh": "一把采用10毫米弹药的重型开源手枪。",
+  "flavor_zh": "能够击穿防弹衣，是下层区革命者青睐的武器。",
+  "value": 160,
+  "types": [
+   "WEAPON",
+   "FIREARM",
+   "LOWTECH",
+   "MODDABLE",
+   "CONTRABAND"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "glock_receiver",
+  "name_zh": "哨兵3型。",
+  "desc_zh": "性能可靠的10毫米口径手枪，主要由治安部人员携带。",
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "MODDABLE",
+   "WEAPON",
+   "FIREARM",
+   "MIDLINE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "smg",
+  "name_zh": "“和平使者”重型冲锋枪",
+  "desc_zh": "一把采用10毫米弹药的重型冲锋枪。治安部只在高风险行动中偶尔使用。",
+  "value": 280,
+  "types": [
+   "CONTRABAND",
+   "WEAPON",
+   "FIREARM",
+   "MIDLINE",
+   "MODDABLE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "shotgun",
+  "name_zh": "“壁垒”双动式霰弹枪",
+  "desc_zh": "一款专为执法机构打造、可靠且适应性强的霰弹枪。其双动式机构能确保使用多种弹药时均可靠运作。",
+  "value": 310,
+  "types": [
+   "WEAPON",
+   "FIREARM",
+   "MIDLINE",
+   "CONTRABAND",
+   "MODDABLE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "revolver",
+  "name_zh": "兰斯维尔左轮手枪",
+  "desc_zh": "一把枪管长5英寸、采用.45 AFP弹药的兰斯维尔通用左轮手枪。",
+  "flavor_zh": "结构简单且极其可靠，设计上可承受极端环境，同时只需极少维护。",
+  "value": 240,
+  "types": [
+   "WEAPON",
+   "FIREARM",
+   "MIDLINE",
+   "CONTRABAND"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "stun_gun",
+  "name_zh": "“脉冲卫士”电击枪",
+  "desc_zh": null,
+  "flavor_zh": "做工精良、经治安部正式认可的自卫武器。由于价格高昂，主要由上层区居民使用。",
+  "value": 250,
+  "types": [
+   "WEAPON",
+   "MIDLINE"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "small_pistol_ammo",
+  "name_zh": ".22 SR弹药",
+  "desc_zh": null,
+  "flavor_zh": "少量.22 SR弹药。弹丸虽小，近距离仍可致命。最重要的是，它非常便宜。",
+  "value": 20,
+  "types": [
+   "CONTRABAND",
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "small_pistol_ammo_p",
+  "name_zh": ".22 SR弹药（穿甲）",
+  "desc_zh": null,
+  "flavor_zh": "少量.22 SR穿甲弹，能够击穿防弹衣。",
+  "value": 26,
+  "types": [
+   "CONTRABAND",
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "small_pistol_ammo_nl",
+  "name_zh": ".22 SR弹药（非致命）",
+  "desc_zh": null,
+  "flavor_zh": "少量.22 SR非致命弹。采用橡胶弹头，旨在使目标失去行动能力。",
+  "value": 14,
+  "types": [
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "heavy_pistol_ammo",
+  "name_zh": "10毫米弹药",
+  "desc_zh": null,
+  "flavor_zh": "少量10毫米弹药。威力强大且性能可靠，是重型手枪的标准弹药。",
+  "value": 30,
+  "types": [
+   "CONTRABAND",
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "heavy_pistol_ammo_p",
+  "name_zh": "10毫米弹药（穿甲弹）",
+  "desc_zh": null,
+  "flavor_zh": "少量10毫米口径的高速脱壳穿甲弹（APDS）。能够击穿防弹衣。",
+  "value": 36,
+  "types": [
+   "CONTRABAND",
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "heavy_pistol_ammo_nl",
+  "name_zh": "10毫米弹药（非致命）",
+  "desc_zh": null,
+  "flavor_zh": "少量10毫米非致命弹。采用橡胶弹头，旨在使目标失去行动能力。",
+  "value": 24,
+  "types": [
+   "AMMUNITION"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "tazer",
+  "name_zh": "电击枪",
+  "desc_zh": null,
+  "flavor_zh": "用于自卫和执法的小型电击武器。能释放令人痛苦的电击。",
+  "value": 100,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "handmade_pistol_frame",
+  "name_zh": "“巢火”紧凑型手枪框架",
+  "desc_zh": "一副尚未完成的枪械框架，装上枪械零件即可组装完成。",
+  "value": 70,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "heavy_handmade_pistol_frame",
+  "name_zh": "“铁铸10”手枪框架",
+  "desc_zh": "一副尚未完成的枪械框架，装上枪械零件即可组装完成。",
+  "value": 100,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "GunsItemDirectory",
+  "note": "枪械"
+ },
+ {
+  "id": "animal_cage",
+  "name_zh": "动物笼",
+  "desc_zh": "用于饲养动物的小笼子。看起来不怎么舒服，但可能比下层区某些人的住处要好。",
+  "value": 250,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "livestock_feed_dispenser",
+  "name_zh": "牲畜饲料分配器",
+  "desc_zh": "能够将食物加工成牲畜卡路里储备的设备。",
+  "value": 300,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "auto_butcher",
+  "name_zh": "自动屠宰机",
+  "desc_zh": "可配置的自动屠宰机。需要安装在动物笼或循环水养殖系统中。每晚将符合设置的动物屠宰后放入托盘。始终忽略用标记笔标记过的动物。",
+  "flavor_zh": "威武的绞肉机。请勿爬入。也不要让任何人帮你爬入。",
+  "value": 400,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "marking_pen",
+  "name_zh": "标记笔",
+  "desc_zh": "用颜色标记一只动物或鱼。自动屠宰机绝不会碰已标记的动物。",
+  "value": 50,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "feces_small",
+  "name_zh": "动物粪便（小）",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "feces_medium",
+  "name_zh": "动物粪便",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "feces_large",
+  "name_zh": "动物粪便（大）",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "vacuum_robot",
+  "name_zh": "清洁机器人",
+  "desc_zh": "每晚自动收集周围的动物粪便，也可手动启动，立即进行一次清理。",
+  "value": 250,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "rat",
+  "name_zh": "老鼠",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "serum_red",
+  "name_zh": "牲畜类固醇血清",
+  "desc_zh": "这种血清会略微提高动物的生长速度，代价是饥饿感增加且免疫力降低。",
+  "value": 100,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "serum_green",
+  "name_zh": "牲畜免疫血清",
+  "desc_zh": "这种血清会略微提高动物的免疫力，但代价是使其饥饿感增加。",
+  "value": 100,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "mouse_trap",
+  "name_zh": "捕鼠夹",
+  "desc_zh": null,
+  "flavor_zh": "在里面放些奶酪应该会更好用。",
+  "value": 50,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "ras",
+  "name_zh": "循环水养殖系统",
+  "desc_zh": "采用封闭式水循环的养鱼设备。需要水箱、电力和用于净水的滤水器。",
+  "value": 300,
+  "types": [
+   "MACHINE"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "ras_water_tank",
+  "name_zh": "循环水养殖系统水箱",
+  "desc_zh": "循环水养殖系统的储水箱。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "tilapia",
+  "name_zh": "罗非鱼",
+  "desc_zh": null,
+  "flavor_zh": "常见的养殖鱼。长得快，不怎么挑食，繁殖也省心。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "tilapia_roe",
+  "name_zh": "罗非鱼卵",
+  "desc_zh": null,
+  "value": 30,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "tilapia_fry",
+  "name_zh": "罗非鱼苗",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "gutter_tilapia",
+  "name_zh": "阴沟罗非鱼",
+  "desc_zh": null,
+  "flavor_zh": "来自下水道的罗非鱼品系。生长较慢，相同饲料下的产肉量也较低，但不怕脏水，饲养期间还能清除水箱中的重金属和化学污染物。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "gutter_tilapia_roe",
+  "name_zh": "阴沟罗非鱼卵",
+  "desc_zh": null,
+  "value": 15,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "gutter_tilapia_fry",
+  "name_zh": "阴沟罗非鱼苗",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "graft_tilapia",
+  "name_zh": "植皮罗非鱼",
+  "desc_zh": null,
+  "flavor_zh": "经过改造的罗非鱼。相同饲料下的产肉量较低，且需要干净的水。不过，鱼皮经消毒后可用作绷带，未受精的鱼卵则可直接用于敷伤口。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "graft_tilapia_roe",
+  "name_zh": "植皮罗非鱼卵",
+  "desc_zh": null,
+  "flavor_zh": "植皮罗非鱼的卵。富含促进皮肤愈合的修复蛋白，所以医护人员都是整窝整窝地买。",
+  "value": 60,
+  "types": [
+   "MEDICAL",
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "graft_tilapia_fry",
+  "name_zh": "植皮罗非鱼苗",
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "tilapia_skin_graft",
+  "name_zh": "罗非鱼植皮片",
+  "desc_zh": "经过消毒的植皮罗非鱼皮。可止血并使伤口闭合。",
+  "value": 24,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "tiny_fish_fillet",
+  "name_zh": "鱼肉片（极小）",
+  "desc_zh": null,
+  "value": 13,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "fish_scrap",
+  "name_zh": "鱼类边角料",
+  "desc_zh": null,
+  "value": 4,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "small_fish_fillet",
+  "name_zh": "鱼肉片（小）",
+  "desc_zh": null,
+  "value": 26,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "fish_fillet",
+  "name_zh": "鱼肉片",
+  "desc_zh": null,
+  "value": 57,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "large_fish_fillet",
+  "name_zh": "鱼肉片（大）",
+  "desc_zh": null,
+  "value": 143,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "gutterflow_pellet",
+  "name_zh": "污泥饲料粒",
+  "desc_zh": "用阴沟里的污泥压制而成。能为杂食鱼提供廉价的热量，人可吃不得。",
+  "value": 40,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "industrial_fish_feed",
+  "name_zh": "工业鱼饲料",
+  "desc_zh": "工厂大批量生产的鱼饲料，适合杂食性和草食性鱼类。",
+  "value": 100,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "eel",
+  "name_zh": "鳗鱼",
+  "desc_zh": "可养殖获取高档鱼肉片，价值远高于其他鱼类。人工饲养时不会繁殖。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "electric_eel",
+  "name_zh": "电鳗",
+  "desc_zh": "一台活体发电机。从亚成年期起，每晚都会为养殖缸的电池和缸旁的每块电池充电，体型越大，发电量越多。人工饲养时不会繁殖。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "small_eel_fillet",
+  "name_zh": "鳗鱼肉片（小）",
+  "desc_zh": null,
+  "flavor_zh": "空间站上的一道珍馐。",
+  "value": 68,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "eel_fillet",
+  "name_zh": "鳗鱼肉片",
+  "desc_zh": null,
+  "flavor_zh": "空间站上的一道珍馐。",
+  "value": 136,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "sturgeon",
+  "name_zh": "鲟鱼",
+  "desc_zh": "可养殖获取鱼子酱。鱼还活着时，可用外科手术工具采集鱼卵，也可在宰杀时一次取出全部鱼卵。人工饲养时不会繁殖。",
+  "value": 0,
+  "types": [],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "caviar",
+  "name_zh": "鱼子酱",
+  "desc_zh": null,
+  "value": 240,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "sturgeon_roe",
+  "name_zh": "鲟鱼卵",
+  "desc_zh": null,
+  "value": 120,
+  "types": [
+   "FOOD",
+   "LUXURY_ITEM"
+  ],
+  "directory": "HusbandryDirectory",
+  "note": "畜牧业/水产"
+ },
+ {
+  "id": "nutrifruit",
+  "name_zh": "营养果",
+  "desc_zh": "营养果由帕斯泰尔公司研发，是一种经过大幅改造的块茎作物，抗病抗虫、成本低、产量高，又容易种植。它营养丰富，却被刻意改造成了无籽品种。",
+  "value": 12,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "nutrifruit_seed",
+  "name_zh": "营养果种子",
+  "desc_zh": "一种经过基因改造的块茎作物，生命力顽强、生长迅速。生长过程中需要营养和水。",
+  "value": 40,
+  "types": [
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "kotton_fiber",
+  "name_zh": "韧棉纤维",
+  "desc_zh": "传统棉花的改良变种，可织成坚韧耐用、用途广泛的织物。",
+  "value": 46,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "kotton_seed",
+  "name_zh": "韧棉种子",
+  "desc_zh": "一种难以种植的种子，播种后可产出更多韧棉纤维。这是一种经过改造的棉花，可编织成耐用的布料。",
+  "value": 20,
+  "types": [
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "dream_cap",
+  "name_zh": "梦帽菇",
+  "desc_zh": "食用后会引起轻微欣快感和胃痛，是制作梦尘的关键原料。",
+  "value": 23,
+  "types": [
+   "CHEMICAL_SUPPLIES",
+   "CONTRABAND"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "dream_cap_seed",
+  "name_zh": "梦帽菇孢子",
+  "desc_zh": null,
+  "value": 24,
+  "types": [
+   "CONTRABAND",
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "meal_cap",
+  "name_zh": "食用帽菇",
+  "desc_zh": "经过中和、不再具有精神活性的梦帽菇。合法且可安全食用，无法加工成梦尘。",
+  "value": 19,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "nightmare_cap",
+  "name_zh": "梦魇帽菇",
+  "desc_zh": "常见梦帽菇的剧毒变种，可加工成致命毒药。幸存者称，摄入后会产生可怕的幻觉。",
+  "value": 26,
+  "types": [
+   "CHEMICAL_SUPPLIES",
+   "POISON",
+   "CONTRABAND"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "plant_analyser",
+  "name_zh": "植物分析仪",
+  "desc_zh": "一种用于分析植物生长状况的专用工具，可借此确定植物的最佳生长条件。",
+  "value": 200,
+  "types": [
+   "FARMING_SUPPLIES",
+   "TOOL"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "coffee_bean",
+  "name_zh": "咖啡豆",
+  "desc_zh": "一把咖啡豆。",
+  "value": 28,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "fillerweed",
+  "name_zh": "填料草",
+  "desc_zh": "一种主要种植于下层区、呈淡黄色的速生叶菜。几乎没有营养价值，通常作为填充料掺进食物，以增加口粮分量。",
+  "flavor_zh": "口感软烂，回味微苦。",
+  "value": 11,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "fillerweed_seed",
+  "name_zh": "填料草种子",
+  "desc_zh": "一种适合新手的速生种子，其生长不受营养物质或水质的影响。",
+  "value": 9,
+  "types": [
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "hydroreed_seed",
+  "name_zh": "水培芦苇种子",
+  "desc_zh": "一种不产出食物的功能性作物。水培芦苇在生长过程中会净化其所在水体。",
+  "value": 20,
+  "types": [
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "bloomberry_seed",
+  "name_zh": "荧光莓种子",
+  "desc_zh": "一种多年生灌木，结果后不会枯死。保持水质清洁，可以收获品质更好的荧光莓。对种植槽使用短柄斧即可清除植株。",
+  "value": 40,
+  "types": [
+   "SEED"
+  ],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "plant_dna_disk",
+  "name_zh": "DNA数据盘",
+  "desc_zh": null,
+  "value": 140,
+  "types": [],
+  "directory": "HydroponicDirectory",
+  "note": "水培作物/种子"
+ },
+ {
+  "id": "metal_ingot",
+  "name_zh": "金属锭",
+  "desc_zh": null,
+  "value": 50,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "common_chemical",
+  "name_zh": "化学用品（普通）",
+  "desc_zh": "拆开后可获得一批用于基础化学合成的实用物品。",
+  "flavor_zh": "一批你极有可能在空间站五金库里找到的常见化学用品。",
+  "value": 50,
+  "types": [
+   "CHEMICAL_SUPPLIES"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "restricted_chemical",
+  "name_zh": "化学用品（管制）",
+  "desc_zh": "拆开后可获得一批用于高级化学合成的实用物品。",
+  "flavor_zh": "一批用于制造麻醉品或炸药的管制化学用品。",
+  "value": 100,
+  "types": [
+   "CHEMICAL_SUPPLIES",
+   "CONTRABAND"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "common_medical",
+  "name_zh": "医疗用品（普通）",
+  "desc_zh": null,
+  "flavor_zh": "一批常见的医疗用品，主要是药房里的非处方类物品。",
+  "value": 40,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "restricted_medical",
+  "name_zh": "医疗用品（管制）",
+  "desc_zh": null,
+  "flavor_zh": "一批受管制的医疗物品——用来救治空间站病患的必需品。",
+  "value": null,
+  "types": [],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "scrap_metal",
+  "name_zh": "废金属",
+  "desc_zh": "可冶炼成金属矿石。由于空间站上的资源极其有限，打捞和回收利用成为了尤为重要的生存习惯。",
+  "value": 10,
+  "types": [
+   "MATERIAL",
+   "BASIC_MATERIAL",
+   "JUNK"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "junk",
+  "name_zh": "垃圾",
+  "desc_zh": null,
+  "flavor_zh": "损坏的废料和毫无用处的垃圾。几乎无法回收，完全一文不值。",
+  "value": 3,
+  "types": [
+   "MATERIAL",
+   "BASIC_MATERIAL",
+   "JUNK"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "common_ore",
+  "name_zh": "金属矿石",
+  "desc_zh": null,
+  "value": 15,
+  "types": [
+   "MATERIAL",
+   "BASIC_MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "rare_ore",
+  "name_zh": "稀有金属矿石",
+  "desc_zh": null,
+  "value": 30,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "common_electronic",
+  "name_zh": "电子元件（普通）",
+  "desc_zh": null,
+  "flavor_zh": "各种虽说常见却很实用的的电子元件组合：连接器、开关、电容器、处理器以及处理单元……",
+  "value": 33,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "rare_electronic",
+  "name_zh": "电子元件（稀有）",
+  "desc_zh": null,
+  "flavor_zh": "一批不常见的高端电子元件组合。某位发明家肯定会对此非常感兴趣……",
+  "value": 350,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "hypertech_electronic",
+  "name_zh": "电子元件（超科技）",
+  "desc_zh": "用于升级某些超科技物品或为其充能。",
+  "flavor_zh": "电子技术的最前沿。整个空间站没人造得出来。",
+  "value": 2500,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "wire",
+  "name_zh": "线缆",
+  "desc_zh": "一捆电线。看这模样，显然是从某个地方强行拆下来的……",
+  "value": 16,
+  "types": [
+   "MATERIAL",
+   "BASIC_MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "printer_plastic",
+  "name_zh": "3D打印耗材",
+  "desc_zh": "'用于3D打印机的优质耗材，尽可能地利用回收废旧塑料加工而成。 '",
+  "value": 12,
+  "types": [
+   "MATERIAL",
+   "BASIC_MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "flux_agent",
+  "name_zh": "助熔剂（基础）",
+  "desc_zh": "实用的添加剂，在冶炼时使用可提高金属矿石的纯度。会在过程中被消耗。",
+  "value": 4,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "advanced_flux_agent",
+  "name_zh": "助熔剂（高级）",
+  "desc_zh": "'实用的添加剂，在冶炼时使用可提高金属矿石的纯度。可重复使用。 '",
+  "value": 300,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "gun_part",
+  "name_zh": "枪械零件",
+  "desc_zh": "用螺丝刀拆解枪械获得。可用于翻新二手枪械，反复尝试会提高翻新成功率。",
+  "flavor_zh": "一批枪械内部零件，包括螺丝、弹簧及其他小型部件。",
+  "value": 25,
+  "types": [
+   "MATERIAL"
+  ],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "nuclear_waste",
+  "name_zh": "放射性废料",
+  "desc_zh": "放射性废料。请小心处理。",
+  "flavor_zh": "一批危险的核废料。没人愿意碰这玩意儿。",
+  "value": 0,
+  "types": [],
+  "directory": "MaterialDirectory",
+  "note": "原料/材料"
+ },
+ {
+  "id": "black_injector",
+  "name_zh": "赛纳普斯注射器",
+  "desc_zh": "治疗药物成瘾的次世代疗法，旨在抑制大脑的奖励机制，减轻药瘾，辅助长期康复。",
+  "flavor_zh": "与心理治疗和社会支持结合使用效果最佳。",
+  "value": 350,
+  "types": [
+   "MEDICAL",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "pink_injector",
+  "name_zh": "奥克西莫注射器",
+  "desc_zh": "奥克西莫是一种合法但危险的药物，用于缓解剧痛并产生快感。由于过度开具处方，奥克西莫成瘾和过量使用的情况极为普遍。",
+  "value": 30,
+  "types": [
+   "NARCOTIC",
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "pink_alt_injector",
+  "name_zh": "奥克莫吸注射器",
+  "desc_zh": "奥克西莫的非成瘾性止痛替代品。提供有效的镇痛作用，且没有依赖或用药过量的风险。这是一支装在二次利用的注射器里的原型药。",
+  "value": 30,
+  "types": [
+   "NARCOTIC",
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "large_purple_injector",
+  "name_zh": "免疫宁注射器",
+  "desc_zh": "一种高精度免疫调节剂，用于暂时抑制“哨兵崩溃综合征”引发的过度免疫反应。",
+  "value": 160,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "pure_white_injector",
+  "name_zh": "纳洛通注射器",
+  "desc_zh": "纳洛通是一种用于对抗奥克西莫用药过量的急救药物。",
+  "value": 30,
+  "types": [
+   "NARCOTIC",
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "birth_control_pill",
+  "name_zh": "避孕药",
+  "desc_zh": null,
+  "flavor_zh": "用于防止怀孕的避孕药。它是雌激素和孕激素的结合体。",
+  "value": 15,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "fanta_pill",
+  "name_zh": "芬太片",
+  "desc_zh": "一种极易成瘾、极度危险且廉价的合成阿片类药物，常用于治疗剧烈疼痛。",
+  "flavor_zh": "药效比奥克西莫强50倍以上。",
+  "value": 12,
+  "types": [
+   "MEDICAL",
+   "CONTRABAND",
+   "NARCOTIC",
+   "SUBSTANCE"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "phagimycin_pill",
+  "name_zh": "噬菌霉素片",
+  "desc_zh": null,
+  "flavor_zh": "一种用噬菌体和真菌制成的强效抗生素，用于应对抗生素耐药性。",
+  "value": 25,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "unlicensed_phagimycin_pill",
+  "name_zh": "无证噬菌霉素片",
+  "desc_zh": null,
+  "flavor_zh": "一种强效抗生素。这批药由地下实验室非法生产，未经卡迈克尔专利许可。",
+  "value": 5,
+  "types": [
+   "MEDICAL",
+   "CONTRABAND"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "zyanide_pill",
+  "name_zh": "山奈德片",
+  "desc_zh": "一种起效迅速且致命的化合物。请谨慎处理。",
+  "value": 33,
+  "types": [
+   "POISON",
+   "CONTRABAND"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "smelling_salt",
+  "name_zh": "嗅盐",
+  "desc_zh": "包含酒精和氨水的细玻璃管，有助于在昏厥后恢复意识。",
+  "value": 15,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "bandage_item",
+  "name_zh": "基础绷带",
+  "desc_zh": "一条简单、干净的绷带，用于包扎伤口。",
+  "value": 8,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "hemostatic_bandage_item",
+  "name_zh": "止血绷带",
+  "desc_zh": "涂有强效止血剂的绷带，轻重度出血都能止住。",
+  "value": 16,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "topical_bandage_item",
+  "name_zh": "外用药膏绷带",
+  "desc_zh": "涂有温和局部医疗凝胶的绷带，有助于伤口愈合。",
+  "value": 16,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "blood_bag",
+  "name_zh": "血袋",
+  "desc_zh": "一袋500毫升的输血袋，采集自一位万能血型捐献者——尽管其本人未必出于自愿。",
+  "value": 33,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "blue_blood_bag",
+  "name_zh": "一袋“蓝血”",
+  "desc_zh": "可注射的生物凝胶，经专门设计，可随时间溶解动脉斑块和微小血栓。它能有效预防冠心病、缺血性中风以及高血压相关的并发症。",
+  "flavor_zh": "实际上并非血液。即便是放在上层区也属于稀罕物。",
+  "value": 250,
+  "types": [
+   "MEDICAL",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "dream_dust",
+  "name_zh": "一小瓶“梦尘”",
+  "desc_zh": null,
+  "flavor_zh": "下层区自制的一种廉价兴奋粉。被用来暂时忘却生活在空间站里的残酷现实。",
+  "value": 18,
+  "types": [
+   "MEDICAL",
+   "NARCOTIC",
+   "SUBSTANCE",
+   "CONTRABAND"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "nightmare_dust",
+  "name_zh": "一小瓶“梦魇尘”",
+  "desc_zh": null,
+  "flavor_zh": "兼具毒药和致幻剂双重作用的细粉末。吞食或吸入会导致严重的恶心、虚弱和意识混乱，随后产生可怕的幻觉。大剂量可致命。",
+  "value": 36,
+  "types": [
+   "POISON",
+   "CONTRABAND"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "caffeine_pill",
+  "name_zh": "咖啡因药片",
+  "desc_zh": null,
+  "flavor_zh": "用上层区高档咖啡厅的残渣提炼而成，这些药片是下层区需长时间轮班的工人们的必需品。",
+  "value": 10,
+  "types": [
+   "MEDICAL",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "salve",
+  "name_zh": "南丁格尔软膏",
+  "desc_zh": null,
+  "flavor_zh": "由基因改良芦荟和医用级蜂蜜制成。该软膏具有抗菌特性，并能促进细胞的再生与生长。",
+  "value": 80,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "rubbing_alcohol",
+  "name_zh": "医用酒精",
+  "desc_zh": null,
+  "flavor_zh": "一种强效消毒剂，用于清洁伤口和物体表面。吞食具有剧毒，但这并不能阻止它在下层区被当作努特加的替代品饮用。",
+  "value": 35,
+  "types": [
+   "MEDICAL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "zerochew",
+  "name_zh": "一板零嚼",
+  "desc_zh": "一板“零嚼”，一种廉价的食欲抑制剂。",
+  "flavor_zh": "会被一些下层区居民用来少吃几顿正餐，好省下信用点。而在上层区，这东西则被包装成“纤体-X”减肥药进行营销。",
+  "value": 8,
+  "types": [
+   "FOOD",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "chem_scanner",
+  "name_zh": "成分光谱仪",
+  "desc_zh": "用于分析物质化学成分的设备。",
+  "value": 400,
+  "types": [],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "surgery_tool",
+  "name_zh": "外科手术工具套装",
+  "desc_zh": null,
+  "flavor_zh": "一套高质量的外科手术工具。",
+  "value": 200,
+  "types": [
+   "MEDICAL",
+   "MEDICAL_TOOL"
+  ],
+  "directory": "MedsItemDirectory",
+  "note": "药物/医疗用品"
+ },
+ {
+  "id": "kitchen_knife",
+  "name_zh": "厨刀",
+  "desc_zh": null,
+  "flavor_zh": "一把不锈钢刀具。请置于儿童以及心怀鬼胎之人接触不到的地方。",
+  "value": 45,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "box_cutter",
+  "name_zh": "美工刀",
+  "desc_zh": null,
+  "flavor_zh": "结实且带有可伸缩刀片的多用途刀具，常用于建筑、手工和仓库作业。",
+  "value": 28,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON",
+   "TOOL",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "combat_knife",
+  "name_zh": "战斗匕首",
+  "desc_zh": null,
+  "flavor_zh": "一把专为军事用途设计的格斗短刀，主要用于肉搏或近战，但作为工具也很方便。",
+  "value": 75,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "kitchen_cleaver",
+  "name_zh": "切肉刀",
+  "desc_zh": null,
+  "value": 65,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "combat_machete",
+  "name_zh": "战斗砍刀",
+  "desc_zh": null,
+  "flavor_zh": "专为战斗与求生打造的重型砍刀。",
+  "value": 185,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "pipe_weapon",
+  "name_zh": "铅管",
+  "desc_zh": "一根沉重的铅管。在空间站大修供水管线后，数吨剩余的废旧铅管流入了拾荒者和小偷的手中。",
+  "value": 15,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON",
+   "MAKESHIFT",
+   "JUNK"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "stun_baton",
+  "name_zh": "眩晕警棍",
+  "desc_zh": "配有晕眩和致命两种模式的标准制式电击棍。负责维持空间站秩序的治安部警官的日常防身武器。",
+  "value": 165,
+  "types": [
+   "MELEE_WEAPON",
+   "WEAPON",
+   "CONTRABAND"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "crowbar",
+  "name_zh": "撬棍",
+  "desc_zh": null,
+  "flavor_zh": "空间站上每一位经验丰富的拾荒者和理论物理学家最可靠的工具。在紧要关头也可作为武器。",
+  "value": 75,
+  "types": [
+   "TOOL",
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "hatchet",
+  "name_zh": "短柄斧",
+  "desc_zh": "小巧坚固。可在水培农场中移除当前种植的作物。",
+  "value": 55,
+  "types": [
+   "TOOL",
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "glass_shard_shiv",
+  "name_zh": "玻璃刀",
+  "desc_zh": null,
+  "flavor_zh": "一块边缘锋利的碎玻璃，用布包裹着，可作为武器使用。",
+  "value": 8,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON",
+   "MAKESHIFT",
+   "JUNK"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "skinning_knife",
+  "name_zh": "剥皮刀",
+  "desc_zh": null,
+  "flavor_zh": "资深养殖户的趁手利器。",
+  "value": 100,
+  "types": [
+   "WEAPON",
+   "MELEE_WEAPON"
+  ],
+  "directory": "MeleeWeaponItemDirectory",
+  "note": "近战武器"
+ },
+ {
+  "id": "energy_credit",
+  "name_zh": "能量电池",
+  "desc_zh": "兼容多数机器的基础电源。可充电。",
+  "flavor_zh": "为了减少浪费，一次性电池已被共和国认定为非法。",
+  "value": 10,
+  "types": [
+   "ENERGY_CELL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "value 取 unitBaseValue=10（电量类物品，实际价值随电量变化）；杂项"
+ },
+ {
+  "id": "energy_credit_breeder",
+  "name_zh": "自充电能量电池",
+  "desc_zh": "能够自行充电的高级稀有能量电池。",
+  "value": 400,
+  "types": [
+   "ENERGY_CELL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "value 取 unitBaseValue=400（电量类物品，实际价值随电量变化）；杂项"
+ },
+ {
+  "id": "energy_credit_ext",
+  "name_zh": "能量电池（2型）",
+  "desc_zh": "兼容多数机器的进阶电源。可充电。",
+  "flavor_zh": "作为标准型号的改良版，2型电池体积更大、效能更好，误吞窒息的风险也更高。",
+  "value": 30,
+  "types": [
+   "ENERGY_CELL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "value 取 unitBaseValue=30（电量类物品，实际价值随电量变化）；杂项"
+ },
+ {
+  "id": "energy_credit_dis",
+  "name_zh": "一次性电池",
+  "desc_zh": "一种高容量的一次性能量电池。无法充电。",
+  "flavor_zh": "因其便利，深受上层区青睐。",
+  "value": 0,
+  "types": [
+   "ENERGY_CELL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "value 取 unitBaseValue=0（电量类物品，实际价值随电量变化）；杂项"
+ },
+ {
+  "id": "current_converter",
+  "name_zh": "电流转换器",
+  "desc_zh": "直接从下层区的电网取电，代替电池给任意机器供电。要通电，得支付每晚的“电流转换器”服务费。",
+  "value": 300,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "energy_credit_hyp",
+  "name_zh": "超科技能源单元",
+  "desc_zh": "一种实验性的能源单元，本身不储存电量。只要机器的耗电不超过它的额定输出，就能无限期为其供电。耗电超过额定值的机器则完全得不到电力。",
+  "value": 2500,
+  "types": [
+   "ENERGY_CELL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "glass_shard",
+  "name_zh": "碎玻璃",
+  "desc_zh": "用绷带缠上它，就能做成玻璃刀。绷带不会被消耗。",
+  "value": 2,
+  "types": [
+   "JUNK"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "intel_sec",
+  "name_zh": "治安部档案",
+  "desc_zh": "你的联系人会随时更新此份档案。",
+  "flavor_zh": "治安部针对你个人的档案副本。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "flashlight",
+  "name_zh": "手电筒",
+  "desc_zh": "重型手电筒。携带此物品时，在垃圾场拾荒受伤的几率会降低。",
+  "value": 40,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "newspaper",
+  "name_zh": "报纸",
+  "desc_zh": "一份最新出炉的报纸。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "tutorial_book",
+  "name_zh": "导师手册",
+  "desc_zh": "专门收集整理导师给你的所有便签的册子。非常方便！",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "tutorial_page",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "cigarette_guide",
+  "name_zh": "海明威鉴定指南",
+  "desc_zh": "帮助识别假冒海明威香烟的指南。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cigarette_color",
+  "name_zh": "海明威色卡",
+  "desc_zh": "官方发行的海明威标准色卡。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "hand_guide",
+  "name_zh": "仿生机械手鉴定指南",
+  "desc_zh": "用来给仿生机械手精准估价的指南。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "fuel_guide",
+  "name_zh": "等离子燃料匣鉴定指南",
+  "desc_zh": "用来给等离子燃料匣精准估价的指南。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "ribwich_guide",
+  "name_zh": "肋明治鉴定指南",
+  "desc_zh": "一本实用指南，可帮助准确鉴定肋明治的价值。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "stamp_guide",
+  "name_zh": "食品券鉴定手册",
+  "desc_zh": "实用的指南，用于从赝品中辨别出真正的食品券。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "injector_guide",
+  "name_zh": "免疫宁检测指南",
+  "desc_zh": "包含评估免疫宁注射器状况所需的所有信息。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "water_guide",
+  "name_zh": "水资源交易手册",
+  "desc_zh": "实用的手册，包含了关于水资源买卖的所有信息。",
+  "value": 25,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "lottery_info",
+  "name_zh": "下层区彩票说明",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "hydroponic_guide",
+  "name_zh": "水培农业手册",
+  "desc_zh": "一本实用手册，收录了水培农业的全部相关知识。",
+  "value": 25,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "chemistry_guide",
+  "name_zh": "化学手册",
+  "desc_zh": "一本实用手册，收录了化学基础知识。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "deed",
+  "name_zh": "房契",
+  "desc_zh": "这家店铺的房契。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "ingot_book",
+  "name_zh": "冶金手册",
+  "desc_zh": null,
+  "value": 25,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "wine_book",
+  "name_zh": "荧光莓果酿发酵指南",
+  "desc_zh": null,
+  "value": 25,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "aug_id_guide",
+  "name_zh": "改造体鉴别指南",
+  "desc_zh": null,
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "lou_old_orders",
+  "name_zh": "共和国旧军令",
+  "desc_zh": "一张发黄发脆的纸，看起来被反复折起又展开过很多次。这是一份多年前写给卢的书面命令，顶部仍能看出一枚褪色的共和国印章。",
+  "flavor_zh": "共和国联合特种作战司令部，优先命令\\n致：应急响应小队队长 卢\\n\\n别再拖延时间，立即执行此命令。带领你的小队启动研究船伊卡洛斯号的自毁程序。破坏所有逃生舱，不准任何伊卡洛斯号的幸存者随你的小队一同逃离。照做，否则我就送你上军事法庭。\\n\\n（签名已褪色，无法辨认。）",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "logo_checker",
+  "name_zh": "共和国标志校验卡",
+  "desc_zh": "用于参考比对共和国的官方标志。",
+  "value": 50,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "mentor_contract",
+  "name_zh": "租赁协议",
+  "desc_zh": "你的租约。由你和你的房东共同签署。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "business_permit",
+  "name_zh": "营业许可证",
+  "desc_zh": "共和国颁发的许可证，在下层区合法经营商铺的必需品。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "procurement_slip",
+  "name_zh": "采购凭单",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "slip",
+  "name_zh": "凭单",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "handnote",
+  "name_zh": "手写便签",
+  "desc_zh": "普普通通的手写字条。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "scav_token",
+  "name_zh": "拾荒者信物",
+  "desc_zh": "拾荒者群体赠予的信物。每向展示柜中放置一枚，都会提升拾荒者前来光顾的几率。",
+  "flavor_zh": "一种认可的象征。",
+  "value": 100,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "black_lamp",
+  "name_zh": "暗灯",
+  "desc_zh": "将其放置在展示柜中时，它会向小偷发出信号，表明这家店可以销赃。你的黑市声望将影响他们予以响应的可能性。",
+  "value": 120,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "dossier",
+  "name_zh": "档案箱",
+  "desc_zh": "可容纳各种文件、便签、书籍和放大镜。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "trashcan",
+  "name_zh": "垃圾桶",
+  "desc_zh": "里面的物品将在夜间被永久移除——只要你支付了清洁服务费。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "drain",
+  "name_zh": "排水口",
+  "desc_zh": "不想要的水可以倒入此处。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "faucet",
+  "name_zh": "水龙头",
+  "desc_zh": "没有水……也许有人能帮忙把供水接通？",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cmd_keycard",
+  "name_zh": "一次性钥匙卡（指挥）",
+  "desc_zh": "供空间站指挥层使用的一次性钥匙卡。可开启大多数需要钥匙卡权限的锁。",
+  "flavor_zh": "万能钥匙卡，仅限空间站指挥人员携带。",
+  "value": 125,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "sec_keycard",
+  "name_zh": "一次性钥匙卡（治安）",
+  "desc_zh": "供空间站治安部使用的一次性钥匙卡。可开启需要治安部权限的锁。",
+  "flavor_zh": "如果落入歹人之手可能会很危险……",
+  "value": 100,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "sci_keycard",
+  "name_zh": "一次性钥匙卡（研发）",
+  "desc_zh": "供研发部使用的一次性钥匙卡。可开启需要科研部权限的锁。",
+  "flavor_zh": "空间站研发部官员携带的钥匙卡。非常有价值。",
+  "value": 100,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "med_keycard",
+  "name_zh": "一次性钥匙卡（医疗）",
+  "desc_zh": null,
+  "flavor_zh": "供空间站医疗部使用的一次性钥匙卡。可开启需要医疗权限的锁。",
+  "value": 75,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "eng_keycard",
+  "name_zh": "一次性钥匙卡（工程）",
+  "desc_zh": null,
+  "flavor_zh": "供空间站工程部使用的一次性钥匙卡。可开启需要工程权限的锁。",
+  "value": 75,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "sup_keycard",
+  "name_zh": "一次性钥匙卡（补给）",
+  "desc_zh": null,
+  "flavor_zh": "供空间站补给部门使用的一次性钥匙卡。可开启需要补给权限的锁。",
+  "value": 40,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "ser_keycard",
+  "name_zh": "一次性钥匙卡（服务）",
+  "desc_zh": null,
+  "flavor_zh": "供空间站服务部门使用的一次性钥匙卡。可开启需要服务权限的锁。",
+  "value": 40,
+  "types": [
+   "CONTRABAND",
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "blank_keycard",
+  "name_zh": "一次性钥匙卡（空白）",
+  "desc_zh": "未写入数据的钥匙卡。只要有合适的设备，就能为其写入不同的访问权限。",
+  "flavor_zh": "空间站内最接近万能钥匙的钥匙卡。",
+  "value": 15,
+  "types": [
+   "ACCESS_CARD"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "joe_card",
+  "name_zh": "名片（乔·王尔德）",
+  "desc_zh": null,
+  "flavor_zh": "随时为您效劳。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "card_brewer",
+  "name_zh": "名片（红魔鬼酿酒厂）",
+  "desc_zh": null,
+  "flavor_zh": "好喝到要命。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "card_mining",
+  "name_zh": "名片（GP采矿合作社）",
+  "desc_zh": null,
+  "flavor_zh": "已经没人知道GP到底代表什么了。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "card_pharma",
+  "name_zh": "名片（药商）",
+  "desc_zh": null,
+  "flavor_zh": "非常简陋的名片，上面只有一个名字和一个电话号码。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "card_chem",
+  "name_zh": "名片（化学家）",
+  "desc_zh": null,
+  "flavor_zh": "真就是张纸条，只不过写了电话号码。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "card_rev",
+  "name_zh": "名片（绿）",
+  "desc_zh": null,
+  "flavor_zh": "简单的绿色名片，上面写着一个电话号码。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "permit_gun_1",
+  "name_zh": "I级武器许可证",
+  "desc_zh": "放入展示柜后，可提高枪械买家到访的概率。若治安部声望低于0，此许可证将被吊销。",
+  "flavor_zh": "由治安总监签发的许可证，允许持证人合法持有并交易低级违禁枪械与弹药。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "permit_gun_2",
+  "name_zh": "II级武器许可证",
+  "desc_zh": "放入展示柜后，可提高枪械买家到访的概率。若治安部声望低于30，此许可证将被吊销。",
+  "flavor_zh": "由治安总监签发的许可证，允许持证人合法持有并交易中级违禁武器。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "permit_gun_3",
+  "name_zh": "III级武器许可证",
+  "desc_zh": "放入展示柜后，可提高枪械买家到访的概率。若治安部声望低于60，此许可证将被吊销。",
+  "flavor_zh": "由治安总监签发的许可证，允许持证人合法持有并交易高级违禁武器。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "canister_mbs",
+  "name_zh": "MBS神经毒气",
+  "desc_zh": "一种旨在破坏神经系统的剧毒化学武器。症状包括：呼吸衰竭、抽搐、身体机能失控、昏迷和死亡。",
+  "flavor_zh": "请小心处理。",
+  "value": 400,
+  "types": [
+   "CONTRABAND",
+   "WEAPON"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "sec_slip",
+  "name_zh": "事件回执单",
+  "desc_zh": "治安部在处理事件后开具的单据。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "wanted_paper",
+  "name_zh": "治安部通缉名单",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "rev_codeword",
+  "name_zh": "暗号清单",
+  "desc_zh": "一张不起眼的纸条，上面草草写着革命军所用的暗号对应表。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "数值继承基础物品 slip；类型继承基础物品 slip；杂项"
+ },
+ {
+  "id": "food_stamp",
+  "name_zh": "食品券",
+  "desc_zh": "前往配给站兑换以购买食物。",
+  "flavor_zh": "仅能用来购买食物的预付卡。是援助下层区弱势群体的福利计划的一部分。",
+  "value": 30,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "debris_pile1",
+  "name_zh": "杂物堆",
+  "desc_zh": "只要你留在店内睡觉、不外出，就会花些时间清理杂物。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "debris_pile2",
+  "name_zh": "杂物堆",
+  "desc_zh": "这堆杂物需要工具才能清理。每件用来清理的工具都会损坏报废。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "debris_pile3",
+  "name_zh": "杂物堆",
+  "desc_zh": "这堆东西太重，你一个人搬不动。需要选择“杂物清运”夜间服务来清理。",
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "hand",
+  "name_zh": "仿生机械手",
+  "desc_zh": null,
+  "flavor_zh": "生物机械工程的奇迹，旨在完美再现它所取代的人手的外形与功能。",
+  "value": 100,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cert1",
+  "name_zh": "鉴定委员会初级证书",
+  "desc_zh": "将其放入展示柜，可吸引需要鉴定服务的顾客到访。",
+  "flavor_zh": "证明你具备初级鉴定师资格。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cert2",
+  "name_zh": "鉴定委员会认证证书",
+  "desc_zh": "将其放入展示柜，可吸引需要鉴定服务的顾客到访。",
+  "flavor_zh": "证明你具备初级鉴定师资格。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cert3",
+  "name_zh": "鉴定委员会高级认证证书",
+  "desc_zh": "将其放入展示柜，可吸引需要鉴定服务的顾客到访。",
+  "flavor_zh": "证明你具备初级鉴定师资格。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cert4",
+  "name_zh": "鉴定委员会大师认证证书",
+  "desc_zh": "将其放入展示柜，可吸引需要鉴定服务的顾客到访。",
+  "flavor_zh": "证明你具备初级鉴定师资格。",
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "postit",
+  "name_zh": "便签",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "exchange_directive",
+  "name_zh": "地下交易所清单",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette1",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette2",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette3",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette4",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette5",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette6",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette7",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette1l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette2l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette3l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette4l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette5l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette6l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette7l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette1d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette2d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette3d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette4d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette5d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette6d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette7d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette8",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette9",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette10",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette11",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette12",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette13",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette14",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette8l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette9l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette10l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette11l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette12l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette13l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette14l",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 150,
+  "types": [
+   "ART",
+   "LUXURY_ITEM"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette8d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette9d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette10d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette11d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette12d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette13d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "cassette14d",
+  "name_zh": "'音乐磁带 - '",
+  "desc_zh": null,
+  "value": 35,
+  "types": [
+   "ART"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "expedition_log",
+  "name_zh": "探险日志",
+  "desc_zh": null,
+  "value": 0,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "ribwich",
+  "name_zh": "袋装肋排三明治",
+  "desc_zh": "一款可常温保存的限量版三明治，夹着一块由重组无骨猪肉制成、形似迷你肋排的肉饼，深受一小群忠实拥趸追捧。",
+  "value": 150,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "scratcher",
+  "name_zh": "刮刮乐彩票",
+  "desc_zh": "刮出至少2个相同的符号即可赢取奖品！",
+  "flavor_zh": "下层区一种广受欢迎的赌博方式。在上层区则被明文禁止。",
+  "value": 20,
+  "types": [
+   "LOTTERY",
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "gamblers_coin",
+  "name_zh": "赌徒硬币",
+  "desc_zh": null,
+  "flavor_zh": "一枚早已没人记得的货币。据说能带来好运。不过大多数时候，它只是让你刮彩票更快。",
+  "value": 50,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "scratcher_stack",
+  "name_zh": "一叠刮刮乐彩票（5张）",
+  "desc_zh": "拆包前请确保物品栏有足够的空间。",
+  "flavor_zh": "一叠共五张的刮刮乐彩票。",
+  "value": 100,
+  "types": [
+   "DOCUMENT"
+  ],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "plasma_fuel",
+  "name_zh": "等离子燃料匣",
+  "desc_zh": "一种紧凑型固态燃料匣，专供星际航行的脉冲等离子引擎使用。其价值因燃料匣的质量不同而差异巨大。",
+  "value": 300,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "plastic_bag",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项；无中文翻译"
+ },
+ {
+  "id": "aug_chip",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 0,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "aug_scanner",
+  "name_zh": "改造体扫描仪",
+  "desc_zh": "用于以100%的准确率确认疑似改造体的身份。",
+  "flavor_zh": "一种极度耗电的电磁场探测器，经过微调以捕捉改造芯片的独特特征信号。",
+  "value": 200,
+  "types": [],
+  "directory": "MiscItemDirectory",
+  "note": "杂项"
+ },
+ {
+  "id": "blank_module",
+  "name_zh": "空白模组",
+  "desc_zh": "一个空白模组。配上合适的机器，即可将其重写为有用的模组。",
+  "value": 60,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "system_module_performance",
+  "name_zh": "性能模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_efficiancy",
+  "name_zh": "效率模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_quality",
+  "name_zh": "质量模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_overclock",
+  "name_zh": "超频模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_eco",
+  "name_zh": "环保模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_fineness",
+  "name_zh": "精炼模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_streamlining",
+  "name_zh": "优化模组",
+  "desc_zh": null,
+  "value": 125,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_ruined",
+  "name_zh": "报废模组",
+  "desc_zh": "一个完全报废的模组。作为回收物仍有一定价值。可用螺丝刀进行拆解。",
+  "value": 30,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_module_corrupt",
+  "name_zh": "损坏模组",
+  "desc_zh": "一个损坏的模组。可以使用电子元件……外加一点技术来修复。",
+  "value": 45,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_nutrifruit",
+  "name_zh": "营养果水培模组",
+  "desc_zh": "帕斯泰尔公司生产的模组，可使水培系统在种植营养果时提高产量。其独特效果不影响其他植物。",
+  "value": 150,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_dream_cap",
+  "name_zh": "梦帽菇中和水培模组",
+  "desc_zh": "一种在种植梦帽菇时中和其全部精神活性成分、将其转化为“食用帽菇”的模组。其独特效果可以叠加，但不影响其他植物。",
+  "value": 150,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_kotton_loom",
+  "name_zh": "韧棉自动织造水培模组",
+  "desc_zh": "一种在种植韧棉时直接将韧棉纤维织成布料的模组。其独特效果不影响其他植物。",
+  "value": 200,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_nightmare_cap",
+  "name_zh": "梦帽菇梦魇化水培模组",
+  "desc_zh": "一种在种植梦帽菇时浓缩其精神活性成分、将其转化为有毒变种“梦魇帽菇”的模组。其独特效果不影响其他植物。",
+  "value": 150,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "CONTRABAND",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_fillerweed_production",
+  "name_zh": "填料草增产水培模组",
+  "desc_zh": "一种以不再产出种子为代价提高填料草产量的模组。其独特效果不影响其他植物，且不可叠加。",
+  "value": 115,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_hydroreed_filter",
+  "name_zh": "水培芦苇滤芯模组",
+  "desc_zh": "一个允许收割成熟的水培芦苇的茎秆以将其用作滤水器的模组。对其他植物无效。",
+  "value": 105,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "farm_module_smuggler",
+  "name_zh": "水培走私模组",
+  "desc_zh": "一种模组，可以解除所有生长中种子的违禁品状态。",
+  "value": 100,
+  "types": [
+   "HYDROPONIC_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "evaporator_module_solvent_recovery",
+  "name_zh": "蒸发器溶剂回收模组",
+  "desc_zh": null,
+  "value": 275,
+  "types": [
+   "EVAPORATOR_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "dna_manipulator_module_stabilizer",
+  "name_zh": "基因稳定模组",
+  "desc_zh": "使目标在DNA提取后仍能保留下来，可在不销毁目标的情况下移除特性。",
+  "value": 500,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "dna_manipulator_module_positive_filter",
+  "name_zh": "正面特性筛选模组",
+  "desc_zh": "仅提取正面特性。目标没有正面特性时，不会提取任何特性。",
+  "value": 500,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "dna_manipulator_module_negative_filter",
+  "name_zh": "负面特性筛选模组",
+  "desc_zh": "仅提取负面特性。目标没有负面特性时，不会提取任何特性。",
+  "value": 500,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "dna_manipulator_module_precision",
+  "name_zh": "精准提取模组",
+  "desc_zh": "对已写入特性的DNA数据盘使用此模组，即可扫描盘中的特性。将模组安装到DNA编辑器后，机器将只提取扫描到的特性。",
+  "value": 1000,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_module_metal",
+  "name_zh": "金属打印模组",
+  "desc_zh": "一种让打印机能够使用金属打印芯片的模组。",
+  "value": 300,
+  "types": [
+   "PRINTER_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_uncapped_neural_core",
+  "name_zh": "神经核心模组（无限制）",
+  "desc_zh": "性能极高，但不稳定且属于违禁品。这是一个封装在系统模组内的AI核心。这类AI核心有失控暴走的倾向。",
+  "value": 1500,
+  "types": [
+   "MODULE",
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "alarm_module_transmitter",
+  "name_zh": "警报传输模组",
+  "desc_zh": "当前正在传输至：<b></b>\\n向同一派系重复传输不会产生额外效果。",
+  "flavor_zh": "该模组会将你的摄像头拍到的监控录像传输给指定的派系。",
+  "value": 100,
+  "types": [
+   "ALARM_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "furnace_module_blast",
+  "name_zh": "熔炉模组（高炉）",
+  "desc_zh": "一种改造熔炉的特殊模组，允许以材料制作{1}金属锭（纯度略低）。不可叠加。",
+  "value": 150,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "furnace_module_junk",
+  "name_zh": "熔炉模组（垃圾处理）",
+  "desc_zh": "一种改造熔炉的特殊模组，允许将垃圾处理成废金属。",
+  "value": 120,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "system_capped_neural_core",
+  "name_zh": "神经核心模组（受限）",
+  "desc_zh": "AI核心在空间站上属于违禁品。该装置内置了安全防护机制，在限制其失控行为的同时，也限制了它的性能。",
+  "value": 250,
+  "types": [
+   "MODULE",
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_sec",
+  "name_zh": "密码解序器芯片（治安）",
+  "desc_zh": "一个能让密码解序器将治安权限写入空白钥匙卡的模组。",
+  "value": 300,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_cmd",
+  "name_zh": "密码解序器芯片（指挥）",
+  "desc_zh": "一个能让密码解序器将指挥权限写入空白钥匙卡的模组。",
+  "value": 350,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_med",
+  "name_zh": "密码解序器芯片（医疗）",
+  "desc_zh": "一个能让密码解序器将医疗权限写入空白钥匙卡的模组。",
+  "value": 250,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_eng",
+  "name_zh": "密码解序器芯片（工程）",
+  "desc_zh": "一个能让密码解序器将工程权限写入空白钥匙卡的模组。",
+  "value": 250,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_sup",
+  "name_zh": "密码解序器芯片（补给）",
+  "desc_zh": "一个能让密码解序器将补给权限写入空白钥匙卡的模组。",
+  "value": 200,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "crypto_module_ser",
+  "name_zh": "密码解序器芯片（服务）",
+  "desc_zh": "一个能让密码解序器将服务权限写入空白钥匙卡的模组。",
+  "value": 200,
+  "types": [
+   "CONTRABAND"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_pistol",
+  "name_zh": ".22手枪3D打印机芯片",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 250,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_pistol_double",
+  "name_zh": "3D打印机芯片（.22手枪）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 400,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_makeshift_rds",
+  "name_zh": "3D打印机芯片（简易红点瞄准镜）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 200,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_makeshift_toy_laser",
+  "name_zh": "3D打印机芯片（玩具激光笔）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 200,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_small_bottle",
+  "name_zh": "3D打印机芯片（小塑料瓶）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 100,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_internal_springs_improved",
+  "name_zh": "3D打印机芯片（改良内部弹簧组）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 150,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_rds",
+  "name_zh": "3D打印机芯片（红点瞄准镜）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_laser_sight",
+  "name_zh": "3D打印机芯片（激光瞄准器）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_silencer",
+  "name_zh": "3D打印机芯片（消音器）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_22_mag",
+  "name_zh": "3D打印机芯片（.22弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 250,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_22_mag_ext",
+  "name_zh": "3D打印机芯片（加长.22弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 350,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_22_mag_high",
+  "name_zh": "3D打印机芯片（大容量.22弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_10_mag",
+  "name_zh": "3D打印机芯片（10毫米弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_10_mag_ext",
+  "name_zh": "3D打印机芯片（加长10毫米弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 400,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_10_mag_high",
+  "name_zh": "3D打印机芯片（大容量10毫米弹匣）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 350,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_handmade_pistol_frame",
+  "name_zh": "3D打印机芯片（“巢火”紧凑型手枪框架）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 350,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_heavy_handmade_pistol_frame",
+  "name_zh": "3D打印机芯片（“铁铸10”手枪框架）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 450,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_gun_part",
+  "name_zh": "3D打印机芯片（枪械零件）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_module_cnc",
+  "name_zh": "计算机数控模组",
+  "desc_zh": "与金属打印模组配合使用后，可让打印机使用枪械框架和枪械零件芯片。",
+  "value": 400,
+  "types": [
+   "PRINTER_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_box_cutter",
+  "name_zh": "3D打印机芯片（美工刀）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 150,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_kitchen_knife",
+  "name_zh": "3D打印机芯片（厨刀）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 200,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_hatchet",
+  "name_zh": "3D打印机芯片（短柄斧）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 250,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_kitchen_cleaver",
+  "name_zh": "3D打印机芯片（切肉刀）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 300,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_combat_knife",
+  "name_zh": "3D打印机芯片（战斗匕首）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 380,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_chip_combat_machete",
+  "name_zh": "3D打印机芯片（战斗砍刀）",
+  "desc_zh": "一枚存有3D打印蓝图的芯片。",
+  "value": 480,
+  "types": [],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "printer_module_melee_batch",
+  "name_zh": "近战武器批量打印模组",
+  "desc_zh": "一种打印机模组，可在每次打印近战武器时额外产出一把武器。打印速度较慢，耗电量较大。",
+  "value": 250,
+  "types": [
+   "PRINTER_MODULE",
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "module_extractor",
+  "name_zh": "模组提取器（基础）",
+  "desc_zh": "允许你将卡住的模组从机器中取出而避免造成损坏。可使用次。可以使用电子元件进行部分翻修。",
+  "value": 100,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "module_extractor_advanced",
+  "name_zh": "模组提取器（高级）",
+  "desc_zh": "允许你将卡住的模组从机器中取出而避免造成损坏。这款高级型号在使用时不会产生损耗。",
+  "value": 350,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "module_bay_expansion_kit",
+  "name_zh": "模组舱扩建套件",
+  "desc_zh": "允许你扩展机器模组容量的一次性套件。此套件与化学或其他特殊机器不兼容。",
+  "value": 150,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "chem_module",
+  "name_zh": "化学设备模组",
+  "desc_zh": "一种可改进搅拌机、加热板和化学制剂成型机的特殊模组。安装后需要使用模组提取器才能拆除。",
+  "value": 250,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "node_small",
+  "name_zh": "节点（小）",
+  "desc_zh": "一种专用电路，安装在特定机器中时，可提供或接收相邻模组的加成效果。",
+  "value": 50,
+  "types": [
+   "NODE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "node_medium",
+  "name_zh": "节点（中）",
+  "desc_zh": "一种专用电路，安装在特定机器中时，可提供或接收相邻模组的加成效果。",
+  "value": 50,
+  "types": [
+   "NODE"
+  ],
+  "directory": "ModuleDirectory",
+  "note": "机器功能模组"
+ },
+ {
+  "id": "makeshift_storage_bay",
+  "name_zh": "简易储藏区",
+  "desc_zh": "临时拼凑的物品储藏区。无法存放其他容器或机器。",
+  "value": 250,
+  "types": [
+   "STORAGE",
+   "MAKESHIFT"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "storage_bay",
+  "name_zh": "储藏区",
+  "desc_zh": "用于存放物品的标准区域。",
+  "value": 300,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "storage_bay_large",
+  "name_zh": "储藏区（扩建）",
+  "desc_zh": "扩建后的物品存放区域。",
+  "value": 850,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "storage_bay_expansion_kit",
+  "name_zh": "储藏区扩建套件",
+  "desc_zh": "对储藏区使用可增加两个储物标签页，对储藏区（扩建）使用则增加一个。",
+  "value": 1063,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "machine_bay",
+  "name_zh": "机器区",
+  "desc_zh": "用于放置机器的标准区域。",
+  "value": 300,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "machine_bay_ext",
+  "name_zh": "机器区（扩建）",
+  "desc_zh": "扩建后的机器放置区域。",
+  "value": 1200,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "storage_bay_gun",
+  "name_zh": "枪械师储藏区",
+  "desc_zh": "专门存放枪械和改装件的储藏区。无法存放其他容器或机器。",
+  "value": 400,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "storage_bay_chem",
+  "name_zh": "化学师储藏区",
+  "desc_zh": "专门存放化学设备和用品的储藏区。无法存放其他容器或机器。",
+  "value": 400,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "smuggler_bay_mini",
+  "name_zh": "迷你走私储藏区",
+  "desc_zh": "经过伪装、可在盘查时藏匿物品的储藏区。这一款尺寸较小。",
+  "value": 150,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "smuggler_bay",
+  "name_zh": "走私者暗格",
+  "desc_zh": "经过伪装的小型储藏区，用于在盘查时藏匿物品。",
+  "value": 250,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "smuggler_bay_mod",
+  "name_zh": "走私者暗格（改进）",
+  "desc_zh": "经过伪装的储藏区，用于在盘查时藏匿物品。此暗格经过了改装，可容纳更多物品。",
+  "value": 400,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "hypertech_bay",
+  "name_zh": "超科技储藏区",
+  "desc_zh": null,
+  "value": 10000,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ShipSystemDirectory",
+  "note": "飞船舱室/储藏区"
+ },
+ {
+  "id": "screwdriver",
+  "name_zh": "螺丝刀",
+  "desc_zh": "携带此物品时，在垃圾场拾荒将获得10%的额外螺丝产量。",
+  "flavor_zh": "朴实无华的螺丝刀，不管是上层区还是下层区的公民都会在杂物抽屉里放上一件。",
+  "value": 25,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "welder",
+  "name_zh": "等离子切割机",
+  "desc_zh": "能够用来拆解损坏的机器以回收废金属。携带此物品时，在垃圾场拾荒将获得10%的额外废金属产量。",
+  "flavor_zh": "高频点火等离子切割机。经过精密制造以保证稳定性，切割速度快、威力大且切口平整。",
+  "value": 80,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "wire_cutter",
+  "name_zh": "剪线钳",
+  "desc_zh": "能够用来拆解损坏的机器以回收线缆。携带此物品时，在垃圾场拾荒将获得10%的额外线缆产量。",
+  "flavor_zh": "弹簧装置确保了良好的杠杆作用，减轻使用者的手部负担，而柔软的橡胶手柄则提供了出色的抓握力与舒适度。",
+  "value": 40,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "toolbox",
+  "name_zh": "工具箱",
+  "desc_zh": "可存放工具。按键盘上的数字键1至9，即可装备相应槽位内的物品。",
+  "flavor_zh": "相当结实。",
+  "value": 150,
+  "types": [
+   "STORAGE"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "labeler",
+  "name_zh": "标签打印机",
+  "desc_zh": "用于编辑物品的标签。",
+  "value": 50,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "labeler_blue",
+  "name_zh": "蓝色标签打印机",
+  "desc_zh": "用于重命名物品。",
+  "value": 50,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "intake_hopper",
+  "name_zh": "进料斗",
+  "desc_zh": "可与出料斗连接，并设置为每晚把所在库存中的物品送进出料斗所在的库存。对出料斗使用即可连接，双击进行设置。",
+  "value": 300,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "outlet_hopper",
+  "name_zh": "出料斗",
+  "desc_zh": "每晚接收已连接的进料斗送来的物品，放入所在库存。对进料斗使用即可连接，双击立即运行。",
+  "value": 300,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "magnifier",
+  "name_zh": "放大镜",
+  "desc_zh": "用于更仔细地检查某些物品。",
+  "value": 50,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "turbo_booster",
+  "name_zh": "一次性涡轮增压器",
+  "desc_zh": "能够立刻为需要耗时运作的机器提供动力的工具。使用前请确保目标机器已具备所有必要的输入材料。使用后即被消耗。",
+  "value": 35,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "turbo_booster_adv",
+  "name_zh": "高级涡轮增压器",
+  "desc_zh": "能够立刻为需要耗时运作的机器提供动力的工具。使用前请确保目标机器已具备所有必要的输入材料。随时间推移可自动充能。这一高级版本在使用后不会被消耗。",
+  "value": 300,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "turbo_booster_hypertech",
+  "name_zh": "超科技涡轮增压器",
+  "desc_zh": "一种由能量电池供能的涡轮增压器。它每个周期都会充能，并储存多余的电量。充满后，可立即完成机器当前的周期。",
+  "value": 15000,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "mind_reprogrammer",
+  "name_zh": "心智重编程器",
+  "desc_zh": "可以移除或添加某些特性。消耗电子元件（超科技）为它充能。每次使用后都需要一段时间来重置。",
+  "value": 5000,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_water",
+  "name_zh": "水霓虹灯牌",
+  "desc_zh": "一块霓虹灯牌。将其放置在展示柜中，可吸引有意出售水的顾客。",
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_food",
+  "name_zh": "食品霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_medical",
+  "name_zh": "医疗霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 200,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_household",
+  "name_zh": "日用品霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_material",
+  "name_zh": "材料霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_ruined_machine",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具；无中文翻译"
+ },
+ {
+  "id": "sign_firearm",
+  "name_zh": "枪械霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_firearm_heavy",
+  "name_zh": "重型枪械霓虹灯牌",
+  "desc_zh": "将其放置在展示柜中，可吸引出售的顾客",
+  "value": 200,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_berry",
+  "name_zh": null,
+  "desc_zh": null,
+  "value": 100,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具；无中文翻译；无获取途径/内部物品，已从图鉴隐藏"
+ },
+ {
+  "id": "xray_scanner",
+  "name_zh": "便携式X射线扫描仪",
+  "desc_zh": "可用于查看密封容器内的物品。",
+  "value": 400,
+  "types": [
+   "TOOL"
+  ],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "sign_expedition",
+  "name_zh": "探险招募牌",
+  "desc_zh": "将其放入展示柜，可吸引待招募的新雇工前来，并召集已准备好出发探险的现有雇工。",
+  "value": 50,
+  "types": [],
+  "directory": "ToolDirectory",
+  "note": "工具"
+ },
+ {
+  "id": "wine_yeast",
+  "name_zh": "酵母",
+  "desc_zh": null,
+  "flavor_zh": "一种用途广泛的酵母菌种，从发酵面包到酿酒无所不能。用于酿酒时，它能加速发酵过程并提升酒的品质。",
+  "value": 10,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "wine_superyeast",
+  "name_zh": "超级酵母",
+  "desc_zh": null,
+  "flavor_zh": "一种效力极强、用途广泛的酵母菌种，在无数工艺中备受推崇。用于酿酒时，它能大幅加速发酵过程。",
+  "value": 20,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "wine_yeast_red",
+  "name_zh": "合成酵母",
+  "desc_zh": "一种非法物质，可以用来代替酵母，以极其廉价的方式生产带有轻微致癌性的酒。只需加水即可。",
+  "value": 8,
+  "types": [
+   "CONTRABAND",
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "wine_yeast_infinite",
+  "name_zh": "酵母生物反应器",
+  "desc_zh": "酵母的无限来源。发酵开始时将返回物品栏，而不会被消耗。",
+  "flavor_zh": "一个能够自我维持并不断重新生长出酵母的培养缸。",
+  "value": 250,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "wine_bottle",
+  "name_zh": "酒瓶",
+  "desc_zh": "用于发酵葡萄酒的精致玻璃瓶。此酒瓶带有内置的气塞。",
+  "value": 12,
+  "types": [
+   "HOUSEHOLD_GOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "wine_berry",
+  "name_zh": "荧光莓",
+  "desc_zh": null,
+  "flavor_zh": "一种经改良以适应水培生长的甜浆果。虽然不太能填饱肚子，但它是下层区少数能弄到的水果之一。很适合用来酿酒。",
+  "value": 14,
+  "types": [
+   "FOOD"
+  ],
+  "directory": "WineDirectory",
+  "note": "酿酒相关"
+ },
+ {
+  "id": "loot_crate_evidence",
+  "name_zh": "治安部物证柜",
+  "desc_zh": null,
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "SUPPLY_CRATE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 evidence_box；预生成物品，基于 evidence_box（数值/类型继承基础物品）"
+ },
+ {
+  "id": "loot_crate_medical",
+  "name_zh": "医疗舱物资箱",
+  "desc_zh": null,
+  "value": 200,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 med_box；预生成物品，基于 med_box（数值/类型继承基础物品）"
+ },
+ {
+  "id": "loot_crate_security",
+  "name_zh": "治安部物资箱",
+  "desc_zh": null,
+  "value": 200,
+  "types": [
+   "CONTRABAND",
+   "SUPPLY_CRATE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 sec_box；预生成物品，基于 sec_box（数值/类型继承基础物品）"
+ },
+ {
+  "id": "loot_crate_service",
+  "name_zh": "后勤服务部物资箱",
+  "desc_zh": null,
+  "value": 175,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 service_box；预生成物品，基于 service_box（数值/类型继承基础物品）"
+ },
+ {
+  "id": "loot_crate_engineering",
+  "name_zh": "工程铸造厂物资箱",
+  "desc_zh": null,
+  "value": 200,
+  "types": [
+   "SUPPLY_CRATE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 eng_box；预生成物品，基于 eng_box（数值/类型继承基础物品）"
+ },
+ {
+  "id": "full_water_test_strip_box",
+  "name_zh": "水质检测试剂盒",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 water_test_container；预生成物品，基于 water_test_container（数值/类型继承基础物品）"
+ },
+ {
+  "id": "full_beer",
+  "name_zh": "红魔鬼啤酒箱",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "SUBSTANCE",
+   "ALCOHOL",
+   "BREVAGE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 beerCase；预生成物品，基于 beerCase（数值/类型继承基础物品）"
+ },
+ {
+  "id": "full_water_purification_tablet_box",
+  "name_zh": "一瓶净水药片",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 water_tablet_container；预生成物品，基于 water_tablet_container（数值/类型继承基础物品）"
+ },
+ {
+  "id": "full_nutrient_tablet_box",
+  "name_zh": "水培营养片药瓶",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "FARMING_SUPPLIES"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 nutrient_tablet_container；预生成物品，基于 nutrient_tablet_container（数值/类型继承基础物品）"
+ },
+ {
+  "id": "full_nutrifruit_seed_packet",
+  "name_zh": "一包营养果种子",
+  "desc_zh": null,
+  "value": 1,
+  "types": [
+   "SEED"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 nutrifruit_seed_packet；预生成物品，基于 nutrifruit_seed_packet（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_performance_module",
+  "name_zh": "性能模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_performance；预生成物品，基于 system_module_performance（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_efficiency_module",
+  "name_zh": "效率模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_efficiancy；预生成物品，基于 system_module_efficiancy（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_quality_module",
+  "name_zh": "质量模组",
+  "desc_zh": null,
+  "value": 70,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_quality；预生成物品，基于 system_module_quality（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_overclock_module",
+  "name_zh": "超频模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_overclock；预生成物品，基于 system_module_overclock（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_eco_module",
+  "name_zh": "环保模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_eco；预生成物品，基于 system_module_eco（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_fineness_module",
+  "name_zh": "精炼模组",
+  "desc_zh": null,
+  "value": 100,
+  "types": [
+   "MODULE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 system_module_fineness；预生成物品，基于 system_module_fineness（数值/类型继承基础物品）"
+ },
+ {
+  "id": "portable_water_purifier_used",
+  "name_zh": "海德拉科技微型净水器",
+  "desc_zh": null,
+  "value": 325,
+  "types": [
+   "HOUSEHOLD_GOOD",
+   "WATER_PURIFICATION_SUPPLY",
+   "LUXURY_ITEM"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 portable_water_purifier；预生成物品，基于 portable_water_purifier（数值/类型继承基础物品）"
+ },
+ {
+  "id": "random_node",
+  "name_zh": "节点（中）",
+  "desc_zh": null,
+  "value": 50,
+  "types": [
+   "NODE"
+  ],
+  "directory": "PreBuiltItemHelper",
+  "note": "名称沿用基础物品 node_medium；预生成物品，基于 node_medium（数值/类型继承基础物品）"
+ },
+ {
+  "id": "med_bottle_violet",
+  "name_zh": "N-羟甲基碱溶液瓶",
+  "desc_zh": "一种用途广泛的碱性化合物，常用于合法化工生产，也是常见的芬太前体。",
+  "value": 3,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：med_bottle_violet 内含 methylol 125ml + stabilizing_agent 125ml（无独立ID，复用基础物品）"
+ },
+ {
+  "id": "med_bottle_red",
+  "name_zh": "酸性溶液瓶",
+  "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和碱性物质。",
+  "flavor_zh": "警告：具有腐蚀性。请小心处理。",
+  "value": 3,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：med_bottle_red 内含 acid 250ml（无独立ID，复用基础物品）"
+ },
+ {
+  "id": "med_bottle_blue",
+  "name_zh": "碱性溶液瓶",
+  "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和酸性物质。",
+  "flavor_zh": "警告：具有强腐蚀性。请小心处理。",
+  "value": 3,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：med_bottle_blue 内含 base 250ml（无独立ID，复用基础物品）"
+ },
+ {
+  "id": "med_bottle_orange",
+  "name_zh": "还原剂瓶",
+  "desc_zh": "某些化学反应不可或缺的试剂。",
+  "flavor_zh": "向另一种物质提供电子，从而改变该物质的化学状态。",
+  "value": 3,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：med_bottle_orange 内含 reducing_agent 250ml（无独立ID，复用基础物品）"
+ },
+ {
+  "id": "med_bottle_small_pink",
+  "name_zh": "脂合剂瓶",
+  "desc_zh": "使油脂凝聚成团，以便轻松过滤。随后可通过蒸发去除这种试剂。",
+  "value": 1,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：med_bottle_small_pink 内含 lipobond_agent 150ml（无独立ID，复用基础物品）"
+ },
+ {
+  "id": "mini_bottle",
+  "name_zh": "瓶装水（微型）",
+  "desc_zh": null,
+  "value": 3,
+  "types": [],
+  "directory": "PreBuildChemHelper",
+  "note": "预灌装变体：mini_bottle 内含 alcohol 175ml + water 75ml（无独立ID，复用基础物品）"
+ }
+]

@@ -1,0 +1,1640 @@
+{
+ "loot_tables": {
+  "accessCardTable": [
+   "cmd_keycard",
+   "eng_keycard",
+   "med_keycard",
+   "sci_keycard",
+   "sec_keycard",
+   "ser_keycard",
+   "sup_keycard"
+  ],
+  "allModuleTable": [
+   "system_capped_neural_core",
+   "system_module_corrupt",
+   "system_module_eco",
+   "system_module_efficiancy",
+   "system_module_fineness",
+   "system_module_overclock",
+   "system_module_performance",
+   "system_module_quality",
+   "system_module_ruined",
+   "system_uncapped_neural_core"
+  ],
+  "dumpingGroundMedical": [
+   "bandage_item",
+   "hemostatic_bandage_item",
+   "topical_bandage_item"
+  ],
+  "householdTable": [
+   "caffeine_pill",
+   "full_water_purification_tablet_box",
+   "full_water_test_strip_box",
+   "paper_towel",
+   "shampoo",
+   "toilet_paper",
+   "toothpaste",
+   "water_filter"
+  ],
+  "junkTable": [
+   "empty_beer_bottle",
+   "glass_shard",
+   "junk",
+   "pipe_weapon",
+   "scratcher",
+   "system_module_ruined"
+  ],
+  "makeshiftWeaponTable": [
+   "box_cutter",
+   "glass_shard_shiv",
+   "kitchen_knife",
+   "pipe_weapon"
+  ],
+  "materialTable": [
+   "common_electronic",
+   "flux_agent",
+   "gun_part",
+   "kotton_fabric",
+   "nuts_metal",
+   "printer_plastic",
+   "scrap_metal",
+   "wire"
+  ],
+  "medicalTable": [
+   "bandage_item",
+   "hemostatic_bandage_item",
+   "pink_injector",
+   "rubbing_alcohol",
+   "salve",
+   "smelling_salt",
+   "surgery_tool",
+   "topical_bandage_item"
+  ],
+  "packedFoodTable": [
+   "beis_icecream",
+   "cat_bar",
+   "cup_noodle",
+   "energy_drink",
+   "galaxy_blend",
+   "li_eat_snackbar",
+   "nudka",
+   "processed_juice",
+   "processed_meat",
+   "processed_milk",
+   "red_beer",
+   "soda_red",
+   "zerochew"
+  ],
+  "t1moduleTable": [
+   "random_efficiency_module",
+   "random_performance_module",
+   "random_quality_module"
+  ],
+  "t2moduleTable": [
+   "system_module_eco",
+   "system_module_fineness",
+   "system_module_performance"
+  ],
+  "toolTable": [
+   "crowbar",
+   "module_extractor",
+   "screwdriver",
+   "turbo_booster",
+   "welder",
+   "wire_cutter"
+  ],
+  "": [
+   "sec_slip"
+  ]
+ },
+ "evidence": {
+  "sec_keycard": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientListUnused.cs:vendor",
+   "StoreClientListWanted.cs:vendor",
+   "loot:accessCardTable"
+  ],
+  "eng_keycard": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "loot:accessCardTable"
+  ],
+  "cmd_keycard": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "loot:accessCardTable"
+  ],
+  "sup_keycard": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "loot:accessCardTable"
+  ],
+  "ser_keycard": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "loot:accessCardTable"
+  ],
+  "sci_keycard": [
+   "loot:accessCardTable"
+  ],
+  "med_keycard": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "loot:accessCardTable"
+  ],
+  "system_module_quality": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListStory.cs:spawn",
+   "loot:allModuleTable"
+  ],
+  "system_module_eco": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "PreBuiltItemHelper.cs:spawn",
+   "loot:allModuleTable",
+   "loot:t2moduleTable"
+  ],
+  "system_module_ruined": [
+   "ModuleEffectHelper.cs:spawn",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:allModuleTable",
+   "loot:junkTable"
+  ],
+  "system_capped_neural_core": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "loot:allModuleTable"
+  ],
+  "system_module_overclock": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "PreBuiltItemHelper.cs:spawn",
+   "loot:allModuleTable"
+  ],
+  "system_module_performance": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListStory.cs:spawn",
+   "loot:allModuleTable",
+   "loot:t2moduleTable"
+  ],
+  "system_module_fineness": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "PreBuiltItemHelper.cs:spawn",
+   "loot:allModuleTable",
+   "loot:t2moduleTable"
+  ],
+  "system_uncapped_neural_core": [
+   "loot:allModuleTable"
+  ],
+  "system_module_efficiancy": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListStory.cs:spawn",
+   "loot:allModuleTable"
+  ],
+  "system_module_corrupt": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:allModuleTable"
+  ],
+  "topical_bandage_item": [
+   "PreBuiltItemHelper.cs:grant",
+   "StartingPerkContent.cs:grant",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:dumpingGroundMedical",
+   "loot:medicalTable"
+  ],
+  "bandage_item": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:dumpingGroundMedical",
+   "loot:medicalTable"
+  ],
+  "hemostatic_bandage_item": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:dumpingGroundMedical",
+   "loot:medicalTable"
+  ],
+  "caffeine_pill": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:householdTable"
+  ],
+  "full_water_test_strip_box": [
+   "loot:householdTable"
+  ],
+  "shampoo": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:householdTable"
+  ],
+  "toilet_paper": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:householdTable"
+  ],
+  "paper_towel": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListBarter.cs:vendor",
+   "loot:householdTable"
+  ],
+  "full_water_purification_tablet_box": [
+   "loot:householdTable"
+  ],
+  "toothpaste": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:householdTable"
+  ],
+  "water_filter": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:spawn",
+   "StoreClientListSpec.cs:vendor",
+   "loot:householdTable"
+  ],
+  "empty_beer_bottle": [
+   "loot:junkTable"
+  ],
+  "glass_shard": [
+   "loot:junkTable"
+  ],
+  "scratcher": [
+   "BarterOfferList.cs:vendor",
+   "MiscItemDirectory.cs:spawn",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "loot:junkTable"
+  ],
+  "junk": [
+   "loot:junkTable"
+  ],
+  "pipe_weapon": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "loot:junkTable",
+   "loot:makeshiftWeaponTable"
+  ],
+  "glass_shard_shiv": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListMinor.cs:vendor",
+   "loot:makeshiftWeaponTable"
+  ],
+  "kitchen_knife": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:makeshiftWeaponTable"
+  ],
+  "box_cutter": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:makeshiftWeaponTable"
+  ],
+  "common_electronic": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "StoreClientListUnused.cs:vendor",
+   "loot:materialTable"
+  ],
+  "flux_agent": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:materialTable"
+  ],
+  "scrap_metal": [
+   "BarterOfferList.cs:vendor",
+   "DebrisHelper.cs:grant",
+   "ScavHelper.cs:spawn",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListStory.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:materialTable"
+  ],
+  "nuts_metal": [
+   "PreBuiltItemHelper.cs:grant",
+   "ScavHelper.cs:spawn",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "loot:materialTable"
+  ],
+  "printer_plastic": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:materialTable"
+  ],
+  "gun_part": [
+   "NetworkUpgradeList.cs:grant",
+   "loot:materialTable"
+  ],
+  "wire": [
+   "BarterOfferList.cs:vendor",
+   "ScavHelper.cs:spawn",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:materialTable"
+  ],
+  "kotton_fabric": [
+   "BarterOfferList.cs:vendor",
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListCartel.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:materialTable"
+  ],
+  "pink_injector": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:medicalTable"
+  ],
+  "smelling_salt": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:medicalTable"
+  ],
+  "rubbing_alcohol": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:medicalTable"
+  ],
+  "salve": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:medicalTable"
+  ],
+  "surgery_tool": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:medicalTable"
+  ],
+  "soda_red": [
+   "BarterOfferList.cs:vendor",
+   "StoreClientListStory.cs:vendor",
+   "loot:packedFoodTable"
+  ],
+  "red_beer": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "loot:packedFoodTable"
+  ],
+  "processed_meat": [
+   "BarterOfferList.cs:vendor",
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListStory.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "loot:packedFoodTable"
+  ],
+  "processed_milk": [
+   "loot:packedFoodTable"
+  ],
+  "nudka": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:packedFoodTable"
+  ],
+  "galaxy_blend": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListStory.cs:vendor",
+   "loot:packedFoodTable"
+  ],
+  "cat_bar": [
+   "StoreClientListStory.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:packedFoodTable"
+  ],
+  "energy_drink": [
+   "loot:packedFoodTable"
+  ],
+  "beis_icecream": [
+   "loot:packedFoodTable"
+  ],
+  "li_eat_snackbar": [
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientUniqueList.cs:spawn",
+   "loot:packedFoodTable"
+  ],
+  "processed_juice": [
+   "loot:packedFoodTable"
+  ],
+  "cup_noodle": [
+   "loot:packedFoodTable"
+  ],
+  "zerochew": [
+   "StoreClientListSupplier.cs:vendor",
+   "loot:packedFoodTable"
+  ],
+  "random_efficiency_module": [
+   "PreBuiltItemHelper.cs:spawn",
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn",
+   "loot:t1moduleTable"
+  ],
+  "random_performance_module": [
+   "PreBuiltItemHelper.cs:spawn",
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn",
+   "loot:t1moduleTable"
+  ],
+  "random_quality_module": [
+   "PreBuiltItemHelper.cs:spawn",
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn",
+   "loot:t1moduleTable"
+  ],
+  "turbo_booster": [
+   "PreBuiltItemHelper.cs:grant",
+   "loot:toolTable"
+  ],
+  "screwdriver": [
+   "BarterOfferList.cs:vendor",
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:toolTable"
+  ],
+  "module_extractor": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "loot:toolTable"
+  ],
+  "wire_cutter": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:spawn",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:toolTable"
+  ],
+  "crowbar": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListWanted.cs:vendor",
+   "loot:toolTable"
+  ],
+  "welder": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "loot:toolTable"
+  ],
+  "sec_slip": [
+   "loot:"
+  ],
+  "wine_bottle": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "wine_berry": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "nutrifruit": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor"
+  ],
+  "machine_bay_ext": [
+   "StoreClientList.cs:vendor"
+  ],
+  "storage_bay_large": [
+   "StoreClientList.cs:vendor"
+  ],
+  "energy_credit_breeder": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "energy_credit_dis": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "current_converter": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "crypto_module_cmd": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientList.cs:vendor"
+  ],
+  "crypto_module_eng": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientList.cs:vendor"
+  ],
+  "crypto_module_med": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientList.cs:vendor"
+  ],
+  "crypto_module_sec": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientList.cs:vendor"
+  ],
+  "crypto_module_ser": [
+   "StoreClientList.cs:guarantee(锁箱保底)",
+   "StoreClientList.cs:vendor"
+  ],
+  "module_bay_expansion_kit": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "module_extractor_advanced": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "advanced_flux_agent": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "turbo_booster_adv": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "satchel": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListUnused.cs:vendor"
+  ],
+  "backpack_large": [
+   "StoreClientList.cs:vendor"
+  ],
+  "backpack_medium": [
+   "StoreClientList.cs:vendor"
+  ],
+  "backpack_small": [
+   "StoreClientList.cs:vendor"
+  ],
+  "storage_bay": [
+   "StoreClientList.cs:vendor"
+  ],
+  "machine_bay": [
+   "StoreClientList.cs:vendor"
+  ],
+  "recharger": [
+   "StoreClientList.cs:vendor"
+  ],
+  "smuggler_bay": [
+   "StoreClientList.cs:vendor"
+  ],
+  "fridge": [
+   "StoreClientList.cs:vendor"
+  ],
+  "desequencer": [
+   "StoreClientList.cs:vendor"
+  ],
+  "blank_keycard": [
+   "StoreClientList.cs:vendor"
+  ],
+  "powerblock": [
+   "StoreClientList.cs:vendor"
+  ],
+  "alarm_module_transmitter": [
+   "StoreClientList.cs:vendor"
+  ],
+  "furnace_module_blast": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "furnace_module_junk": [
+   "StoreClientList.cs:vendor"
+  ],
+  "storage_bay_expansion_kit": [
+   "StoreClientList.cs:vendor"
+  ],
+  "uv_filter": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "water_tank": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_nutrifruit": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_dream_cap": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_kotton_loom": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_nightmare_cap": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_fillerweed_production": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_hydroreed_filter": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "farm_module_smuggler": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "chem_module": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "plant_dna_disk": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "dna_manipulator_module_stabilizer": [
+   "StoreClientList.cs:vendor"
+  ],
+  "dna_manipulator_module_positive_filter": [
+   "StoreClientList.cs:vendor"
+  ],
+  "dna_manipulator_module_negative_filter": [
+   "StoreClientList.cs:vendor"
+  ],
+  "dna_manipulator_module_precision": [
+   "StoreClientList.cs:vendor"
+  ],
+  "wine_yeast_infinite": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "mouse_trap": [
+   "ScavHelper.cs:spawn",
+   "StoreClientList.cs:vendor"
+  ],
+  "dream_dust": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor",
+   "StoreClientListUnused.cs:vendor"
+  ],
+  "common_ore": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "processed_cheese": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor"
+  ],
+  "combat_knife": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "kitchen_cleaver": [
+   "NetworkUpgradeList.cs:spawn",
+   "NewGameData.cs:spawn",
+   "PlayerStore.cs:spawn",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "hatchet": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "water_ration_small": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:spawn",
+   "StoreClientList.cs:vendor"
+  ],
+  "birth_control_pill": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListRev.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "box_tampon": [
+   "BarterOfferList.cs:vendor",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor",
+   "StoreClientUniqueList.cs:spawn"
+  ],
+  "kotton_seed": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "bloomberry_seed": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "water_pitcher": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListSupplier.cs:vendor"
+  ],
+  "common_medical": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor"
+  ],
+  "common_chemical": [
+   "BarterOfferList.cs:vendor",
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "pure_white_injector": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSupplier.cs:vendor"
+  ],
+  "wine_yeast": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "cassette5": [
+   "StoreClientList.cs:vendor"
+  ],
+  "nutrifruit_seed": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "fillerweed_seed": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "50ml_cylinder": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "mini_bottle": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "blood_bag": [
+   "BarterOfferList.cs:vendor",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListBarter.cs:vendor"
+  ],
+  "small_pistol_ammo": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "heavy_pistol_ammo": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "neuroactive_perfume": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientUniqueList.cs:spawn"
+  ],
+  "black_injector": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "fanta_pill": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "stock": [
+   "StoreClientList.cs:vendor"
+  ],
+  "short_stock": [
+   "StoreClientList.cs:vendor"
+  ],
+  "gl": [
+   "StoreClientList.cs:vendor"
+  ],
+  "bipod": [
+   "StoreClientList.cs:vendor"
+  ],
+  "mag_10mm_smg": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "mag_10mm_smg_high": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "mag_10mm_smg_box": [
+   "StoreClientList.cs:vendor"
+  ],
+  "heavy_pistol_ammo_p": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientUniqueList.cs:vendor"
+  ],
+  "mag_10mm": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "mag_10mm_high": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "mag_10mm_ext": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "grip": [
+   "StoreClientList.cs:vendor"
+  ],
+  "laser2": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "silencer2": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "heavy_pistol_ammo_nl": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "rds": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "laser": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "compensator": [
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "silencer": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "stun_gun": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "tazer": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor",
+   "StoreClientUniqueList.cs:vendor"
+  ],
+  "water_filter_adv": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:spawn",
+   "StoreClientList.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "portable_water_purifier": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:spawn",
+   "StoreClientList.cs:vendor"
+  ],
+  "blue_blood_bag": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:vendor"
+  ],
+  "lottery_ticket": [
+   "StoreClientList.cs:vendor"
+  ],
+  "intake_hopper": [
+   "StoreClientList.cs:spawn"
+  ],
+  "outlet_hopper": [
+   "StoreClientList.cs:spawn"
+  ],
+  "random_node": [
+   "PreBuiltItemHelper.cs:spawn",
+   "StoreClientList.cs:spawn"
+  ],
+  "random_overclock_module": [
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn"
+  ],
+  "random_eco_module": [
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn"
+  ],
+  "random_fineness_module": [
+   "StoreClientList.cs:spawn",
+   "StoreClientListRev.cs:spawn"
+  ],
+  "livestock_feed_dispenser": [
+   "AnimalCage.cs:spawn",
+   "StoreClientList.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "auto_butcher": [
+   "StoreClientList.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "black_lamp": [
+   "StoreClientList.cs:spawn"
+  ],
+  "portable_water_purifier_used": [
+   "StoreClientList.cs:spawn"
+  ],
+  "water_ration": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientList.cs:spawn",
+   "StoreClientListSpec.cs:vendor",
+   "StoreClientListWater.cs:spawn"
+  ],
+  "large_bottled_water": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientList.cs:grant",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListTier.cs:vendor"
+  ],
+  "deed": [
+   "StoreClientList.cs:grant"
+  ],
+  "business_permit": [
+   "StoreClientList.cs:grant"
+  ],
+  "labeler_blue": [
+   "NetworkUpgradeList.cs:spawn",
+   "NewGameData.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "marking_pen": [
+   "NetworkUpgradeList.cs:spawn",
+   "NewGameData.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "ras": [
+   "MachineRAS.cs:spawn",
+   "NetworkUpgradeList.cs:spawn",
+   "NewGameData.cs:spawn"
+  ],
+  "ras_water_tank": [
+   "MachineRAS.cs:spawn",
+   "NetworkUpgradeList.cs:spawn",
+   "NewGameData.cs:spawn"
+  ],
+  "industrial_fish_feed": [
+   "IndustrialFishFeedHelper.cs:spawn",
+   "NetworkUpgradeList.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "card_brewer": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "card_chem": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "card_pharma": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "card_mining": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "hydroponic_guide": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "nutrient_tablet": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "sign_firearm": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "sign_firearm_heavy": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "mag_22": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "mag_22_high": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "laser_toy": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "silencer_makeshift": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "internal_springs_improved": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_pistol": [
+   "NetworkUpgradeList.cs:grant",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "chemistry_guide": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "chem_scanner": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "blender": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "heating_plate": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "chem_finisher": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "1ml_dropper": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "5ml_dropper": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "25ml_cylinder": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "100ml_cylinder": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "bottled_water": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListMinor.cs:vendor",
+   "StoreClientListTier.cs:vendor"
+  ],
+  "coffee_bean": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListCartel.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "water_guide": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "sign_water": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "magnifier": [
+   "NetworkUpgradeList.cs:grant",
+   "StartingPerkContent.cs:grant"
+  ],
+  "wine_book": [
+   "NetworkUpgradeList.cs:grant"
+  ],
+  "gene_scanner": [
+   "NetworkUpgradeList.cs:grant",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "debris_pile1": [
+   "DebrisHelper.cs:grant"
+  ],
+  "debris_pile2": [
+   "DebrisHelper.cs:grant"
+  ],
+  "debris_pile3": [
+   "DebrisHelper.cs:grant"
+  ],
+  "sign_expedition": [
+   "ExpeditionData.cs:spawn"
+  ],
+  "slip": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "water_test_container": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "water_test_strip": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "beerCase": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "water_tablet_container": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "water_tablet": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "nutrient_tablet_container": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "nutrifruit_seed_packet": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "energy_credit": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "energy_credit_ext": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "metal_ingot": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "skincare_cream": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "bottled_water_premium": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientUniqueList.cs:spawn"
+  ],
+  "pheromone_perfume": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "scav_token": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientUniqueList.cs:spawn"
+  ],
+  "pink_alt_injector": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "raw_meat": [
+   "HusbandryHelper.cs:spawn",
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "restricted_chemical": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "unlicensed_phagimycin_pill": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "zyanide_pill": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "small_pistol_ammo_p": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "small_pistol_ammo_nl": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListGun.cs:vendor"
+  ],
+  "wine_yeast_red": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "phagimycin_pill": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "glock_receiver": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListUnused.cs:vendor"
+  ],
+  "stun_baton": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListUnused.cs:vendor",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "flashbang_grenade": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientUniqueList.cs:vendor"
+  ],
+  "flashlight": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "smoke_grenade": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "aquascan": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "hydroreed_seed": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "packet_red_cigarette": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "plasma_fuel": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "ribwich": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "hand": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "food_stamp": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "wine_rack": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "water_purifier": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "hydroponic": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "plant_dna_manipulator": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "printer": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "moisture_farm": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "furnace": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "security_alarm": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "mirage_projector": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "deal_maker": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "evaporator": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "handnote": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "dream_cap": [
+   "PreBuiltItemHelper.cs:grant",
+   "StoreClientListCartel.cs:vendor"
+  ],
+  "kotton_fiber": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "fillerweed": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "handmade_pistol": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "heavy_handmade_pistol": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "smg": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "shotgun": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "revolver": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "node_medium": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "rat": [
+   "PreBuiltItemHelper.cs:grant"
+  ],
+  "makeshift_reactor": [
+   "StartingPerkContent.cs:grant"
+  ],
+  "toolbox": [
+   "StartingPerkContent.cs:grant"
+  ],
+  "aug_id_guide": [
+   "StartingPerkContent.cs:grant"
+  ],
+  "stamp_guide": [
+   "StartingPerkContent.cs:grant"
+  ],
+  "animal_cage": [
+   "AnimalCage.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "tilapia_skin_graft": [
+   "AquacultureHelper.cs:spawn"
+  ],
+  "fish_scrap": [
+   "AquacultureItems.cs:spawn"
+  ],
+  "c4": [
+   "BarterOfferList.cs:vendor"
+  ],
+  "expedition_log": [
+   "Expedition.cs:spawn"
+  ],
+  "expedition_box": [
+   "ExpeditionHelper.cs:spawn"
+  ],
+  "gutterflow_pellet": [
+   "GutterflowPelletHelper.cs:spawn",
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "small_raw_meat": [
+   "HusbandryHelper.cs:spawn",
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "morsel": [
+   "HusbandryHelper.cs:spawn"
+  ],
+  "small_morsel": [
+   "HusbandryHelper.cs:spawn"
+  ],
+  "gamblers_coin": [
+   "LotteryHelper.cs:spawn"
+  ],
+  "water_jug": [
+   "MachineMoistureFarm.cs:spawn",
+   "StoreClientListTier.cs:vendor"
+  ],
+  "skinning_knife": [
+   "PlayerStore.cs:spawn"
+  ],
+  "nightmare_cap": [
+   "StoreClientListCartel.cs:vendor"
+  ],
+  "small_bottled_water": [
+   "StoreClientListEvent.cs:vendor",
+   "StoreClientListTier.cs:vendor"
+  ],
+  "mag_22_ext": [
+   "StoreClientListGun.cs:vendor"
+  ],
+  "rds_makeshift": [
+   "StoreClientListGun.cs:vendor"
+  ],
+  "pistol_switch": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "internal_springs": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "trigger_group": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "match_barrel": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "ammo_display": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "grip_gel": [
+   "StoreClientListGun.cs:vendor",
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "nuclear_waste": [
+   "StoreClientListMinor.cs:vendor"
+  ],
+  "printer_chip_makeshift_rds": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_makeshift_toy_laser": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_small_bottle": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_internal_springs_improved": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_box_cutter": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_kitchen_knife": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_rds": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_laser_sight": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_silencer": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_hatchet": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_kitchen_cleaver": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_pistol_double": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_module_metal": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_module_melee_batch": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_module_cnc": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_combat_knife": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_combat_machete": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_handmade_pistol_frame": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_heavy_handmade_pistol_frame": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_gun_part": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_22_mag": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_22_mag_ext": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_22_mag_high": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_10_mag": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_10_mag_ext": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "printer_chip_10_mag_high": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "dream_cap_seed": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "plant_analyser": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "vacuum_robot": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "wine_superyeast": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "storage_bay_chem": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "evaporator_module_solvent_recovery": [
+   "StoreClientListSpec.cs:vendor"
+  ],
+  "serum_red": [
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "serum_green": [
+   "StoreClientListSpec.cs:spawn"
+  ],
+  "armor_lining": [
+   "StoreClientListSurplus.cs:vendor"
+  ],
+  "fat_meat": [
+   "StoreClientListWanted.cs:vendor"
+  ],
+  "vending_fountain": [
+   "VendingFountainHelper.cs:spawn"
+  ],
+  "vending_fountain_core": [
+   "VendingFountainHelper.cs:spawn"
+  ],
+  "vending_machine": [
+   "VendingMachineHelper.cs:spawn"
+  ],
+  "vending_machine_core": [
+   "VendingMachineHelper.cs:spawn"
+  ],
+  "tilapia": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "gutter_tilapia": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "graft_tilapia": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "eel": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "electric_eel": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "sturgeon": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "tilapia_roe": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "gutter_tilapia_roe": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "graft_tilapia_roe": [
+   "StoreClientListSpec.cs:vendor(退休水产商)"
+  ],
+  "crypto_module_sup": [
+   "StoreClientList.cs:guarantee(锁箱保底)"
+  ]
+ }
+}

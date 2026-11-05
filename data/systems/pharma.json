@@ -1,0 +1,983 @@
+{
+ "system": "制药与化学合成",
+ "version": "0.46D",
+ "source_files": [
+  "ChemicalHelper.cs",
+  "ChemicalCompositionHelper.cs",
+  "ChemicalProductHelper.cs",
+  "ChemicalFeedbackHelper.cs",
+  "PreBuildChemHelper.cs",
+  "Liquid.cs",
+  "MachineBlender.cs",
+  "MachineHeatingPlate.cs",
+  "MachineChemFinisher.cs",
+  "MachineEvaporator.cs",
+  "ChemFinisherRecipe.cs",
+  "ChemFinisherUIManager.cs",
+  "ChemScannerUIManager.cs",
+  "MedsItemDirectory.cs",
+  "MedicalHelper.cs",
+  "ConsumableHelper.cs",
+  "IngesterHelper.cs",
+  "HealthData.cs",
+  "ItemConditionList.cs",
+  "FurnitureItemDirectory.cs",
+  "FoodItemDirectory.cs",
+  "HydroponicDirectory.cs",
+  "MaterialDirectory.cs",
+  "ModuleDirectory.cs",
+  "ModuleHelper.cs",
+  "MachineryHelper.cs",
+  "MachineFridge.cs",
+  "SoldItem.cs",
+  "SecData.cs"
+ ],
+ "machines": [
+  {
+   "id": "blender",
+   "name_zh": "搅拌机",
+   "desc_zh": "把可混合的固体原料打成浆，把其全部化学成分注入下方液体容器",
+   "value": 200,
+   "power": "无耗电（无电池槽）",
+   "recipes": [
+    {
+     "name": "搅拌打浆（通用）",
+     "inputs": [
+      {
+       "id": "tag:BLENDABLE_TAG",
+       "name_zh": "任意可混合物品",
+       "amount": 1,
+       "note": "满足 的物品：梦帽菇(dream_cap)、梦魇帽菇(nightmare_cap)、咖啡豆(coffee_bean)、营养果(nutrifruit)、各种成品药/毒品（梦尘、梦魇尘、咖啡因药片、山奈德片、避孕药、芬太片、奥克莫吸注射器）。容器需为 且未满"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "下方液体容器",
+       "amount": 1,
+       "note": "获得该物品的全部液态成分（每种成分按 1-损失率 缩放），分10次注入，溢出部分被 RemoveExcessLiquid 丢弃；原物品销毁"
+      }
+     ],
+     "time": "即时（点击启动按钮）",
+     "conditions": "容器槽有液体容器且未满；输入格物品带",
+     "notes": "内容物损失率 ：0个化学模组=35%、1个=20%、2个=10%、3个=5%、4个及以上=0%。模组槽为4×4，只接受 （化学设备模组 chem_module，单价250），装入后需模组提取器才能拆下"
+    },
+    {
+     "name": "原料成分表（各1单位，来自 ChemicalCompositionHelper）",
+     "inputs": [
+      {
+       "id": "dream_cap",
+       "name_zh": "梦帽菇",
+       "amount": 1,
+       "note": "32.5g/株 → 梦帽菇糊27.333ml+水4ml+蛋白质2ml+矿物质0.5ml+微生物2ml+物理污染物2ml（总约38.3ml），热量97kcal；另外1ml梦帽菇糊=0.04欣快值"
+      },
+      {
+       "id": "nightmare_cap",
+       "name_zh": "梦魇帽菇",
+       "amount": 1,
+       "note": "32.5g/株 → 梦魇帽菇糊18ml+水8ml+蛋白质2ml+矿物质0.5ml+微生物5ml+物理污染物2ml（总约35.5ml）"
+      },
+      {
+       "id": "coffee_bean",
+       "name_zh": "咖啡豆",
+       "amount": 1,
+       "note": "80g/把 → 水3.2ml+脂肪8ml+咖啡豆糊25.84ml+咖啡因4.4ml+物理污染物8ml+蛋白质8ml（总约57.4ml）"
+      },
+      {
+       "id": "nutrifruit",
+       "name_zh": "营养果",
+       "amount": 1,
+       "note": "250g/个（土豆成分 ）→ 水196.375ml+淀粉43.325ml+蛋白质5ml+糖1.675ml+矿物质1.675ml+有机废物0.825ml+微生物0.825ml+物理污染物0.3ml；淀粉是掺假毒品常用填充剂"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "见输入栏",
+       "amount": 0,
+       "note": ""
+      }
+     ],
+     "time": "即时",
+     "conditions": "",
+     "notes": "数值以物品出厂规格为准；游戏内重量可能有变动（如 PreBuiltItemHelper 中有 20.5g/75g 梦帽菇变体）"
+    }
+   ]
+  },
+  {
+   "id": "heating_plate",
+   "name_zh": "加热板",
+   "desc_zh": "对放置其上的液体容器加热，驱动各类温度化学反应（萃取、合成、降解）",
+   "value": 250,
+   "power": "无耗电（无电池槽）",
+   "recipes": [
+    {
+     "name": "梦帽菇糊 → 梦帽菇萃取液（酒精萃取）",
+     "inputs": [
+      {
+       "id": "liquid:dream_cap_mush",
+       "name_zh": "梦帽菇糊",
+       "amount": 1,
+       "note": "每秒处理 max(2000µL, 糊量10%)（不超过糊量）"
+      },
+      {
+       "id": "liquid:alcohol",
+       "name_zh": "酒精",
+       "amount": 1,
+       "note": "酒精/糊 ≥ 5 时效率满值"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:dream_cap_extract",
+       "name_zh": "梦帽菇萃取液",
+       "amount": 1,
+       "note": "产出 = 处理量 × 效率，效率 = 0.5 × min(1, (酒精/糊)/5)"
+      },
+      {
+       "id": "liquid:plant_matter",
+       "name_zh": "植物质",
+       "amount": 1,
+       "note": "产出 = 处理量 - 萃取液（废料）"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "容器温度 ≥ 40°C 且同时存在梦帽菇糊与酒精",
+     "notes": "注意高温降解：萃取液在 ≥60°C 开始被破坏（60-70°C 每秒破坏 0.1×((T-60)/10)，70-100°C 每秒 0.1+0.8×((T-70)/30)，≥100°C 每秒最高达1.0 即全部摧毁）；梦帽菇糊在 ≥50°C 开始降解为植物质（50-70°C 每秒 0.1×((T-50)/10)，70°C 以上加速）。手册建议40-60°C"
+    },
+    {
+     "name": "梦魇帽菇糊 → 梦魇帽菇萃取液（酒精萃取）",
+     "inputs": [
+      {
+       "id": "liquid:nightmare_cap_mush",
+       "name_zh": "梦魇帽菇糊",
+       "amount": 1,
+       "note": "每秒处理 max(2000µL, 糊量10%)"
+      },
+      {
+       "id": "liquid:alcohol",
+       "name_zh": "酒精",
+       "amount": 1,
+       "note": "酒精/糊 ≥ 5 时效率满值"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:nightmare_extract",
+       "name_zh": "梦魇帽菇萃取液",
+       "amount": 1,
+       "note": "产出 = 处理量 × 0.5 × min(1, (酒精/糊)/5)"
+      },
+      {
+       "id": "liquid:plant_matter",
+       "name_zh": "植物质",
+       "amount": 1,
+       "note": "处理量 - 萃取液"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "容器温度 ≥ 40°C 且同时存在梦魇帽菇糊与酒精",
+     "notes": "降解更早：萃取液 ≥50°C 即开始被破坏（50-70°C 每秒 0.1×((T-50)/2)，70-100°C 每秒 0.1+0.8×((T-70)/30)，≥100°C 最高1.0）；梦魇帽菇糊 ≥50°C 降解为植物质"
+    },
+    {
+     "name": "咖啡豆糊 → 咖啡因（酒精萃取，效率高）",
+     "inputs": [
+      {
+       "id": "liquid:coffee_mush",
+       "name_zh": "咖啡豆糊",
+       "amount": 1,
+       "note": "每秒处理 max(1µL, round(糊量×0.15))"
+      },
+      {
+       "id": "liquid:alcohol",
+       "name_zh": "酒精",
+       "amount": 1,
+       "note": "酒精/处理量 ≥ 5 时效率满值 0.75"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:caffeine",
+       "name_zh": "咖啡因",
+       "amount": 1,
+       "note": "产出 = 处理量 × 0.75 × min(1, (酒精/处理量)/5)"
+      },
+      {
+       "id": "liquid:plant_matter",
+       "name_zh": "植物质",
+       "amount": 1,
+       "note": "处理量 - 咖啡因"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "容器温度 ≥ 50°C 且同时存在咖啡豆糊与酒精",
+     "notes": "咖啡因耐热，不降解"
+    },
+    {
+     "name": "咖啡豆糊 → 咖啡因（水萃取，效率低）",
+     "inputs": [
+      {
+       "id": "liquid:coffee_mush",
+       "name_zh": "咖啡豆糊",
+       "amount": 1,
+       "note": "每秒处理 max(1µL, round(糊量×0.05))"
+      },
+      {
+       "id": "liquid:water",
+       "name_zh": "水",
+       "amount": 1,
+       "note": "水/处理量 ≥ 5 时效率满值 0.125"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:caffeine",
+       "name_zh": "咖啡因",
+       "amount": 1,
+       "note": "产出 = 处理量 × 0.125 × min(1, (水/处理量)/5)"
+      },
+      {
+       "id": "liquid:plant_matter",
+       "name_zh": "植物质",
+       "amount": 1,
+       "note": "处理量 - 咖啡因"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "容器温度 ≥ 80°C 且同时存在咖啡豆糊与水",
+     "notes": "水在100°C沸腾，注意水位"
+    },
+    {
+     "name": "Nomore（奥克莫吸）合成",
+     "inputs": [
+      {
+       "id": "liquid:dream_cap_extract",
+       "name_zh": "梦帽菇萃取液",
+       "amount": 1,
+       "note": "每秒反应量 = min(萃取液, 还原剂) × 速率 × 脂合剂系数，下限 min(萃取液,还原剂,100µL)"
+      },
+      {
+       "id": "liquid:reducing_agent",
+       "name_zh": "还原剂",
+       "amount": 1,
+       "note": "与萃取液1:1消耗"
+      },
+      {
+       "id": "liquid:lipobond_agent",
+       "name_zh": "脂合剂",
+       "amount": 1,
+       "note": "不消耗，系数 = min(1, 脂合剂×4/萃取液)，需 >0"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:nomore",
+       "name_zh": "奥克莫吸（Nomore）",
+       "amount": 1,
+       "note": "产出 = 反应量 × 0.6"
+      },
+      {
+       "id": "liquid:debris",
+       "name_zh": "不溶性碎屑",
+       "amount": 1,
+       "note": "产出 = 反应量 × 0.4"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "温度 45-55°C（ / / ）；三种原料均 >0；酒精×10 ≤ 容器总体积（即酒精浓度 <10%）",
+     "notes": "速率：T≥50°C 为 0.1/秒，45≤T<50°C 为 0.05/秒"
+    },
+    {
+     "name": "芬太（Phanta）合成（N-羟甲基碱路线）",
+     "inputs": [
+      {
+       "id": "liquid:methylol",
+       "name_zh": "N-羟甲基碱",
+       "amount": 1,
+       "note": "每秒反应量 = min(甲基ol-稳定剂, 还原剂) × 速率，下限1000µL；须 甲基ol > 稳定剂"
+      },
+      {
+       "id": "liquid:reducing_agent",
+       "name_zh": "还原剂",
+       "amount": 1,
+       "note": "消耗 = 反应量 × 0.75"
+      },
+      {
+       "id": "liquid:stabilizing_agent",
+       "name_zh": "稳定剂",
+       "amount": 1,
+       "note": "前体瓶自带，会抑制反应，需先去除（加酸/碱沉淀或过滤）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "liquid:fanta",
+       "name_zh": "芬太",
+       "amount": 1,
+       "note": "产出 = 反应量 × 0.1"
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "温度 110-130°C（需要≥1个化学模组解锁160°C上限；110≤T<120 速率0.025/秒，120≤T<130 速率0.15/秒）",
+     "notes": "芬太在 ≥130°C 每秒降解2%（×0.98），务必控温120-130°C；原料来源：管制化学用品拆包出的N-羟甲基碱瓶（125ml甲基ol+125ml稳定剂）+ 还原剂瓶（250ml）"
+    },
+    {
+     "name": "温度副反应（自动发生）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "任意非空液体容器",
+       "amount": 1,
+       "note": "以下反应对任何温度达标的容器每秒结算"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "见备注",
+       "amount": 0,
+       "note": ""
+      }
+     ],
+     "time": "实时（每秒结算1次）",
+     "conditions": "",
+     "notes": "①沸腾：水(沸点100°C)/酒精(78.37°C)/脂合剂(55°C)超沸点每秒蒸发2%（最少100µL）；②微生物：≥70°C 每秒×0.8，≥100°C 瞬间清零；③有机废物：≥80°C 每秒破坏15%（≥100°C 全部），33%转化为物理污染物；④酸性/碱性液体本身无热反应。详见机制详解"
+    }
+   ]
+  },
+  {
+   "id": "chem_finisher",
+   "name_zh": "化学制剂成型机",
+   "desc_zh": "把容器中干燥的化学液体按配方定量成型为药片/药瓶/注射器成品",
+   "value": 300,
+   "power": "无耗电（无电池槽）",
+   "recipes": [
+    {
+     "name": "梦尘（Dream Dust）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 2000,
+       "note": "requiredVolume=2000µL=2ml，需含梦帽菇萃取液；必须干燥（水+酒精+脂合剂≤100µL）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "dream_dust",
+       "name_zh": "一小瓶“梦尘”",
+       "amount": 1,
+       "note": "有效成分=梦帽菇萃取液(dream_cap_extract)；移入量中损失loss%替换为物理污染物"
+      }
+     ],
+     "time": "即时（点击输出按钮）",
+     "conditions": "容器总量≥2000µL 且 =false；所有配方 isRequireDry=true",
+     "notes": "引入污染物比例 ：0模组=12%、1=6%、2=3%、3=1%、4及以上=0%"
+    },
+    {
+     "name": "梦魇尘（Nightmare Dust）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 4000,
+       "note": "4ml，需含梦魇帽菇萃取液"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "nightmare_dust",
+       "name_zh": "一小瓶“梦魇尘”",
+       "amount": 1,
+       "note": "有效成分=nightmare_extract"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥4000µL",
+     "notes": "同上损失表"
+    },
+    {
+     "name": "咖啡因药片",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 5000,
+       "note": "5ml，需含咖啡因"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "caffeine_pill",
+       "name_zh": "咖啡因药片",
+       "amount": 1,
+       "note": "有效成分=caffeine"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥5000µL",
+     "notes": "同上损失表"
+    },
+    {
+     "name": "山奈德片（毒药）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 600,
+       "note": "0.6ml，需含山奈德(zyanide)"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "zyanide_pill",
+       "name_zh": "山奈德片",
+       "amount": 1,
+       "note": "有效成分=zyanide"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥600µL",
+     "notes": "注意：600µL×毒性系数1.66=996 < 致命阈值1000，玩家自制的山奈德片最高只能达到“有毒”而非“致命”（见 unresolved）"
+    },
+    {
+     "name": "避孕药",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 100,
+       "note": "0.1ml，需含避孕激素(contraceptive)"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "birth_control_pill",
+       "name_zh": "避孕药",
+       "amount": 1,
+       "note": "有效成分=contraceptive；避孕判定阈值仅需≥50µL激素"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥100µL",
+     "notes": "同上损失表"
+    },
+    {
+     "name": "芬太片（毒品）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 500,
+       "note": "0.5ml，需含芬太(fanta)"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "fanta_pill",
+       "name_zh": "芬太片",
+       "amount": 1,
+       "note": "有效成分=fanta，欣快系数10、毒性系数2"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥500µL",
+     "notes": "纯度≥75%即达“有毒”（500×p×2≥750），100%纯度恰好达“致命”边缘（996→实验室纯级时990为有毒）"
+    },
+    {
+     "name": "奥克莫吸注射器（Nomore Injector，原型药）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "液体容器（干燥）",
+       "amount": 4000,
+       "note": "=4ml，需含 nomore"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "pink_alt_injector",
+       "name_zh": "奥克莫吸注射器",
+       "amount": 1,
+       "note": "有效成分=nomore；商店购得的成品纯度随机45-60%"
+      }
+     ],
+     "time": "即时",
+     "conditions": "干燥且总量≥4000µL",
+     "notes": "意图：服用可压制毒瘾（见机制）"
+    }
+   ]
+  },
+  {
+   "id": "evaporator",
+   "name_zh": "蒸发器",
+   "desc_zh": "夜间运作，蒸发容器中的挥发性液体（水/酒精/脂合剂），用于干燥与浓缩；模组可回收馏分",
+   "value": 300,
+   "power": "每周期（夜）耗电6（电池槽，power_source_item）",
+   "recipes": [
+    {
+     "name": "蒸发干燥（通用）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "含挥发性液体的容器",
+       "amount": 1,
+       "note": "挥发性液体=水(100°C)/酒精(78.37°C)/脂合剂(55°C)"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "每夜扣除6点能量"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "同容器（干燥/浓缩后）",
+       "amount": 1,
+       "note": "按各挥发液体占比移除 300ml×(1+性能加成%)（不足则全蒸发）"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "馏出液容器（可选）",
+       "amount": 1,
+       "note": "每种被蒸发液体的 蒸发量×质量加成%(0-100钳制) 回收到馏出槽容器"
+      }
+     ],
+     "time": "1游戏日（每晚结算1次，onCycleEndSlotItemFunc）",
+     "conditions": "电池槽有电且容器内有挥发性液体",
+     "notes": "基础蒸发量300000µL=300ml/夜；模组槽接受 与 ；蒸发器溶剂回收模组(evaporator_module_solvent_recovery，275)效果=仅回收酒精（其他挥发物回收量清零），性能+0/效率-25/质量+50"
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "液体单位：内部一切体积以µL计，1000µL=1ml（如 2000µL=2ml）。每种化学液体是 Liquid 对象，存储在物品/容器的 <ID> 标签里，共36种（见 ）。",
+  "温度系统：液体容器初始化温度24°C，环境温度26°C。环境冷却（每秒tick）：newTemp = 26 + (T-26)×exp(-k×125)，k = 0.05/(sqrt(体积µL)+11)——体积越大降温越慢。空容器温度重置为24°C。混合液体时温度按体积加权平均（混合温度）。夜间以360倍速模拟（夜间化学模拟：每晚对全物品跑360次每秒函数）。",
+  "加热板加热公式（HeatLiquidOnStove）：每秒 ΔT = (目标温度-当前温度)×(加热速率/350)+1，不超过目标温度。加热速率：低档10、高档30；装3个化学模组×4、4个及以上×16（tooltip：<3模组=慢、3=快、4+=极快）。目标温度：0模组锁定99°C、1模组锁定160°C、≥2模组可用 +/- 按钮在26-160°C间以5°C步进调节。",
+  "（正在被加热/制冷标记）：本意是阻止环境冷却抵消加热；冰箱冷藏/冷冻区会给容器打上该标记；加热板存在疑似缺陷：加热中的容器仍会同时受缓慢环境冷却，净效果仍为升温。",
+  "“干燥”判定（WaterHelper.湿润判定）：水+酒精+脂合剂（三种挥发性液体）总量 >100µL 即为“湿”。化学制剂成型机全部配方要求干燥（mech_chem_no_wet），因此成型前需用蒸发器过夜去除水和酒精。",
+  "沸腾：挥发性液体超过沸点（水100°C、酒精78.37°C、脂合剂55°C）时每秒蒸发该液体2%（至少100µL）。这既是干燥手段也是酒精损耗来源。",
+  "纯度分级（Product）：纯度% = 有效成分体积/总体积×100。分级与售价修正（ItemCondition.modValue，按标签显示，被揭穿后按真实等级）：实验室纯级 lab_pure ≥99%（+135%）、药用级 pharma_grade ≥90%（+85%）、近药用级 near_pharma ≥80%（+40%）、街头标准 street_standard ≥60%（0%）、掺兑级 cut_product ≥45%（-45%）、垃圾级 junk_grade ≥30%（-75%）、淀粉级 starch_grade <30%（-95%）。",
+  "成型封装纯度：化学制剂成型机从容器按比例抽取 requiredVolume，再引入 loss% 物理污染物（0模组12%/1模组6%/2模组3%/3模组1%/4+模组0%），故成品纯度≈容器内有效成分占比×(1-loss%)。实验室纯级产品解锁成就 。",
+  "毒性/欣快判定（ChemicalFeedbackHelper）：致死值 = Σ(体积µL×lethality)：≥1000致命（致死剂量倍数=值/1000，即致死剂量倍数）、≥750有毒。欣快值 = Σ(体积µL×euphoria)：≥750微弱(1)、≥1000轻微(2)、≥1600强烈(3)、≥2200极强(4)、<750无效果。避孕：contraceptive≥50µL 有效；戒瘾：synaprest≥1000µL 有效。毒性系数：山奈德1.66、梦魇萃取液4.0、梦魇菇糊0.6、芬太2.0、酸0.1、碱0.1。欣快系数：梦帽菇糊0.04、梦帽萃取液1.0、梦魇萃取液0.25、梦魇菇糊0.1、芬太10.0。",
+  "成品药默认成分：商店/掉落获得的成品药纯度在60-80%之间随机（街头标准级），其余为物理污染物/化学污染物/淀粉随机分配。",
+  "玩家服用（Narcotic）：基础压制天数=毒品等级（梦尘1、芬太片3、奥克西莫注射器1），按纯度修正：≥99%+3、≥90%+2、≥80%+1、≥60%+0、≥45%-1、<45%-2；纯度<30%完全无效。奥克莫吸注射器为无瘾止痛替代品（ConsumeNarcoticRelief，cover=1+纯度加成）。赛纳普斯注射器随机移除一种成瘾；免疫宁注射器重置哨兵综合征计时。",
+  "售后反馈（Reaction）：出售带 的物品后按意图结算——毒品无快感/太弱→退货或声誉-1~-2；有毒→声誉-5并索赔；致命→声誉-15；避孕/戒瘾/毒药无效→负面反馈；标签纯度与实际不符（差1级声誉-1，差2级以上声誉-2且可能上门对质；实际高于标签则该阵营声誉+3）。黑市/革命军/违禁品买家不会举报。",
+  "治安追踪（SoldChem）：玩家售出的化学品反馈等级>0时计入治安系统：等级≤3按售价计入诈骗记录，>3按2倍售价计入危害记录，影响罚款。",
+  "买家收购标准（WillAcceptNarcotic）：淀粉级/垃圾级毒品无人收；高等级买家（grade≥2）拒收掺兑级；（grade≥3）拒收街头标准级。",
+  "前体来源（PreBuildChemHelper + MaterialDirectory）：化学用品（普通）common_chemical（50，拆包得2×小瓶酒精+1×脂合剂瓶+1×酸瓶+1×碱瓶）；化学用品（管制）restricted_chemical（100，违禁2级，拆包得2×芬太前体瓶+1×还原剂瓶）。各瓶：酸瓶=酸250ml、碱瓶=碱250ml、还原剂瓶=还原剂250ml、脂合剂瓶=脂合剂150ml、芬太前体瓶=甲基ol125ml+稳定剂125ml、小瓶酒精=酒精175ml+水75ml；拆包时每瓶随机掺入2%-8%的四种杂质（化学污染物/物理污染物/微生物/重金属）。若未解锁 网络升级，拆包前会弹窗警告（拆成不可交易品）。",
+  "水处理类反应（ 每秒结算，无温度要求除非注明）：①氯消毒：有效氯上限15000µL，效力×5.1，优先清化学污染物（上限为总体积0.7%），余量杀微生物，剩余氯每秒自降解20%（最少1000µL）；②酸碱中和：每秒中和 min(酸,碱) 的10%（最少1000µL）；③稳定剂沉淀：每秒以稳定剂中和 min(酸+碱,稳定剂) 的20%（最少1000µL）转为碎屑，并额外移除酸、碱各5%（最少100µL）——这是去除芬太前体中稳定剂的方法之一；④蛋白质变性：多余的酸或碱每秒使等量上限的蛋白质变性20%转为碎屑并消耗相应酸/碱；⑤脂合剂沉油：每秒沉降 min(油脂, 脂合剂×8) 的20%（最少1000µL）转为碎屑，消耗沉降量/8的脂合剂；⑥有机废物矿化：每(酸+碱)1µL每秒矿化40µL有机废物，产出=处理量/10的矿物质；⑦酸碱灭菌：每(酸+碱)1µL每秒杀20µL微生物；⑧酒精灭菌：酒精≥总体积40%时每秒1:1消灭微生物。",
+  "降解反应（每秒）：梦帽菇萃取液≥60°C、梦魇帽菇萃取液≥50°C、两种菇糊≥50°C 开始被破坏（菇糊转为植物质，萃取液直接消失），速率见加热板配方备注；芬太≥130°C每秒×0.98。",
+  "微生物热死：≥70°C每秒存活×0.8；≥100°C瞬间全部死亡。",
+  "有机废物受热：≥80°C每秒破坏15%（≥100°C全部破坏），其中33%转为物理污染物。",
+  "冰箱（MachineFridge）联动：冷藏区目标3°C（0.5°C/秒）、冷冻区目标-18°C（1°C/秒），用于保存热敏化学品（如梦帽萃取液），并给容器打 免受环境冷却干扰。",
+  "成分光谱仪（chem_scanner，400）：对液体容器// 使用可查看全部成分占比、总体积、毒性（有毒/致命×N）、欣快等级、避孕/戒瘾效果；对化学品还能对比“标签纯度vs实测纯度”，可将标签改成实测值（MatchChemLabel），或对质问卖家（Confront）。",
+  "可溶成品（isSoluble）：避孕药、山奈德片、芬太片、梦尘、梦魇尘、咖啡因药片、奥克莫吸注射器可“溶解”（DissolveInto）进液体容器——容器满时先移除等量液体再溶入，物品销毁。可用于给饮料下药。",
+  "注射/代谢（IngesterHelper）：动物体内液体（牲畜类固醇/免疫血清，每日代谢5µL）通过 Inject 注入；与制药线的成品药无关，但共享液体体系。",
+  "化学设备模组（chem_module，250）：搅拌机/加热板/化学制剂成型机共用，4×4槽最多16个，但效果表只到4个；装入后被锁死，需模组提取器拆除。"
+ ],
+ "items": [
+  {
+   "id": "blender",
+   "name_zh": "搅拌机",
+   "desc_zh": "一台看起来很不结实的搅拌机。",
+   "value": 200,
+   "note": "化学机器：打浆提取成分"
+  },
+  {
+   "id": "heating_plate",
+   "name_zh": "加热板",
+   "desc_zh": "一台看起来破旧、功率不足且控温不准的加热板。",
+   "value": 250,
+   "note": "化学机器：温度反应"
+  },
+  {
+   "id": "chem_finisher",
+   "name_zh": "化学制剂成型机",
+   "desc_zh": "将化学品加工成药片，或灌装进药剂瓶等容器。",
+   "value": 300,
+   "note": "化学机器：成型封装"
+  },
+  {
+   "id": "evaporator",
+   "name_zh": "蒸发器",
+   "desc_zh": "一台运作缓慢的机器，每晚会利用低温和干燥空气，使溶液中的液体蒸发。",
+   "value": 300,
+   "note": "化学机器：夜间干燥/浓缩"
+  },
+  {
+   "id": "chem_module",
+   "name_zh": "化学设备模组",
+   "desc_zh": "一种可改进搅拌机、加热板和化学制剂成型机的特殊模组。安装后需要使用模组提取器才能拆除。",
+   "value": 250,
+   "note": "三台化学机器共用升级件"
+  },
+  {
+   "id": "evaporator_module_solvent_recovery",
+   "name_zh": "蒸发器溶剂回收模组",
+   "desc_zh": "仅回收溶剂（性能+0/效率-25/质量+50）：蒸发器只把酒精回收到馏出槽。",
+   "value": 275,
+   "note": "蒸发器专用"
+  },
+  {
+   "id": "chem_scanner",
+   "name_zh": "成分光谱仪",
+   "desc_zh": "用于分析物质化学成分的设备。",
+   "value": 400,
+   "note": "检测成分/纯度/毒性/欣快"
+  },
+  {
+   "id": "common_chemical",
+   "name_zh": "化学用品（普通）",
+   "desc_zh": "拆开后可获得一批用于基础化学合成的实用物品。",
+   "value": 50,
+   "note": "拆包：2×小瓶酒精+1×脂合剂瓶+1×酸瓶+1×碱瓶"
+  },
+  {
+   "id": "restricted_chemical",
+   "name_zh": "化学用品（管制）",
+   "desc_zh": "拆开后可获得一批用于高级化学合成的实用物品。",
+   "value": 100,
+   "note": "违禁2级；拆包：2×芬太前体瓶+1×还原剂瓶"
+  },
+  {
+   "id": "med_bottle_red",
+   "name_zh": "酸性溶液瓶",
+   "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和碱性物质。",
+   "value": 3,
+   "note": "250ml容器；拆包后含酸250ml+2-8%杂质"
+  },
+  {
+   "id": "med_bottle_blue",
+   "name_zh": "碱性溶液瓶",
+   "desc_zh": "可使蛋白质和稳定剂凝聚成团，以便过滤。还可中和酸性物质。",
+   "value": 3,
+   "note": "250ml容器；拆包后含碱250ml+杂质"
+  },
+  {
+   "id": "med_bottle_violet",
+   "name_zh": "N-羟甲基碱溶液瓶",
+   "desc_zh": "一种用途广泛的碱性化合物，常用于合法化工生产，也是常见的芬太前体。",
+   "value": 3,
+   "note": "250ml容器；芬太前体瓶=N-羟甲基碱125ml+稳定剂125ml"
+  },
+  {
+   "id": "med_bottle_orange",
+   "name_zh": "还原剂瓶",
+   "desc_zh": "某些化学反应不可或缺的试剂。",
+   "value": 3,
+   "note": "250ml容器；还原剂250ml"
+  },
+  {
+   "id": "med_bottle_small_pink",
+   "name_zh": "脂合剂瓶",
+   "desc_zh": "使油脂凝聚成团，以便轻松过滤。随后可通过蒸发去除这种试剂。",
+   "value": 1,
+   "note": "150ml容器；脂合剂150ml（沸点55°C可蒸掉）"
+  },
+  {
+   "id": "mini_bottle",
+   "name_zh": "瓶装水（微型）/小瓶酒精",
+   "desc_zh": "250ml小瓶。",
+   "value": 3,
+   "note": "拆包产物为小瓶酒精=酒精175ml+水75ml"
+  },
+  {
+   "id": "dream_cap",
+   "name_zh": "梦帽菇",
+   "desc_zh": "食用后会引起轻微欣快感和胃痛，是制作梦尘的关键原料。",
+   "value": 23,
+   "note": "违禁2级；梦尘原料；32.5g含菇糊27.333ml"
+  },
+  {
+   "id": "dream_cap_seed",
+   "name_zh": "梦帽菇孢子",
+   "desc_zh": "水培种子。",
+   "value": 24,
+   "note": "违禁1级；水培梦帽菇"
+  },
+  {
+   "id": "meal_cap",
+   "name_zh": "食用帽菇",
+   "desc_zh": "经过中和、不再具有精神活性的梦帽菇。合法且可安全食用，无法加工成梦尘。",
+   "value": 19,
+   "note": "成分全是植物质，不能制毒"
+  },
+  {
+   "id": "nightmare_cap",
+   "name_zh": "梦魇帽菇",
+   "desc_zh": "常见梦帽菇的剧毒变种，可加工成致命毒药。",
+   "value": 26,
+   "note": "违禁3级；梦魇尘原料；32.5g含菇糊18ml"
+  },
+  {
+   "id": "coffee_bean",
+   "name_zh": "咖啡豆",
+   "desc_zh": "一把咖啡豆。",
+   "value": 28,
+   "note": "咖啡因药片原料；80g含咖啡糊25.84ml+咖啡因4.4ml"
+  },
+  {
+   "id": "dream_dust",
+   "name_zh": "一小瓶“梦尘”",
+   "desc_zh": "下层区自制的一种廉价兴奋粉。",
+   "value": 18,
+   "note": "违禁2级；毒品(等级1)；2ml；有效成分梦帽萃取液；欣快系数1.0"
+  },
+  {
+   "id": "nightmare_dust",
+   "name_zh": "一小瓶“梦魇尘”",
+   "desc_zh": "兼具毒药和致幻剂双重作用的细粉末。大剂量可致命。",
+   "value": 36,
+   "note": "违禁3级；毒药；4ml；有效成分梦魇萃取液（毒性4.0）"
+  },
+  {
+   "id": "caffeine_pill",
+   "name_zh": "咖啡因药片",
+   "desc_zh": "用上层区高档咖啡厅的残渣提炼而成。",
+   "value": 10,
+   "note": "合法；医疗意图；5ml；有效成分咖啡因"
+  },
+  {
+   "id": "zyanide_pill",
+   "name_zh": "山奈德片",
+   "desc_zh": "一种起效迅速且致命的化合物。请谨慎处理。",
+   "value": 33,
+   "note": "违禁2级；毒药；0.6ml；商店成品含山奈德1ml（致命1660）"
+  },
+  {
+   "id": "birth_control_pill",
+   "name_zh": "避孕药",
+   "desc_zh": "用于防止怀孕的避孕药。",
+   "value": 15,
+   "note": "合法；避孕意图；0.1ml；激素≥50µL即有效"
+  },
+  {
+   "id": "fanta_pill",
+   "name_zh": "芬太片",
+   "desc_zh": "一种极易成瘾、极度危险且廉价的合成阿片类药物。",
+   "value": 12,
+   "note": "违禁3级；毒品(等级3)；0.5ml；有效成分芬太（欣快10/毒性2）"
+  },
+  {
+   "id": "pink_alt_injector",
+   "name_zh": "奥克莫吸注射器",
+   "desc_zh": "奥克西莫的非成瘾性止痛替代品（原型药）。",
+   "value": 50,
+   "note": "医疗意图；4ml；有效成分nomore；商店成品纯度45-60%"
+  },
+  {
+   "id": "pink_injector",
+   "name_zh": "奥克西莫注射器",
+   "desc_zh": "合法但危险的止痛药，滥用普遍。",
+   "value": 50,
+   "note": "毒品(等级1)，无化学纯度体系"
+  },
+  {
+   "id": "black_injector",
+   "name_zh": "赛纳普斯注射器",
+   "desc_zh": "治疗药物成瘾的次世代疗法。",
+   "value": 350,
+   "note": "使用随机移除一种成瘾；无纯度体系"
+  },
+  {
+   "id": "large_purple_injector",
+   "name_zh": "免疫宁注射器",
+   "desc_zh": "暂时抑制“哨兵崩溃综合征”的免疫调节剂。",
+   "value": 160,
+   "note": "有真品/过期/仿冒标签体系"
+  },
+  {
+   "id": "pure_white_injector",
+   "name_zh": "纳洛通注射器",
+   "desc_zh": "对抗奥克西莫用药过量的急救药物。",
+   "value": 30,
+   "note": "无纯度体系"
+  },
+  {
+   "id": "phagimycin_pill",
+   "name_zh": "噬菌霉素片",
+   "desc_zh": "强效抗生素。",
+   "value": 25,
+   "note": "卡迈克尔正版，无纯度体系"
+  },
+  {
+   "id": "unlicensed_phagimycin_pill",
+   "name_zh": "无证噬菌霉素片",
+   "desc_zh": "地下实验室非法生产的抗生素。",
+   "value": 5,
+   "note": "违禁2级"
+  },
+  {
+   "id": "smelling_salt",
+   "name_zh": "嗅盐",
+   "desc_zh": "有助于在昏厥后恢复意识。",
+   "value": 15,
+   "note": ""
+  },
+  {
+   "id": "bandage_item",
+   "name_zh": "基础绷带",
+   "desc_zh": "一条简单、干净的绷带，用于包扎伤口。",
+   "value": 8,
+   "note": "使用后止血"
+  },
+  {
+   "id": "hemostatic_bandage_item",
+   "name_zh": "止血绷带",
+   "desc_zh": "涂有强效止血剂的绷带。",
+   "value": 16,
+   "note": "止血且伤势-1"
+  },
+  {
+   "id": "topical_bandage_item",
+   "name_zh": "外用药膏绷带",
+   "desc_zh": "涂有温和局部医疗凝胶的绷带。",
+   "value": 16,
+   "note": "止血且伤势-1"
+  },
+  {
+   "id": "blood_bag",
+   "name_zh": "血袋",
+   "desc_zh": "一袋500毫升的输血袋。",
+   "value": 33,
+   "note": ""
+  },
+  {
+   "id": "blue_blood_bag",
+   "name_zh": "一袋“蓝血”",
+   "desc_zh": "可注射的生物凝胶，能溶解动脉斑块和微小血栓。",
+   "value": 250,
+   "note": "奢侈品"
+  },
+  {
+   "id": "salve",
+   "name_zh": "南丁格尔软膏",
+   "desc_zh": "抗菌并促进细胞再生。",
+   "value": 80,
+   "note": ""
+  },
+  {
+   "id": "rubbing_alcohol",
+   "name_zh": "医用酒精",
+   "desc_zh": "强效消毒剂。吞食剧毒。",
+   "value": 35,
+   "note": ""
+  },
+  {
+   "id": "zerochew",
+   "name_zh": "一板零嚼",
+   "desc_zh": "一种廉价的食欲抑制剂。",
+   "value": 8,
+   "note": ""
+  },
+  {
+   "id": "surgery_tool",
+   "name_zh": "外科手术工具套装",
+   "desc_zh": "医疗器械。",
+   "value": 200,
+   "note": "用于动物/水产手术"
+  },
+  {
+   "id": "liquid:dream_cap_extract",
+   "name_zh": "梦帽菇萃取液",
+   "desc_zh": "梦尘有效成分，欣快系数1.0",
+   "value": 0,
+   "note": "液体，非物品；热敏（≥60°C降解）"
+  },
+  {
+   "id": "liquid:nightmare_extract",
+   "name_zh": "梦魇帽菇萃取液",
+   "desc_zh": "梦魇尘有效成分，毒性4.0/欣快0.25",
+   "value": 0,
+   "note": "液体；热敏（≥50°C降解）"
+  },
+  {
+   "id": "liquid:caffeine",
+   "name_zh": "咖啡因",
+   "desc_zh": "咖啡因药片有效成分",
+   "value": 0,
+   "note": "液体；耐热"
+  },
+  {
+   "id": "liquid:fanta",
+   "name_zh": "芬太",
+   "desc_zh": "芬太片有效成分，欣快10/毒性2",
+   "value": 0,
+   "note": "液体；≥130°C降解"
+  },
+  {
+   "id": "liquid:nomore",
+   "name_zh": "奥克莫吸（Nomore）",
+   "desc_zh": "奥克莫吸注射器有效成分",
+   "value": 0,
+   "note": "液体；由萃取液+还原剂+脂合剂合成"
+  },
+  {
+   "id": "liquid:zyanide",
+   "name_zh": "山奈德",
+   "desc_zh": "山奈德片有效成分，毒性1.66",
+   "value": 0,
+   "note": "液体；来源：商店成品药溶解"
+  },
+  {
+   "id": "liquid:contraceptive",
+   "name_zh": "避孕激素",
+   "desc_zh": "避孕药有效成分",
+   "value": 0,
+   "note": "液体；来源：商店成品药溶解"
+  },
+  {
+   "id": "liquid:methylol",
+   "name_zh": "N-羟甲基碱",
+   "desc_zh": "芬太前体",
+   "value": 0,
+   "note": "液体；来自芬太前体瓶"
+  },
+  {
+   "id": "liquid:reducing_agent",
+   "name_zh": "还原剂",
+   "desc_zh": "合成试剂",
+   "value": 0,
+   "note": "液体；来自还原剂瓶"
+  },
+  {
+   "id": "liquid:lipobond_agent",
+   "name_zh": "脂合剂",
+   "desc_zh": "除油剂/Nomore催化剂",
+   "value": 0,
+   "note": "液体；沸点55°C可蒸发去除"
+  },
+  {
+   "id": "liquid:stabilizing_agent",
+   "name_zh": "稳定剂",
+   "desc_zh": "抑制芬太反应，需先去除",
+   "value": 0,
+   "note": "液体；可用酸/碱沉淀或过滤去除"
+  },
+  {
+   "id": "liquid:acid",
+   "name_zh": "酸",
+   "desc_zh": "中和碱/沉淀蛋白质与稳定剂",
+   "value": 0,
+   "note": "液体；毒性0.1"
+  },
+  {
+   "id": "liquid:base",
+   "name_zh": "碱",
+   "desc_zh": "中和酸/沉淀蛋白质与稳定剂",
+   "value": 0,
+   "note": "液体；毒性0.1"
+  },
+  {
+   "id": "liquid:alcohol",
+   "name_zh": "酒精",
+   "desc_zh": "萃取溶剂",
+   "value": 0,
+   "note": "液体；沸点78.37°C；≥40%浓度灭菌"
+  }
+ ],
+ "unresolved": []
+}

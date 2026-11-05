@@ -1,0 +1,690 @@
+{
+ "system": "水培种植",
+ "version": "0.46D",
+ "source_files": [
+  "HydroponicHelper.cs",
+  "MachineHydroponic.cs",
+  "HydroponicDirectory.cs",
+  "PlantList.cs",
+  "PlantRegistry.cs",
+  "PlantDefinition.cs",
+  "PlantStat.cs",
+  "PlantTrait.cs",
+  "PlantTraitList.cs",
+  "PlantTraitRegistry.cs",
+  "PlantTraitContext.cs",
+  "PlantGeneticsHelper.cs",
+  "PlantGeneticsText.cs",
+  "PlantHarvest.cs",
+  "PlantHarvestContext.cs",
+  "PlantWaterQuality.cs",
+  "PlantAnalyserUIManager.cs",
+  "MachineDnaManipulator.cs",
+  "GeneticHelper.cs",
+  "ModuleHelper.cs",
+  "MachineryHelper.cs",
+  "MachineProgressHelper.cs",
+  "MachineHelper.cs",
+  "ModuleDirectory.cs",
+  "FurnitureItemDirectory.cs",
+  "AmenitiesItemDirectory.cs",
+  "ContainerItemDirectory.cs",
+  "MiscItemDirectory.cs",
+  "MeleeWeaponItemDirectory.cs",
+  "PreBuiltItemHelper.cs",
+  "WineDirectory.cs",
+  "WineHelper.cs",
+  "Liquid.cs",
+  "WaterHelper.cs",
+  "RNG.cs",
+  "NetworkUpgradeList.cs"
+ ],
+ "machines": [
+  {
+   "id": "hydroponic",
+   "name_zh": "水培系统",
+   "desc_zh": "夜间运行的紧凑型水培种植机：放入水容器、种子和电池即可种菜，支持水培模组。",
+   "value": 300,
+   "power": "每周期（游戏日）从电池槽抽取 8 点能量（BASE_POWER_USAGE=8）；模组[效率]按全额修正（最低1）；无电或无水则整晚停机。电池槽接受 tag:power_source_item。",
+   "slots": "电池槽×1、模组位9格（异形布局，接受 MODULE_TYPE_UNIVERSAL / MODULE_TYPE_HYDROPONIC）、水槽×1（接受 tag:LIQUID_CONTAINER_TAG）、种子槽×1（接受自有 tag:SEED 且非容器物品；生长中锁定不可取出）、产物格 9×6=54、说明纸槽×1",
+   "growth_speed": "基础生长 8 工作量/日（BASE_PROCESSING_SPEED=8）；MACHINE_PERFORMANCE_RATIO_INT=2 → 模组[性能]效果减半：速度=8×(1+性能%/200)；MACHINE_QUALITY_RATIO_INT=2 → 模组[品质]效果减半（影响产量与巨型果）。",
+   "recipes": [
+    {
+     "name": "营养果（nutrifruit_seed）",
+     "inputs": [
+      {
+       "id": "nutrifruit_seed",
+       "name_zh": "营养果种子",
+       "amount": 1,
+       "note": "基准工作量23；固有 fast_grower 2 → 实际需求工作量 round(23/1.42045)=16 → 基础2游戏日"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "耗水100毫升/日（waterUseRate=100，无耗水类固有特性），需水量≥当日耗水才会运转"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "nutrifruit",
+       "name_zh": "营养果（按体型分级）",
+       "amount": 1,
+       "note": "数量=收获数（固有 bountiful 2 → round(5×1.33645)=7）+每个营养果水培模组+1，再×(1+机器品质加成/100)；按健康分级：小(值8,180卡)/普通(值12,300卡)/大(值18,480卡)/巨(值32,960卡,需健康>95,触发巨型营养果成就)"
+      },
+      {
+       "id": "nutrifruit_seed",
+       "name_zh": "营养果种子",
+       "amount": 3,
+       "note": "种子返还数=3；但固有 infertile 10 → 种子返还率 乘数≈0.0001 → 实际返回0颗；完成'解锁'事件(株系解放,新种子 infertile=0)后每次收获返回3颗（种子返还率×1.0=每颗1份）"
+      }
+     ],
+     "time": "2游戏日（工作量16 ÷ 8/日；无模组）",
+     "conditions": "最佳矿物质浓度 0.5%–2.5%（nutrimentLevel=150±100，百分比单位：100=1%）；低于下限每生长点扣1%健康，高于上限每点扣0.5%；污染物敏感度=固有 hardy 1(×0.7)×作物系数1.0 → '有抗性'；每生长点消耗矿物质 50µL（0.05毫升/生长点，全期16点共0.8毫升）",
+     "notes": "固有特性：complex_genome 2、fast_grower 2、nutritious 1、bountiful 2、hardy 1、infertile 10。收获物带'营养丰富'(卡路里×1.25)。解锁事件后种子价格 40→8（保留infertile的旧种为4）。"
+    },
+    {
+     "name": "韧棉（kotton_seed）",
+     "inputs": [
+      {
+       "id": "kotton_seed",
+       "name_zh": "韧棉种子",
+       "amount": 1,
+       "note": "基准工作量32；固有 slow_grower 1 → round(32/0.75)=43 → 基础6游戏日"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "固有 thirsty 2 → 耗水 round(176×1.42045)=250毫升/日"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "kotton_fiber",
+       "name_zh": "韧棉纤维（按体型分级）",
+       "amount": 1,
+       "note": "基础数量9；固有 bountiful 3 → round(9×1.45590)=13；SplitByHealth 且 reduceCount=true（低健康减数量）；小(36)/普通(46)/大(60)，健康>95全大（无巨型）"
+      },
+      {
+       "id": "kotton_seed",
+       "name_zh": "韧棉种子",
+       "amount": 2,
+       "note": "KottonSeedReturn(健康)：≤50→1颗；51–80→50%概率2颗否则1颗；>80→2颗；每颗再乘 种子返还率 乘数（无fertile类固有=×1.0）"
+      },
+      {
+       "id": "kotton_fabric",
+       "name_zh": "韧棉织物",
+       "amount": 1,
+       "note": "仅当装有韧棉自动织造模组(farm_module_kotton_loom)：改为输出 韧棉织物×分级后总数（值65）"
+      }
+     ],
+     "time": "6游戏日（工作量43 ÷ 8/日）",
+     "conditions": "最佳矿物质 2%–5%（350±150）；矿物质消耗 75µL/生长点（全期43点约3.2毫升）；污染物敏感度=frail 2(×1.5045)×作物系数1.26=1.90 → '极度敏感'",
+     "notes": "固有特性：bountiful 3、thirsty 2、frail 2、slow_grower 1。最难种的作物，对水质要求最高。"
+    },
+    {
+     "name": "梦帽菇（dream_cap_seed）",
+     "inputs": [
+      {
+       "id": "dream_cap_seed",
+       "name_zh": "梦帽菇孢子",
+       "amount": 1,
+       "note": "违禁品等级1；工作量28 → 基础4游戏日（无生长速度类固有特性）"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "耗水100毫升/日（默认值）"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "dream_cap",
+       "name_zh": "梦帽菇（按体型分级）",
+       "amount": 1,
+       "note": "基础数量8；SplitByHealth reduceCount=true；小(17)/普通(23)/大(31)；均为违禁品等级2，每颗经 production_dream_cap_mush 固有特性注入约2毫升梦帽菇糊（制梦尘原料，交叉引用化学/梦尘系统）"
+      },
+      {
+       "id": "dream_cap_seed",
+       "name_zh": "梦帽菇孢子",
+       "amount": 1,
+       "note": "返回1颗，固有 fertile 1 → 种子返还率×1.25 → 每颗25%概率变2颗"
+      },
+      {
+       "id": "meal_cap",
+       "name_zh": "食用帽菇",
+       "amount": 1,
+       "note": "装有梦帽菇中和模组(farm_module_dream_cap)时：产物变为合法食物 食用帽菇 小(13)/普通(19)/大(27)，且生长中移除种子违禁状态"
+      },
+      {
+       "id": "nightmare_cap",
+       "name_zh": "梦魇帽菇",
+       "amount": 1,
+       "note": "装有梦魇化模组(farm_module_nightmare_cap)且未装中和模组时：产出 梦魇帽菇×分级后总数（值26，违禁品等级3，剧毒）"
+      }
+     ],
+     "time": "4游戏日（工作量28 ÷ 8/日）",
+     "conditions": "最佳矿物质 1.75%–3.25%（250±75）；矿物质 30µL/生长点（全期28点0.84毫升）；污染物敏感度=作物系数1.01 → '轻度敏感'；中和模组每个额外+2产量",
+     "notes": "固有特性：production_dream_cap_mush 1、weak 1、fertile 1。模组三选一分支（普通/食用/梦魇）。"
+    },
+    {
+     "name": "咖啡（coffee_bean）",
+     "inputs": [
+      {
+       "id": "coffee_bean",
+       "name_zh": "咖啡豆（本身即种子）",
+       "amount": 1,
+       "note": "工作量21 → 基础3游戏日"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "耗水100毫升/日"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "coffee_bean",
+       "name_zh": "咖啡豆",
+       "amount": 8,
+       "note": "数量=收获数（8）×健康系数（健康≤15→×0.5、≤30→×0.6、≤50→×0.7、≤70→×0.8，四舍五入，保底1）；咖啡豆=自身种子（HarvestIsOwnSeed），收获的豆子100%继承母株特性并经固有特性注入 咖啡因2ml+咖啡豆糊10ml（potent 1 → 活性成分再×1.25）"
+      }
+     ],
+     "time": "3游戏日（工作量21 ÷ 8/日）",
+     "conditions": "最佳矿物质 1.75%–3.25%（250±75）；矿物质 30µL/生长点；污染物敏感度=作物系数1.01 → '轻度敏感'",
+     "notes": "固有特性：production_caffeine 1、production_coffee_mush 1、potent 1。不返回额外种子——收获的咖啡豆既是产物也是下一代种子，可无限自留种。"
+    },
+    {
+     "name": "填料草（fillerweed_seed）",
+     "inputs": [
+      {
+       "id": "fillerweed_seed",
+       "name_zh": "填料草种子",
+       "amount": 1,
+       "note": "基准工作量11；固有 fast_grower 2 → round(11/1.42045)=8 → 基础1游戏日"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "固有 thirsty 3 → 耗水 round(287×1.56988)=451毫升/日（耗水极大）"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "fillerweed",
+       "name_zh": "填料草",
+       "amount": 4,
+       "note": "数量=max(1, 收获数−1)颗普通(值11,约150卡)+1颗小型(值7,约90卡)；收获数=5（bountiful 2 → round(4×1.33645)），装有增产模组(farm_module_fillerweed_production)时+4"
+      },
+      {
+       "id": "fillerweed_seed",
+       "name_zh": "填料草种子",
+       "amount": 1,
+       "note": "未装增产模组：返回1颗+50%概率第2颗；装模组后不再返回种子"
+      }
+     ],
+     "time": "1游戏日（工作量8 ÷ 8/日）",
+     "conditions": "最佳矿物质 0%–2%（100±100，极宽松）；矿物质 75µL/生长点；作物污染物系数0.0 → 对污染物'免疫'",
+     "notes": "固有特性：simple_genome 2、edible 1、unappetizing 1、hardy 3、bountiful 2、fast_grower 2、thirsty 3、nutrient_poor 2。新手作物：长得快、不怕脏水，但非常费水、卡路里被营养匮乏压到约六成、售价-15%（难以下咽）。"
+    },
+    {
+     "name": "水培芦苇（hydroreed_seed）",
+     "inputs": [
+      {
+       "id": "hydroreed_seed",
+       "name_zh": "水培芦苇种子",
+       "amount": 1,
+       "note": "工作量18 → 基础3游戏日"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "耗水仅20毫升/日"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "hydroreed_filter",
+       "name_zh": "水培芦苇滤芯",
+       "amount": 1,
+       "note": "数量=机器上水培芦苇滤芯模组(farm_module_hydroreed_filter)的数量（不装模组则为0）；耐久200×固有dense 1(×1.25)=250（值20）"
+      },
+      {
+       "id": "hydroreed_seed",
+       "name_zh": "水培芦苇种子",
+       "amount": 1,
+       "note": "返回1颗+50%概率第2颗"
+      }
+     ],
+     "time": "3游戏日（工作量18 ÷ 8/日）",
+     "conditions": "最佳矿物质 0%–2%（100±100）；矿物质 25µL/生长点；作物污染物系数0.0 → '免疫'；harvestQuantity=0（不产食物）",
+     "notes": "固有特性：purifying 4、dense 1、hardy 1。生长期间每晚会净化水槽：固有4级 → 每晚移除每种可滤污染物 28%（0.1×4^0.75=0.2828，保底1ml/种），矿物质保留（交叉引用净水系统）。PlantDefinition.收获物为滤芯与种子。"
+    },
+    {
+     "name": "荧光莓（bloomberry_seed）",
+     "inputs": [
+      {
+       "id": "bloomberry_seed",
+       "name_zh": "荧光莓种子",
+       "amount": 1,
+       "note": "基准工作量18；固有 perennial 1( −20%) → round(18/0.8)=22 → 基础3游戏日；再结果周期工作量10 → round(10/0.8)=12 → 2游戏日/轮"
+      },
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "水容器（任意）",
+       "amount": 1,
+       "note": "耗水100毫升/日"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池",
+       "amount": 1,
+       "note": "8能量/日"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "wine_berry",
+       "name_zh": "荧光莓",
+       "amount": 6,
+       "note": "数量=max(1, 收获数)（perennial → round(8×0.75)=6）；每颗按收获时健康掷出品质等级（ −2/−1/+1/+2，酿酒时影响酒质——交叉引用酿酒系统）：健康≤25→55% −1否则−2；≤55→<25% −2、25–69% −1、≥70% +1；≤85→<25% −1、25–69% +1、≥70% +2；>85→≥40% +2否则+1"
+      }
+     ],
+     "time": "3游戏日首次 / 之后每轮2游戏日",
+     "conditions": "最佳矿物质 1.25%–2.75%（200±75）；矿物质 50µL/生长点；污染物敏感度=作物系数1.25 → '轻度敏感'",
+     "notes": "固有特性：perennial 1、edible 1。多年生：收获后植株存活（健康重置），以再结果工作量10继续结果，永不返回种子；对种植槽使用短柄斧(hatchet)可清除植株。实际产物为荧光莓。"
+    }
+   ]
+  },
+  {
+   "id": "plant_dna_manipulator",
+   "name_zh": "DNA编辑器",
+   "desc_zh": "对种子做基因工程的机器：把DNA数据盘中的特性写入种子，或把种子特性提取到数据盘。",
+   "value": 1000,
+   "power": "每次运作周期抽取 12 点能量（BASE_POWER_USAGE=12）；仅在实际执行操作的工作日耗电。",
+   "slots": "电池槽×1、模组位9格（MODULE_TYPE_UNIVERSAL / MODULE_TYPE_DNA_MANIPULATOR）、特性数据盘输入槽×1、目标种子槽×1（接受非生长中、已注册植物的种子）、空白/输出数据盘槽×1、说明纸槽×1、弹出托盘 2×2=4（可开关自动弹出）",
+   "growth_speed": "操作速度 10 工作量/日（BASE_PROCESSING_SPEED=10）；MACHINE_PERFORMANCE_RATIO_INT=2 → 性能模组减半生效；MACHINE_QUALITY_RATIO_INT=2 → 品质模组减半后计入成功率。",
+   "recipes": [
+    {
+     "name": "应用（写入特性）",
+     "inputs": [
+      {
+       "id": "tag:DNA_DISK_TAG",
+       "name_zh": "已写入特性的DNA数据盘",
+       "amount": 1,
+       "note": "放入输入槽；须与目标种子兼容（非互斥组冲突/无不兼容特性/未达上限/作物有效）"
+      },
+      {
+       "id": "tag:SEED_ITEM_TAG",
+       "name_zh": "目标种子",
+       "amount": 1,
+       "note": "任意非生长中的注册植物种子"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:SEED_ITEM_TAG",
+       "name_zh": "获得/叠加特性的种子",
+       "amount": 1,
+       "note": "成功时：新特性→rank=数据盘等级；已有→rank+数据盘等级（有上限的特性封顶）；数据盘使用次数−1，次数归零则销毁"
+      }
+     ],
+     "time": "ceil(工作量/10) 游戏日；工作量=20+4×max(0, 有效复杂度)（OPERATION_BASE_PROGRESS=20, OPERATION_PROGRESS_PER_COMPLEXITY=4）",
+     "conditions": "成功率=clamp(95−5×max(0,复杂度+热度)+机器品质加成, 5, 100)；无论成败基因热度+2+|特性复杂度|",
+     "notes": "锁定的特性（简单/复杂基因组）不可应用；与互斥组内其他特性冲突或对该作物无效（如 fertile 对不结籽作物）时无法放入。"
+    },
+    {
+     "name": "提取（读出特性）",
+     "inputs": [
+      {
+       "id": "tag:DNA_DISK_TAG",
+       "name_zh": "空白DNA数据盘（或已写有目标所具备特性的数据盘）",
+       "amount": 1,
+       "note": "放入输出盘槽"
+      },
+      {
+       "id": "tag:SEED_ITEM_TAG",
+       "name_zh": "目标种子",
+       "amount": 1,
+       "note": "提供被提取的特性"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:DNA_DISK_TAG",
+       "name_zh": "写有特性的DNA数据盘",
+       "amount": 1,
+       "note": "空白盘：随机提取1个非锁定特性（rank 1），使用次数=ExtractionUses（若为该作物固有特性→种子当前等级，否则1）；已写盘：为同特性数据盘增加相同次数的使用次数"
+      }
+     ],
+     "time": "同上：ceil((20+4×max(0,有效复杂度))/10) 游戏日",
+     "conditions": "成功率同上；未装基因稳定模组(dna_manipulator_module_stabilizer)时目标种子被销毁；装有稳定模组时种子保留但该特性等级−1，并+热度",
+     "notes": "正面/负面特性筛选模组可将随机提取限定为正面或负面特性（两个都装则无可提取项）；精准提取模组(dna_manipulator_module_precision)对已写盘使用后可指定只提取该特性。锁定特性（简单/复杂基因组）不可提取。"
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "种植全流程：种子放入种子槽 + 水容器放入水槽 + 电池放入电池槽 → 每游戏日结算（onCycleEndSlotItemFunc，夜间运行）：有电（供电8能量）且水容器余量≥当日耗水才生长；每夜生长进度+（基础8），达到 即收获，产物进入输出格（满则溢出到飞船仓库）。植物不会被'种死'——健康过低只会缩水减产。",
+  "工作量与天数：(有效)=round(基准工作量/乘数)；基础生长8/日，天数=ceil(有效工作量/当日速度)。性能模组：速度=8×(1+Σ性能%/200)（系数0.5）。",
+  "耗水：每游戏日一次性扣除 每日耗水=round(waterUseRate×乘数) 毫升； 乘数由 drought_resistant(−25%/级)/thirsty(+25%/级) 提供。",
+  "养分（矿物质）：每生长点 检查水中矿物质浓度（单位：100=1%）：低于 (nutrimentLevel−nutrimentRange) 每点扣健康100（即1%）；高于 (level+range) 每点扣50（0.5%）；同时每点移除 mineralUseRate µL 矿物质（= mineralUseRate/1000 毫升/生长点）。营养片(nutrient_tablet)含矿物质15ml，可直接投入水容器。",
+  "污染物伤害（每生长点对6种污染物各自结算）：测量值 num=min(1000000, round(浓度%×乘数))，扣血=num2×contaminantEffect（作物系数）；num2 分档：≤10(≤0.1%)→0；11–15→15；16–20→20；21–25→30；26–30→40；31–40→60；41–60→80；61–100(0.61%–1%)→160；101–200→320；>200(>2%)→640。扣血值单位=0.01%健康×100，即15档=0.15%健康/生长点。敏感度乘数由 hardy(−30%/级)/frail(+30%/级) 提供；作物 contaminantEffect：填料草、水培芦苇为0（免疫），营养果1.0，梦帽菇/咖啡1.01，荧光莓1.25，韧棉1.26。分析器上显示 综合=系数×乘数：0=免疫、≥1.5极度敏感、>1.25敏感、>1.0轻度敏感、=1一般、<0.75有抗性、≤0.5抗性极强。",
+  "健康（初始=startingHealth%×100，正常100%=10000）：生长评分=/100（百分比）。收获时按健康分级（ByHealth，health 为百分比）：≤15→数量×0.5且全小型；≤30→×0.65，70%小30%普通；≤50→×0.8，30%小70%普通；≤70→×0.9全普通；≤80→80%普通20%大型；≤90→30%普通70%大型；≤95→全大型；>95且允许巨型：健康≤99且机器品质加成≤50→50%大50%巨，否则全巨型。数量折减(×0.5–×0.9)仅对 reduceCount=true 的作物（韧棉/梦帽菇）生效；营养果 reduceCount=false 只缩个头不减数量。",
+  "收获数量：基础=round(harvestQuantity×乘数, AwayFromZero)（乘数由 bountiful(+20%/级)/sparse(−20%/级)/perennial(−25%) 提供）；最终收获数=round(基础×(1+机器品质加成/100), AwayFromZero)，品质加成=Σ模组品质%/2（系数0.5）。",
+  "种子返还：returnsSeeds 作物收获时经 OwnSeed→SeedCopies=种子返还率乘数（取整+小数部分概率进位；fertile +25%/级、infertile −25%/级、perennial −50%，下限封顶−99.99%）决定每颗返还种子复制份数。100%遗传：子代种子完整复制母代全部特性等级（PlantGeneticsHelper.），且基因热度清零。植物无随机突变（等位基因/突变机制属于动物育种 GeneticHelper：，与植物无关）。",
+  "多年生（perennial 特性/）：收获后植株不销毁，健康重置为初始值，进入再结果周期：工作量=refruitProgress（无定义则基准的50%），仍受生长速度乘数影响；对水培机使用短柄斧(hatchet)可强制移除植株。",
+  "植物特性（PlantTrait）通用规则：等级 rank（罗马数字显示），效果百分比=基础%×rank^0.75，下限−99.99%；同组互斥（exclusiveGroup：growth/yield/taste/water/resilience/nutrition/seeds/genome/water_quality/fibre/potency/edible）；大多数特性无等级上限(Unlimited)，perennial 与 edible 最大1级；perennial 与 infertile 互斥。被编辑过的种子类型变为 。",
+  "基因复杂度与热度：复杂度=Σ每特性[(rank−固有rank)为正→complexity×增量；为负→|complexity|×|减量|] + Σ(复杂度偏移×当前rank)（simple_genome −4/级、complex_genome +4/级）；移除负面特性同样增加复杂度。每次基因操作热度+2+|特性complexity|。有效复杂度=复杂度+热度，决定操作工作量(20+4×C)与成功率(clamp(95−5×C+品质加成,5,100))，热度在种子被收获繁衍时清零。",
+  "化学产出类特性（production_*，作用对象为收获物）：每件收获物注入 mlAtRankOne×rank^0.75 毫升对应液体：caffeine 2ml/级、coffee_mush 10ml/级、dream_cap_mush 2ml/级（含该特性的产物成为违禁品2级；梦魇化模组会把产出液体转换为 nightmare_cap_mush，中和模组则不注入）；potent/weak 将全部活性成分×(1±25%/级)。purifying（净化水质）：每晚会移除水槽中每种可滤污染物的 min(95%, 10%×rank^0.75)（每种保底1000µL=1ml，纯度上限随级提高，矿物质保留）；polluting（污染水质）：每晚将 0.1%×rank^0.75 的水转化为 有机废物50%/微生物35%/物理污染物15%。",
+  "水培机模组（均为船内模组；数值为[性能%,效率%,品质%]）：营养果模组(−10,−10, 营养果产量+1/个)；梦帽菇中和模组(+15,+15, 梦帽菇转食用帽菇且产量+2/个)；韧棉织造模组(−50,−100, 产出韧棉织物)；梦魇化模组(−33,−50, 梦帽菇→梦魇帽菇)；填料草增产模组(0,−25, 填料草+4、不再结籽)；芦苇滤芯模组(0,−15, 收获等量滤芯)；走私模组(0,0,0, 移除生长中种子的违禁状态)。效率全额作用于耗电（如−100%效率→耗电×2，最低1）。生长期间模组栏锁定。",
+  "DNA编辑器模组：基因稳定模组(−50,−25, 提取后保留目标并降1级)；正面筛选(0,−25)；负面筛选(0,−25)；精准提取模组(−75,−75, 对已写盘扫描后定向提取，值1000)。",
+  "植物分析仪（plant_analyser，工具，值200）：对任意种子使用显示——最佳养分浓度区间、矿物质消耗(ml/生长阶段)、污染物敏感度、耗水量(ml/日)以及生长中植物的生长评分（=健康%）。基因扫描仪（gene_scanner，值500，网络升级附赠4个DNA数据盘）：开启后种子悬浮提示显示全部基因（复杂度/热度/特性列表及效果、固有/锁定标记）。",
+  "与酿酒系统交叉引用：荧光莓（wine_berry，值14）是酿酒原料，收获时按健康掷出的浆果品质（−2/−1/+1/+2）直接影响酿酒评分（详见酿酒系统）。与其他系统交叉：梦帽菇→梦尘（化学）、梦魇帽菇→毒药、韧棉织物/芦苇滤芯→过滤器材（净水系统）、营养果/填料草→食物。",
+  "营养果种子不返还机制（设计如此）：固有 infertile 等级10 → 种子返还率 乘数 = (1−99.99%) ≈ 0.0001（下限0.0001）；收获输出3颗种子（种子返还数=3），但每颗经 SeedCopies 判定（(int)0.0001=0 + 0.01%小数补1），数量0时直接 Destroy，一次收获合计约0.03%概率返1颗——视为必然无返还。",
+  "解锁可返种株系：埃莉诺(Eleanor)剧情线 Eleanor8 抉择选[把它泄露给下层区的报纸]（放弃还盘选项的300赏金），次日触发 株系解放：此后新生成/购买的营养果种子 不育清零，种子返还率 恢复100%，收获稳定返3颗；新株外观变为改良种、单价8（旧株40）。仅对新种子生效，旧种子不育保留，无法通过DNA编辑器移除固有特性。"
+ ],
+ "items": [
+  {
+   "id": "hydroponic",
+   "name_zh": "水培系统",
+   "desc_zh": "一套紧凑型水培系统，需要专用电源才能运行。在夜间运作。",
+   "value": 300,
+   "note": "种植主机，见 machines"
+  },
+  {
+   "id": "plant_dna_manipulator",
+   "name_zh": "DNA编辑器",
+   "desc_zh": "可将DNA数据提取到DNA数据盘中，也可将盘中的特性应用于目标。",
+   "value": 1000,
+   "note": "基因工程主机，见 machines"
+  },
+  {
+   "id": "plant_analyser",
+   "name_zh": "植物分析仪",
+   "desc_zh": "用于分析植物生长状况、确定最佳生长条件的专用工具。",
+   "value": 200,
+   "note": "对种子使用打开分析界面（养分区间/矿物质消耗/敏感度/耗水/生长评分）"
+  },
+  {
+   "id": "gene_scanner",
+   "name_zh": "基因扫描仪",
+   "desc_zh": "开启后可查看动物的完整基因信息。",
+   "value": 500,
+   "note": "开关型工具；对种子开启基因读出（复杂度/热度/特性）。注：中文描述只提动物，实际对植物种子同样生效"
+  },
+  {
+   "id": "plant_dna_disk",
+   "name_zh": "DNA数据盘",
+   "desc_zh": "一张空白数据盘。DNA编辑器可将提取出的特性写入其中。",
+   "value": 140,
+   "note": "空白/已写盘通用物品，写入后按特性着色并显示剩余使用次数"
+  },
+  {
+   "id": "nutrient_tablet",
+   "name_zh": "水培营养片",
+   "desc_zh": "含有植物生长所必需的矿物质，可加入水容器中。",
+   "value": 5,
+   "note": "每片含矿物质15ml，投入水容器提升矿物质浓度"
+  },
+  {
+   "id": "nutrient_tablet_container",
+   "name_zh": "水培营养片药瓶",
+   "desc_zh": "装有水培营养片的瓶子。",
+   "value": 1,
+   "note": "1×9格营养片收纳瓶（只能装营养片）"
+  },
+  {
+   "id": "nutrifruit_seed_packet",
+   "name_zh": "一包营养果种子",
+   "desc_zh": "",
+   "value": 1,
+   "note": "3×3格种子收纳包（可装任意种子）"
+  },
+  {
+   "id": "hydroponic_guide",
+   "name_zh": "水培农业手册",
+   "desc_zh": "一本实用手册，收录了水培农业的全部相关知识。",
+   "value": 25,
+   "note": "阅读打开游戏内指南"
+  },
+  {
+   "id": "hatchet",
+   "name_zh": "短柄斧",
+   "desc_zh": "小巧坚固。可在水培农场中移除当前种植的作物。",
+   "value": 55,
+   "note": "近战武器；对水培机使用移除生长中的植株（多年生荧光莓清株用）"
+  },
+  {
+   "id": "nutrifruit_seed",
+   "name_zh": "营养果种子",
+   "desc_zh": "一种经过基因改造的块茎作物，生命力顽强、生长迅速。",
+   "value": 40,
+   "note": "种子（见配方）；解锁事件后新种值8、保留infertile的旧种值4"
+  },
+  {
+   "id": "nutrifruit",
+   "name_zh": "营养果",
+   "desc_zh": "pastel研发的改造块茎，高产易种但被刻意做成无籽。",
+   "value": 12,
+   "note": "普通240卡(经特性300卡)；小8/大18/巨32为收获分级变体"
+  },
+  {
+   "id": "kotton_seed",
+   "name_zh": "韧棉种子",
+   "desc_zh": "难以种植，产出韧棉纤维。",
+   "value": 20,
+   "note": "种子（见配方）"
+  },
+  {
+   "id": "kotton_fiber",
+   "name_zh": "韧棉纤维",
+   "desc_zh": "改良棉花，可织成耐用布料。",
+   "value": 46,
+   "note": "材料；收获分级 小36/普通46/大60"
+  },
+  {
+   "id": "kotton_fabric",
+   "name_zh": "韧棉织物",
+   "desc_zh": "有机纤维布料，滤大颗粒用，可做工作服。",
+   "value": 65,
+   "note": "织造模组产物，滤量150，耐久1000"
+  },
+  {
+   "id": "dream_cap_seed",
+   "name_zh": "梦帽菇孢子",
+   "desc_zh": "",
+   "value": 24,
+   "note": "种子；违禁品等级1（无中文desc，仅有名称）"
+  },
+  {
+   "id": "dream_cap",
+   "name_zh": "梦帽菇",
+   "desc_zh": "轻微欣快+胃痛，梦尘关键原料。",
+   "value": 23,
+   "note": "违禁品等级2；收获分级 小17/大31；含梦帽菇糊"
+  },
+  {
+   "id": "meal_cap",
+   "name_zh": "食用帽菇",
+   "desc_zh": "中和后无精神活性、合法可食用。",
+   "value": 19,
+   "note": "中和模组产物；小13/大27"
+  },
+  {
+   "id": "nightmare_cap",
+   "name_zh": "梦魇帽菇",
+   "desc_zh": "剧毒变种，可加工成致命毒药。",
+   "value": 26,
+   "note": "梦魇化模组产物；违禁品等级3；含梦魇帽菇糊"
+  },
+  {
+   "id": "coffee_bean",
+   "name_zh": "咖啡豆",
+   "desc_zh": "一把咖啡豆。",
+   "value": 28,
+   "note": "既是商品也是种子；收获豆经特性注入咖啡因/咖啡豆糊"
+  },
+  {
+   "id": "fillerweed_seed",
+   "name_zh": "填料草种子",
+   "desc_zh": "新手友好速生种子，不受养分水质影响。",
+   "value": 9,
+   "note": "种子（见配方）"
+  },
+  {
+   "id": "fillerweed",
+   "name_zh": "填料草",
+   "desc_zh": "速生叶菜，几乎无营养，作口粮填充料。",
+   "value": 11,
+   "note": "食物约150卡（nutrient_poor压低）；小型变体值7约90卡"
+  },
+  {
+   "id": "hydroreed_seed",
+   "name_zh": "水培芦苇种子",
+   "desc_zh": "功能性作物，生长中净化水体。",
+   "value": 20,
+   "note": "种子（见配方）"
+  },
+  {
+   "id": "hydroreed_filter",
+   "name_zh": "水培芦苇滤芯",
+   "desc_zh": "装入过滤系统后去除特定污染物。",
+   "value": 20,
+   "note": "生物滤芯， 22，耐久200（经dense×1.25=250）"
+  },
+  {
+   "id": "bloomberry_seed",
+   "name_zh": "荧光莓种子",
+   "desc_zh": "多年生灌木，结果后不枯死；保持水质可收高品质浆果。",
+   "value": 40,
+   "note": "种子（见配方），多年生不返还种子"
+  },
+  {
+   "id": "wine_berry",
+   "name_zh": "荧光莓",
+   "desc_zh": "适合酿酒的甜浆果。",
+   "value": 14,
+   "note": "酿酒系统原料；收获时附带品质等级−2~+2"
+  },
+  {
+   "id": "farm_module_nutrifruit",
+   "name_zh": "营养果水培模组",
+   "desc_zh": "种植营养果时产量+1。",
+   "value": 150,
+   "note": "性能−10% 效率−10%；营养果产量每个+1"
+  },
+  {
+   "id": "farm_module_dream_cap",
+   "name_zh": "梦帽菇中和水培模组",
+   "desc_zh": "中和精神活性成分转为食用帽菇，产量+2。",
+   "value": 150,
+   "note": "性能+15% 效率+15%；每个+2产量并除违禁"
+  },
+  {
+   "id": "farm_module_kotton_loom",
+   "name_zh": "韧棉自动织造水培模组",
+   "desc_zh": "直接把韧棉纤维织成布料。",
+   "value": 200,
+   "note": "性能−50% 效率−100%（耗电翻倍）；产出kotton_fabric"
+  },
+  {
+   "id": "farm_module_nightmare_cap",
+   "name_zh": "梦帽菇梦魇化水培模组",
+   "desc_zh": "梦帽菇变为梦魇帽菇。",
+   "value": 150,
+   "note": "性能−33% 效率−50%；本身是违禁品等级3"
+  },
+  {
+   "id": "farm_module_fillerweed_production",
+   "name_zh": "填料草增产水培模组",
+   "desc_zh": "填料草+4且不再结籽。",
+   "value": 115,
+   "note": "效率−25%；效果固定+4不可叠加"
+  },
+  {
+   "id": "farm_module_hydroreed_filter",
+   "name_zh": "水培芦苇滤芯模组",
+   "desc_zh": "允许收割芦苇茎秆作滤水器。",
+   "value": 105,
+   "note": "效率−15%；收获时每个模组+1滤芯"
+  },
+  {
+   "id": "farm_module_smuggler",
+   "name_zh": "水培走私模组",
+   "desc_zh": "解除所有生长中种子的违禁品状态。",
+   "value": 100,
+   "note": "无属性修正；每晚对生长中种子移除违禁标记（如梦帽菇孢子）"
+  },
+  {
+   "id": "dna_manipulator_module_stabilizer",
+   "name_zh": "基因稳定模组",
+   "desc_zh": "提取后保留目标，可无损移除特性。",
+   "value": 500,
+   "note": "性能−50% 效率−25%"
+  },
+  {
+   "id": "dna_manipulator_module_positive_filter",
+   "name_zh": "正面特性筛选模组",
+   "desc_zh": "仅提取正面特性。",
+   "value": 500,
+   "note": "效率−25%"
+  },
+  {
+   "id": "dna_manipulator_module_negative_filter",
+   "name_zh": "负面特性筛选模组",
+   "desc_zh": "仅提取负面特性。",
+   "value": 500,
+   "note": "效率−25%"
+  },
+  {
+   "id": "dna_manipulator_module_precision",
+   "name_zh": "精准提取模组",
+   "desc_zh": "扫描已写盘后只提取该特性。",
+   "value": 1000,
+   "note": "性能−75% 效率−75%；对已写盘使用以设定目标特性"
+  }
+ ],
+ "unresolved": []
+}

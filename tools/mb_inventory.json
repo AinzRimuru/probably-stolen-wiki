@@ -1,0 +1,2245 @@
+[
+ {
+  "class": "TMPLocalizer",
+  "assembly": "Assembly-CSharp",
+  "count": 1304,
+  "guid": "fd667be711195a0238c9eb5a3a2dcb87",
+  "examples": [
+   "GameObject\\BargainPanel.prefab",
+   "GameObject\\BargainPanel.prefab",
+   "GameObject\\ButtonPrefab.prefab"
+  ]
+ },
+ {
+  "class": "StoreUI",
+  "assembly": "Assembly-CSharp",
+  "count": 78,
+  "guid": "d118aeb8357eff1495062bc5e69d3272",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "Interactable",
+  "assembly": "Assembly-CSharp",
+  "count": 75,
+  "guid": "f07e58eb584a396d27503a2e537a478a",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "<UNKNOWN>",
+  "assembly": "?",
+  "count": 75,
+  "guid": "838503bb2a350f6d64baf4b0300b6cbf",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "TooltipContainer",
+  "assembly": "Assembly-CSharp",
+  "count": 57,
+  "guid": "174211335ec9f11e6d0cd1a16b4d3ee3",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "UIDragHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 54,
+  "guid": "ff66773bbbd408091f20d77e29e2a4ff",
+  "examples": [
+   "GameObject\\WindowPrefab.prefab",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TextBubble",
+  "assembly": "Assembly-CSharp",
+  "count": 38,
+  "guid": "12f2096997b9100759e36d021be276c6",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NetworkElement",
+  "assembly": "Assembly-CSharp",
+  "count": 37,
+  "guid": "8bb434233c66feb7391602828a2ba69d",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TAnimSoundWriter",
+  "assembly": "Examples",
+  "count": 32,
+  "guid": "3b00a36e69dcafe0d3f527228bedb014",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "<UNKNOWN>",
+  "assembly": "?",
+  "count": 32,
+  "guid": "95a0bbc4af94cf485a7df954a4e6e1f3",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ButtonTextColor",
+  "assembly": "Assembly-CSharp",
+  "count": 31,
+  "guid": "5739069a5392542f4eb8873c4aafe332",
+  "examples": [
+   "GameObject\\Meta_Button.prefab",
+   "GameObject\\SaveSlot.prefab",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "PixelPerfectHorizontalLayoutGroup",
+  "assembly": "Assembly-CSharp",
+  "count": 28,
+  "guid": "3dd8070c26210f21257f0fc0e9e24c38",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TMPIconHover",
+  "assembly": "Assembly-CSharp",
+  "count": 25,
+  "guid": "49a6838ddb5a52d79eb304f4d95e9a3e",
+  "examples": [
+   "GameObject\\Meta_TMP_element.prefab",
+   "GameObject\\WildNetworkMenu.prefab",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "BargainButton",
+  "assembly": "Assembly-CSharp",
+  "count": 16,
+  "guid": "6d88e98ecce8d0943bc6091c2b9121e6",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SimpleSpriteAnimator",
+  "assembly": "Assembly-CSharp",
+  "count": 14,
+  "guid": "6d7700c80b22516a7606aeb00ae48b69",
+  "examples": [
+   "GameObject\\prefabFarBackpack.prefab",
+   "GameObject\\prefabFarBandana.prefab",
+   "GameObject\\prefabFarGasmask.prefab"
+  ]
+ },
+ {
+  "class": "PhoneButton",
+  "assembly": "Assembly-CSharp",
+  "count": 14,
+  "guid": "8e1bd5c2b4715edf4877011da7ed543c",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ExchangeElement",
+  "assembly": "Assembly-CSharp",
+  "count": 14,
+  "guid": "2e0586ee4f9d3e35039bf66bf8a7bb29",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LootTable",
+  "assembly": "Assembly-CSharp",
+  "count": 13,
+  "guid": "56989f2d2e88fd689725790a2b1718a9",
+  "examples": [
+   "MonoBehaviour\\accessCardTable.asset",
+   "MonoBehaviour\\allModuleTable.asset",
+   "MonoBehaviour\\dumpingGroundMedical.asset"
+  ]
+ },
+ {
+  "class": "CustomUIWindowFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 12,
+  "guid": "a631f52e4176199dd7cfa2545b92ba23",
+  "examples": [
+   "GameObject\\BargainPanel.prefab",
+   "GameObject\\Credits.prefab",
+   "GameObject\\EndOfDayTablet.prefab"
+  ]
+ },
+ {
+  "class": "InteractableUI",
+  "assembly": "Assembly-CSharp",
+  "count": 12,
+  "guid": "6e82d5754f9135d8bbb23cc3bb7d366d",
+  "examples": [
+   "GameObject\\NotebookElementPrefab.prefab",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemFeatureUI",
+  "assembly": "Assembly-CSharp",
+  "count": 12,
+  "guid": "60d71e6df5e57bb5f34e3fc5115f742e",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "Walker",
+  "assembly": "Assembly-CSharp",
+  "count": 10,
+  "guid": "5716895ed0d5c6fae3b8e1731a52f141",
+  "examples": [
+   "GameObject\\prefabFarBackpack.prefab",
+   "GameObject\\prefabFarBandana.prefab",
+   "GameObject\\prefabFarGasmask.prefab"
+  ]
+ },
+ {
+  "class": "NewsUIElement",
+  "assembly": "Assembly-CSharp",
+  "count": 10,
+  "guid": "1eb52350b510ea35e148ff2126b0241c",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WantedElement",
+  "assembly": "Assembly-CSharp",
+  "count": 9,
+  "guid": "564053f97773f2aaa59001acc3d78b93",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CounterMoveChild",
+  "assembly": "Assembly-CSharp",
+  "count": 8,
+  "guid": "3645f42196edebf6046902099fc956d2",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WildNetworkSlot",
+  "assembly": "Assembly-CSharp",
+  "count": 7,
+  "guid": "2315b7713aca81993d54bf110f9292cf",
+  "examples": [
+   "GameObject\\LoadGame.prefab",
+   "GameObject\\LoadGame.prefab",
+   "GameObject\\NewGameDifficulty.prefab"
+  ]
+ },
+ {
+  "class": "ItemTypeUIElement",
+  "assembly": "Assembly-CSharp",
+  "count": 7,
+  "guid": "29b0eeeae67f13ed4e7fdbfe56e0be3b",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CommissaryElement",
+  "assembly": "Assembly-CSharp",
+  "count": 7,
+  "guid": "3da8cfb3ad76947e4a1e6f9da9441a46",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogChoiceBubble",
+  "assembly": "Assembly-CSharp",
+  "count": 6,
+  "guid": "a0102eac9fffb4c6d3a620e7616bc726",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CustomUICanvasAnchor",
+  "assembly": "Assembly-CSharp",
+  "count": 5,
+  "guid": "51ec86822e9875d2df5ac5254c270038",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SimpleAnimator",
+  "assembly": "Assembly-CSharp",
+  "count": 4,
+  "guid": "7dccf49da0d808162f199e7186b6b5fc",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ChemScannerEffect",
+  "assembly": "Assembly-CSharp",
+  "count": 4,
+  "guid": "734d4d3832cbfb3d13fb0bdbf7dcd526",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PaperPanelFocusStamp",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "1b71bbcf942b9e0b11abda260db08ed7",
+  "examples": [
+   "GameObject\\BargainPanel.prefab",
+   "GameObject\\EndOfDayTablet.prefab",
+   "GameObject\\NegotiationTablet.prefab"
+  ]
+ },
+ {
+  "class": "TabletScrollRect",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "3739349a0684b1ab8cf6e8887180b0a5",
+  "examples": [
+   "GameObject\\BargainPanel.prefab",
+   "GameObject\\EndOfDayTablet.prefab",
+   "GameObject\\NegotiationTablet.prefab"
+  ]
+ },
+ {
+  "class": "CalendarEventElement",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "7728dc18ab75a7e7c3d9be7644ee329f",
+  "examples": [
+   "GameObject\\DayElement.prefab",
+   "GameObject\\EventElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PerkElement",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "92343d9bc90da7f9801e98f44292231c",
+  "examples": [
+   "GameObject\\ReputationElement.prefab",
+   "GameObject\\ReputationPerkElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "FontLoader",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "319eeb00d8dac15fa289e0a150cdb596",
+  "examples": [
+   "Resources\\emporium\\localization\\FontLoader.prefab",
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ScratchInput",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "f694de28a12421ccc0e64ee8c79eca9c",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DelayedAnimatorEnable",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "001d63d287626c1ad94a8de84ce06fe8",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "IdleAnimator",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "05529ab2749a1e78c85a7622037ab109",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RibwichUI",
+  "assembly": "Assembly-CSharp",
+  "count": 3,
+  "guid": "9de102293448d5d45ae6571323eea475",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ChemFinishElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "317fc48541f34add9ae14c099fca05b7",
+  "examples": [
+   "GameObject\\ChemFinisherElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ContactElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "7dc4cc727f69494292231d05de6985c8",
+  "examples": [
+   "GameObject\\ContactElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CalendarDayElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "83c7ecc691a519a6dd89384da7b572f8",
+  "examples": [
+   "GameObject\\DayElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LabelerElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "67d370d5cfcb15721a88e69851227079",
+  "examples": [
+   "GameObject\\LabelerElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NotebookElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "a30204e07299116685d32163c4804e09",
+  "examples": [
+   "GameObject\\NotebookElementPrefab.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TreeNodeRender",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "080151d305d9a2d618f91173b450de69",
+  "examples": [
+   "GameObject\\RenderNodePrefab.prefab",
+   "GameObject\\RenderNodeTextPrefab.prefab"
+  ]
+ },
+ {
+  "class": "ReputationElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "cb4a1e24edfb772206c4f148e30b2ac5",
+  "examples": [
+   "GameObject\\ReputationElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SaveSlotElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "2e1f723b474831d233cffc94b61240bf",
+  "examples": [
+   "GameObject\\SaveSlot.prefab",
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "StoreRequestElement",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "2ce629cda974974dae88bd2214c052c8",
+  "examples": [
+   "GameObject\\StoreRequestElement.prefab",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TableGroup",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "e9f870b49c0669531ea4ed4a6ce81ade",
+  "examples": [
+   "MonoBehaviour\\dumpingGroundFreshTG.asset",
+   "MonoBehaviour\\dumpingGroundTG.asset"
+  ]
+ },
+ {
+  "class": "TooltipManager",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "71f21f66b550eff40be2c05124c6c21e",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GameOptionUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "1770a105cc311c07c2e75f575b5fe049",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StartingPerkIconLoader",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "f224b5163d6b5b93e07bd44ccdafdaeb",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ConfirmPanelUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "f5baa47a05d8ee1059095c277c175f39",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EmporiumOption",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "eda6db7131ecf18fbf3bdeeee4eb3771",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DropdownLocalizer",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "163aa893f0bcbfea71ab6774080a3dfb",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ResolutionLocalizer",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "c27d46a057f7b94705021fc00479ad35",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PerkUIController",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "26faa9bb0d2c0e329c07472eff696b61",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "<UNKNOWN>",
+  "assembly": "?",
+  "count": 2,
+  "guid": "d27afff1acdec2b2b436ff015c9ba0ee",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GenericClientMono",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "1b86c3516a81f913a64324c166f09814",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "FuelUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "5c20b995a8baae036b8c236ed7254e01",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreClientCounter",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "b93415f97fc40140d83945deadfb4d27",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "AdvancedHorizontalFlowLayoutGroup",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "98af5159520fab42a679c1733875237c",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "AppHandUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "b7366f696006447f9d8df68f5dcb1c1e",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "InsBerryUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "333cf5b19abc107be2e7e1ee3c22b48b",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StampUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "1b4788aa47a3ba1efa326e3a71455469",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CigaretteUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "7d932e243fa343ca2951cc5cf45552e8",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "InjectorUI",
+  "assembly": "Assembly-CSharp",
+  "count": 2,
+  "guid": "a022b613c4d3eab8ad954773d1fcd34e",
+  "examples": [
+   "Scenes\\InventoryScene.unity",
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "BargainPanelFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c2899f3757ae8825e583bdddb3f1d7fe",
+  "examples": [
+   "GameObject\\BargainPanel.prefab"
+  ]
+ },
+ {
+  "class": "CreditsFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f08cf085dd78fdaaa67a192b3b9ee313",
+  "examples": [
+   "GameObject\\Credits.prefab"
+  ]
+ },
+ {
+  "class": "EndOfDayTabletFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "830d9e5a7e7972c0415544a7779b23c7",
+  "examples": [
+   "GameObject\\EndOfDayTablet.prefab"
+  ]
+ },
+ {
+  "class": "ScratchFlake",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "718190d7b49d82d55f7e377752efc46c",
+  "examples": [
+   "GameObject\\FoilFlakePrefab.prefab"
+  ]
+ },
+ {
+  "class": "LoadGameFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a14af330b729107c860a2785cb8d5f34",
+  "examples": [
+   "GameObject\\LoadGame.prefab"
+  ]
+ },
+ {
+  "class": "ModElement",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "0399f39b27a24237ecd1c0c30d8cd1da",
+  "examples": [
+   "GameObject\\ModElement.prefab"
+  ]
+ },
+ {
+  "class": "NegotiationTabletFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e284393deaac4672f92453a179229b1f",
+  "examples": [
+   "GameObject\\NegotiationTablet.prefab"
+  ]
+ },
+ {
+  "class": "NewGameDifficultyFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7876fba5b6eea516cca40c658f8a5705",
+  "examples": [
+   "GameObject\\NewGameDifficulty.prefab"
+  ]
+ },
+ {
+  "class": "NewGamePerksFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "938c08c2c5eb6e06e0f081162e708f75",
+  "examples": [
+   "GameObject\\NewGamePerks.prefab"
+  ]
+ },
+ {
+  "class": "NewGameSpecializationFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "eeafbf752a9988c104dc19ff010d50e4",
+  "examples": [
+   "GameObject\\NewGameSpecialization.prefab"
+  ]
+ },
+ {
+  "class": "StartingPerkElement",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "09556a57c9cd8df4b4206c2852950638",
+  "examples": [
+   "GameObject\\StartingPerkElement.prefab"
+  ]
+ },
+ {
+  "class": "TransitFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "b6a2fcb1b469fa51b1dd24b7d7495f87",
+  "examples": [
+   "GameObject\\TransitSystem.prefab"
+  ]
+ },
+ {
+  "class": "WildNetworkFrame",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "b95b914e82e89694c5bbc7dae28a7330",
+  "examples": [
+   "GameObject\\WildNetworkMenu.prefab"
+  ]
+ },
+ {
+  "class": "<UNKNOWN>",
+  "assembly": "?",
+  "count": 1,
+  "guid": "04f96cb6d8b4b8cd0014bcc87d8a855e",
+  "examples": [
+   "Resources\\GridlySettings.asset"
+  ]
+ },
+ {
+  "class": "<UNKNOWN>",
+  "assembly": "?",
+  "count": 1,
+  "guid": "1c818acb87eb949ae7bf629a719b4c66",
+  "examples": [
+   "Resources\\es3\\ES3Defaults.asset"
+  ]
+ },
+ {
+  "class": "SteamManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "809261f2e46289b0f435b52696147ce4",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "ModLoader",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a49a60b884dad657716aaeeabdc41be7",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "SpaceInvadersText",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "cb7a27e62cb219f95ea95fe6181bdb66",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "SaveUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f414466a390e994a536e079b5e70a622",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "NewGameData",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2af9173e7a2ca3f6014cdb8ccb4b466e",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "ModHook",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "75b5b6911d826f7ed345c64d13d4f129",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "MainMenuUIController",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e82ebe5917e906c806f4941d9cd9841f",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "CustomUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7d707f0f3fde08918ab94f84c0021b31",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "ModUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f896876846f4fe7670908af10d386d15",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "AchievementTracker",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "fdebfd0a7091a5ef7687fbab07f16b64",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "IconProvider",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9814f45f663594042b3da4d27c4d6885",
+  "examples": [
+   "Scenes\\EmporiumMenu.unity"
+  ]
+ },
+ {
+  "class": "ReputationUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "4e894245c9763dafa65a7d607462f0c9",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StorePhoneObject",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c402b65354943bfb9e8e460a5635534e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "AdvCalendarUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "80c4eaeb9094e11a2ab8d9aceb9ad1c3",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreDismissButton",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "be5017535303c09e88b461d92aef370e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreTablet",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "0aa1353b0557e9e592921f493768973f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MultiPageUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "6f9a5f2749f4e3ca25f819619587392a",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreVendingFountain",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "878f96698a001cd35c2893d892c42371",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "Shotgun",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "67a718743d155b893861cddb6d3cd150",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EmporiumEntry",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2b01b70ff2e15858814e040d2d082b19",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreBell",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "81e6c92dd96d9bcf97573d8f9803cedf",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NegociationUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2f5ff8432e30d2fb581b4564b8978c2c",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LogWriter",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f885bcd4bd0ad1d372d704b13a22f1bc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WaterScannerUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "aa5a52d0a8ddf573e683fc09726be7e2",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MagnifyingGlassMono",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "1392b7f24fee51b8c9c85e1fd2a4bc1e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogBubbleWidth",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "04016cf2563f5e11308d72b01baa9fa4",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LabelerUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e0f1be4303d753f2f204620800804458",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NegociationTarget",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "41955774d3f116dedc8d7d9e14e4622b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ExchangeUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "78befbaa0e04f74e386a44552956496c",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreCreditDisplay",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "629431d8557cc6ba734afe0e24e9b63f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreCalendar",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "269bf51cec5e2dad14c06277544eb47d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LoanPanelUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "8701e3c857356a78e113a810c02dd398",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EndOfDayUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7c927d39e90a2a25340fa09a046b36ee",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreGlass",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "4e6f6d4b9f40eada5b3f2fe2cef898ca",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreClienteleDisplay",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e471446c57aec61fa76756b9930ca2dc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MapUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "8a7e63e9225fad3b8d1e5dd93884eaaa",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ZoomFollower",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9ac47d809e380c87e7ed621376cb3ad1",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LabelerBlueUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "256ec27fde85219bcab8143e6cf4399b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PCUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f6e895d8f9bccc8604ce2dc1d6b09c62",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ChemFinisherUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "b9a07275867269fd75ec179c656d955b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SmoothMouseMovement",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "1877e1db6425e74c00ef70ea1368ded6",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RefineFlowLayoutGroup",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "d6bd90aec200432dc8728acd9d781d89",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "UISettings",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c204ba806d9e8d19bda46fd22d6e6285",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CustomEventHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c081c0f230812103061768d265dbe4de",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RenderHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "ef5ec4e18a6e16087e46ac99820c4c63",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GraphHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e57464434c5d4779f0d55f3b9c7f7232",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "OverlayHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "dd91af554ad41c4c9f319e712750bce9",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GameMaster",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9ed22fbca36f2b6313f0fc8304086f51",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WindowsHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "be42200aa1a65fcda87f3dd97264da6b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemBehaviourManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2f756e59056aafd371175812dacdd6a7",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EventTriggerManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "dba5f7df92cff73f5ece4190b9d2c033",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WildUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7b8ab3fa8dba58ba4c8b80a4bd8f9c9f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TableGroupMaster",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3258a620dad50587b2752a75366a4fe9",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "InspectionUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f9815229043765c3e96b2d75c1f3ff14",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreDoor",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f17479e53a3561877442008c3ec1d15d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemMouseHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "757d8dfd8c343f9efc77de6530c524a7",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "InputActionManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2b92e190f9538bb4fa9775083568d1ba",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemMouseDoubleClickHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "006eb527aeec8aab1554a1bedef05c77",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemMouseDragHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "32221be46929b892a6e3ceddc208dbf5",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemTooltipHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "82a07a1dbf31a171566dba3daeeb9a58",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemSelectHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "637cc54e2af4a66b6d100115beeead5d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemDefaultActivateHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "d0739904d01c15d1fac06b2bc9a28733",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemQuickTransferHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f86f55b472821bc3e741ddf904c3b104",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemContextHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "34d146be8acdd2d0778e890265fbac5b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DebugHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "decac09071583fe1c7d53505516873a4",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RecipeSelectHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7806b0ef8cc042894b960d0108397604",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogueHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "999f455c4b8c026ac8f0d984e32c55c6",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SelectableElementHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "ab8813cda9dfa5688e077c118af3e32b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "QuickChooseHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "06d957d3df1db85c8e1f9c316e379b38",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemQuickTransferAltHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a07be15357fd3aea62e1774269a9c922",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemQuickTransferAltHandler1",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f99debd35bc1c696477f68bf74077ebb",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ItemMultiSelectHandler",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "11584e3f28e0787f04e1115b995c7802",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StorePC",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9e4b5cc1046beb2cde32ab5b76abaeea",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RecordUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "8a205f269a166d44c6a3d4b60fc7110b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreMagnifyingGlass",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "55dd81c43c15449210a69d6c81b265c4",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreSecButton",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "6a6f9746909cf95cefca7ec77c0079a2",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StorePoster",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "4834c2eaf77c8dcd460df1e70e35965e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "AudioDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a22861c62c5c32b390000d349782ad1c",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PlantAnalyserUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "418d76c7491cad041719f5b2cd88a1a0",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreShutterButton",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "aa2c14cd0dcf9f445b32bc8f0c21c1a9",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogBubbleList",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f184fb11adf27052d59864321aed90af",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ClienteleUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "38937c800d26710a45bfd0cef74e9957",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreRecorder",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "ad9fde11d76abdfd814703a30dec8962",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RepublicLogoUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "73489354720e981a19b2846a409d7101",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GameOverUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e62d76d498c3961cace0333b8c23e2be",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MedsItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "1e364c98ebe5d66f755185b165f838e1",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ShipItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "46b13a3d0d188f65ea93d378286e6e56",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MiscItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "267b75bc2a6b1ca040e980e6f57ca63f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GunsItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "af18456d53f2cf839767d07f5e1dd284",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "FurnitureItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "1679a1e32fb426432ade87d7e539ed37",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ExplosiveItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "db1190392a41b16a7d0630abcd9804c6",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ContainerItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "55fe892229017f02428468f632b1698d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MeleeWeaponItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e45cb610b5b844f9c24a4eaf5d091141",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ConstructionItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "289dc2649607437315e64425b4aad93b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "FoodItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a9d0647c80e5fd6510bf37fd2dae833d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "AmenitiesItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "249660dcf41465864a0e9575e980d827",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "HydroponicDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3d452e6a11966b72fed573776936a8fc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ArmorItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "d17a423466d8ed6b2a878a5fe3d24934",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "MaterialDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "847be7e339f926f398fd40b3705aed46",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ModuleDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "afa5bff6211ad78da0ee41eaef4c0221",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EquipmentDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f0d37ba7ee7472d03140d67e87cd3af0",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ShipSystemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "85624ee8bf21ad593832ef016a323873",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StationMachinery",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "98a50fe55f813520ca4a11653fdd7b4f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TechnicianBackpackDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "8d2750518ce037eda54bbc1c199d6a0e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PerkDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "24cbea95deb2edbb17c60cf097a361f6",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ToolDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f5396e675f038a9d4621ca3fca2b3891",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "OrganDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "704f73e01fe64da121fa448afbf28ac1",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "KeyItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "81e457ab3d73f0a3b86b6e649e0a538f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GunModDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "98c03cb62c4489710c6cc11855063698",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "HusbandryDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9798e9d4c2aef8071ac25d9a9b8b6b23",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ModItemDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7ccedc9f312b63587f674ca1bf6d7d9c",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WineDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "73efc3beb3d48d2959600695f7d00e95",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RuinedMachineDirectory",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "4826f943af5395177007b51ee229c700",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreClientMono",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "a12e43ee5a402b7150ac904fdd8e9471",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WantedUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "220f41fdb2d5f0687513b3821c180fc8",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EmporiumAudioPlayer",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "0e864f10a72f13273d5f13deeb01a89b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EmporiumRTSController",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c829d3d5b9c3687e39df68fc17dd520d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PaperUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9dbc1caa80c8824af918c44dd36c0072",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogSettingUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3582e1d0ebe41600fea43ad6b15c362b",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "Arm",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "0cc568f2131a2749a3624f432f581953",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TutorialUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3a1580b2c2583173ccf3a70c5b378ea1",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NotebookUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "c74a820e64bc91b3e191338d3e18008d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DebugPanel",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "50bd52bed42520a4e4ff83d8e6be2a5e",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "FeedbackBox",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "642168b14c1979e63e392380c7c54de5",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PhoneBookUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e43aa2066212e47e5fc27152b3542248",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ScratcherUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "5624c83ef82e4479695d453aa795b72c",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "ChemScannerUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "04b18433c3163249ba2374681691296a",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "GenericConfirmationUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "62b8e5434b3190e660873398c1b465ec",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialogUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "dccfc38c000cd567dca18bf5082a535f",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StartOfDayUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "ab0f5f3d838c3f924cc6bf6577330ccc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "EscapeUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "affeb3ed116226822b6027b3cfc06125",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreSoundPlayer",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e14dad385803ebe75125093b31b9ba9d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreVendingMachine",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "6a1ce044f9b39dfc12c5d8fed0f0c2fb",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "PhoneUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3190153a0d325f9b7f129612ae293607",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WalkerManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "d3a43212d394af6f585c47c13e23b079",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "HandnoteUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "624b9418969a36d56301a90d8d9359d3",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "656957b188c40d4be9e7d224722b0f2a",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SpriteDict",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "6cfb6c9778ca1c66490cd883bc863c9a",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "WaterStripUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "7113b830d45d177c70ce1872eceda1df",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "LogUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "043cd995da5aaafbcf13bbd56baa90fc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreBedroll",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "9d9fd179d04ceba7a8dc3ae2f00080b7",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TableMaster",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "ec20f88ab488422ea531335fb9992ed9",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "NewsUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "f2488aed783fc784e088dde55a6429d3",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreMagnifyingWindow",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2389701680dbfe6fc130c11d32fee972",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TMPInputFieldLocalizer",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "4032468cd8c976bf8680bfc9ec0731e7",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "SecuritySlip",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "e5c5dd5cb8755890ed7cbaa3ffdb9f40",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "StoreTransferButton",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "3fd8531a3d597494140636dc9d5718b1",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RecorderUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "132a9837eb544f089d420a9903894309",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "CommissaryUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "691ca735dec880808dbe64454126f8e7",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "BargainUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "2647ffa83d3d9906a6e817ce156a089d",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "DialoguePhoneUIManager",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "6d4eab1c1043b713c344a97fb9c7d933",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "RTSController",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "37c7b07edd0f704cf2d4ad23d4760197",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ },
+ {
+  "class": "TypeElement",
+  "assembly": "Assembly-CSharp",
+  "count": 1,
+  "guid": "97c9ef7ca197bece5375d054392e93cc",
+  "examples": [
+   "Scenes\\InventoryScene.unity"
+  ]
+ }
+]

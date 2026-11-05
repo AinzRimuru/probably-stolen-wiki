@@ -1,0 +1,810 @@
+{
+ "system": "养鱼与畜牧",
+ "version": "0.46D",
+ "source_files": [
+  "AquacultureHelper.cs",
+  "AquacultureItems.cs",
+  "FishSpecies.cs",
+  "FishDiet.cs",
+  "FishStage.cs",
+  "IndustrialFishFeedHelper.cs",
+  "GutterflowPelletHelper.cs",
+  "MachineFeedDispenser.cs",
+  "MachineRAS.cs",
+  "MachineAutoButcher.cs",
+  "MachineMeatCulture.cs",
+  "HusbandryHelper.cs",
+  "HusbandryDirectory.cs",
+  "AnimalSpecies.cs",
+  "AnimalCage.cs",
+  "AnimalMarkHelper.cs",
+  "RatTrap.cs",
+  "IngesterHelper.cs",
+  "Liquid.cs",
+  "WaterHelper.cs",
+  "FoodItemDirectory.cs",
+  "AmenitiesItemDirectory.cs",
+  "MeleeWeaponItemDirectory.cs",
+  "MedsItemDirectory.cs",
+  "StoreClientListSpec.cs",
+  "NetworkUpgradeList.cs",
+  "NewGameData.cs",
+  "OrganHelper.cs"
+ ],
+ "machines": [
+  {
+   "id": "ras",
+   "name_zh": "循环水养殖系统",
+   "desc_zh": "封闭水循环养鱼缸：鱼池网格(8×4起)＋水箱槽＋4个滤水器槽＋投喂器槽＋屠宰机槽，每晚结算鱼的成长、进食、繁殖与水质",
+   "value": 300,
+   "power": "基础5电池/晚（POWER_USE=5）；每次宽度升级+2（WIDTH_UPGRADE_POWER_INCREASE）、高度升级+3（HEIGHT_UPGRADE_POWER_INCREASE）、节能升级-2（POWER_UPGRADE_REDUCTION），最低1（MIN_POWER_USE）。仅当水箱有水且有活鱼/鱼群时才耗电运转",
+   "recipes": [
+    {
+     "name": "受精与孵化",
+     "inputs": [
+      {
+       "id": "tag:FISH_ROE_TAG",
+       "name_zh": "未受精鱼卵",
+       "amount": 1,
+       "note": "卵需先在缸内过夜：若缸中有同种吃饱的成年雄鱼（饥饿≥50%上限）则当晚受精（HasFedAdultOfSex）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:FISH_FRY_TAG",
+       "name_zh": "鱼苗群",
+       "amount": 1,
+       "note": "每群含 groupCount=6 条（罗非鱼类）"
+      }
+     ],
+     "time": "受精后 stageStartDays[1]=1 晚孵化（罗非鱼类）",
+     "conditions": "循环水养殖系统 供电且鱼卵存活；未受精卵不会孵化，且可作为食物出售",
+     "notes": "受精卵失去 / 类型不可食用；孵化时苗群饥饿度设为 min(maxHunger, 300)"
+    },
+    {
+     "name": "鱼苗长成幼鱼",
+     "inputs": [
+      {
+       "id": "tag:FISH_FRY_TAG",
+       "name_zh": "鱼苗群",
+       "amount": 1,
+       "note": "群体增重 = 条数×幼年体重(stageWeightGrams[2]=50g)/(stageStartDays[2]-stageStartDays[1])，罗非鱼=6×50/2=150g/晚"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tilapia",
+       "name_zh": "罗非鱼（幼年）等",
+       "amount": 6,
+       "note": "按群内条数拆成独立个体，年龄=stageStartDays[2]，均分饥饿/进食记录"
+      }
+     ],
+     "time": "罗非鱼2晚（day1→3）；鱼苗在缸外1晚即死",
+     "conditions": "饥饿≥37.5%上限才会成长（maxHunger×0.75×0.5）",
+     "notes": "成长速度受生长倍率影响（见机制），每晚推进 AdvanceGrowthProgress"
+    },
+    {
+     "name": "繁殖产卵",
+     "inputs": [
+      {
+       "id": "tag:FISH_ITEM_TAG",
+       "name_zh": "吃饱的成年雌鱼+雄鱼（同种）",
+       "amount": 1,
+       "note": "『吃饱』= 饥饿≥breedHungerRatio(0.5)×maxHunger；双方必须都在缸内且未死"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tilapia_roe",
+       "name_zh": "鱼卵（未受精，6卵/个）",
+       "amount": 1,
+       "note": "罗非鱼卵/阴沟罗非鱼卵/植皮罗非鱼卵同理"
+      }
+     ],
+     "time": "每晚判定一次",
+     "conditions": "随机判定(breedChancePercent=15)：每条合格雌鱼每晚15%概率产1个卵；鳗鱼/电鳗/鲟鱼 breedChancePercent=0 永不繁殖",
+     "notes": "产出的未受精卵当晚起可被雄鱼受精；未受精卵是 （60千卡）可直接卖（30/15/60信用点）"
+    },
+    {
+     "name": "滤水器净水",
+     "inputs": [
+      {
+       "id": "tag:WATER_FILTER",
+       "name_zh": "滤水器（water_filter 25信用/400耐久、water_filter_adv 350信用）",
+       "amount": 1,
+       "note": "4个滤槽，任意带 标签的物品"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "污染物→清水",
+       "amount": 1,
+       "note": "每点耐久滤除有机废物1ml（filterVolumeRemoved=1000µL），残余下限为总量×filterMinimumPurity(0.0016)；微生物(microbe)无法滤除"
+      }
+     ],
+     "time": "每晚（需供电）",
+     "conditions": "遍历水箱中所有非水液体转为水",
+     "notes": "阴沟罗非鱼额外每晚每100g体重转化0.5ml重金属/化学污染物/物理污染物为清水（remediationMlPer100gPerNight，无需供电）"
+    },
+    {
+     "name": "电鳗发电",
+     "inputs": [
+      {
+       "id": "electric_eel",
+       "name_zh": "电鳗",
+       "amount": 1,
+       "note": "仅电鳗有 stagePowerPerNight={0,0,1,2,3,3}千焦/晚（幼年/亚成年/成年/老年）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "电力",
+       "amount": 1,
+       "note": "全缸电鳗输出求和，充入 循环水养殖系统 自身电池＋相邻的每块电池与可充电机器（GeneratePower）"
+      }
+     ],
+     "time": "每晚（周期末早段）",
+     "conditions": "活鱼且非饥饿状态；无视停电/商业供电限制",
+     "notes": "托盘提示：亚成年期(stageStartDays[3]=5天)起开始发电"
+    },
+    {
+     "name": "升级（网络商店购买材料后使用）",
+     "inputs": [
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 1,
+       "note": "宽度+1格（最多4次）"
+      },
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "高度+1格（最多4次）"
+      },
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": "耗电-2（最多12次）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "ras",
+       "name_zh": "扩容/节能后的RAS",
+       "amount": 1,
+       "note": "鱼池尺寸=8+宽升×(4+高升)；每升1级 售价+材料价"
+      }
+     ],
+     "time": "即时",
+     "conditions": "把材料拖到 循环水养殖系统 上（MaterialDirectory/ModuleHelper 的 onThisTargetItemFunc）",
+     "notes": "鱼池形状变化会保留物品并重新验证"
+    }
+   ]
+  },
+  {
+   "id": "livestock_feed_dispenser",
+   "name_zh": "牲畜饲料分配器",
+   "desc_zh": "把食物/活鱼/活鼠搅拌成热量储备（最多40000千卡），每晚自动按目标饱食度投喂缸中鱼或笼中鼠",
+   "value": 300,
+   "power": "无需电力",
+   "recipes": [
+    {
+     "name": "搅拌混合",
+     "inputs": [
+      {
+       "id": "tag:CALORIE_VALUE_TAG",
+       "name_zh": "任意带热量的食物（含鱼饲料粒、工业鱼饲料、肉、鱼、活鼠）",
+       "amount": 1,
+       "note": "6×4储物格；活鼠/活鱼放入会先被杀死并屠宰/切片再搅拌；满足条件： 或 或鱼类"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "热量储备",
+       "amount": 1,
+       "note": "上限 ；分桶记录：<物种ID>（同种肉）、（普通肉）、（素食），"
+      }
+     ],
+     "time": "即时（点『混合』按钮或开启自动搅拌 AUTO_BLEND）",
+     "conditions": "当前储备+食物热量 ≤ 40000 才吸收",
+     "notes": "同种肉单独记账并带 Prion(朊病毒)标记：老鼠吃了含本物种肉的储备必然得朊毒病；『清空』按钮可弃掉全部储备"
+    },
+    {
+     "name": "每晚自动投喂",
+     "inputs": [
+      {
+       "id": "",
+       "name_zh": "热量储备",
+       "amount": 1,
+       "note": "鱼：饲料粒/工业饲料桶仅杂食与植食鱼可吃（肉食鱼禁用），肉桶仅杂食与肉食鱼可吃，素食桶肉食鱼禁吃；鼠：只吃非鱼饲料部分"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "饥饿度恢复",
+       "amount": 1,
+       "note": "投喂至 目标饱食度（滑条 默认85%，0-100%步进5%）；各桶按存量比例扣减（SplitProportionally）"
+      }
+     ],
+     "time": "每晚",
+     "conditions": "对象饥饿度 < 75%×上限才会来吃",
+     "notes": "无需供电；装在动物笼 dispenser 槽或 循环水养殖系统 dispenser 槽；也可直接放在笼内网格中被当作可及投喂器"
+    }
+   ]
+  },
+  {
+   "id": "auto_butcher",
+   "name_zh": "自动屠宰机",
+   "desc_zh": "可配置的自动屠宰机，装入动物笼或RAS的屠宰槽；每晚按体重/年龄阈值自动屠宰并放入10×10托盘，绝不动标记过的动物",
+   "value": 400,
+   "power": "无需电力",
+   "recipes": [
+    {
+     "name": "屠宰笼中动物（笼模式）",
+     "inputs": [
+      {
+       "id": "rat",
+       "name_zh": "老鼠（活体或尸体）",
+       "amount": 1,
+       "note": "默认设置：收获模式=关闭；若开启按体重：范围100-1000g步进50，默认下限400g；按年龄：1-30天默认10天；保留雌2雄1；默认勾选：保留怀孕、扑杀病鼠、扑杀朊毒鼠"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "raw_meat",
+       "name_zh": "生肉（标准）/生肉（小）/一口食物/一小口食物",
+       "amount": 1,
+       "note": "见屠宰分解公式；尸体与被扑杀者直接进托盘"
+      }
+     ],
+     "time": "每晚（onCycleEndLate）或手动按钮",
+     "conditions": "装在 AnimalCage 屠宰槽；被标记笔标记或有自定义名的个体永不被杀",
+     "notes": "『仅杀死存放』模式把整只尸体放进托盘而不分解"
+    },
+    {
+     "name": "宰鱼（缸模式）",
+     "inputs": [
+      {
+       "id": "tag:FISH_ITEM_TAG",
+       "name_zh": "鱼（活鱼按阈值筛选，尸体默认自动片切）",
+       "amount": 1,
+       "note": "默认：按体重100-5000g步进100默认600g；按年龄1-100默认20天；保留雌2雄1；默认勾选：保留产卵鱼、片切尸体；默认不勾：切下饲料送投喂器、收集鱼卵"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "fish_fillet",
+       "name_zh": "鱼片/鱼子酱/罗非鱼植皮片等",
+       "amount": 1,
+       "note": "调用 AquacultureHelper.：鱼肉块+鱼皮植片+满罐鱼子酱+边角料"
+      }
+     ],
+     "time": "每晚或手动",
+     "conditions": "装在 循环水养殖系统 屠宰槽；标记/命名鱼受保护",
+     "notes": "『切下饲料送投喂器』开启时鱼肉块（非鱼子酱）优先转入投喂器储备；『收集鱼卵』把未受精卵移入托盘；每页设置可复制/粘贴到另一台屠宰机"
+    },
+    {
+     "name": "手动投放屠宰",
+     "inputs": [
+      {
+       "id": "tag:FISH_ITEM_TAG",
+       "name_zh": "直接把鱼/鼠拖到开启『投放屠宰』的屠宰机上",
+       "amount": 1,
+       "note": "所有鱼/鼠出生时即注册该投放目标"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "fish_fillet",
+       "name_zh": "对应肉块（进托盘）",
+       "amount": 1,
+       "note": "托盘满则提示 TrayFull 并跳过"
+      }
+     ],
+     "time": "即时",
+     "conditions": "机器 （默认开）",
+     "notes": "受保护个体（标记/自定义名）不会被投放屠宰"
+    }
+   ]
+  },
+  {
+   "id": "animal_cage",
+   "name_zh": "动物笼",
+   "desc_zh": "饲养老鼠的笼子（10×3格起步），含投喂器槽与屠宰机槽；每晚按活鼠体积磨损，耐久低于20时老鼠可能逃脱",
+   "value": 250,
+   "power": "无需电力",
+   "recipes": [
+    {
+     "name": "老鼠繁殖",
+     "inputs": [
+      {
+       "id": "rat",
+       "name_zh": "成熟老鼠雌+雄（同笼）",
+       "amount": 1,
+       "note": "成熟=年龄≥3天（growthStages[2]）；每晚最多交配3次；受孕率=min(双方当前生育力)%；基础生育力50"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "rat",
+       "name_zh": "幼鼠",
+       "amount": 3,
+       "note": "妊娠 ；产仔数=floor(窝仔数)+小数部分按概率进位+Random(-1,+1)方差，至少1只；基础窝仔数3 → 常见2-4只；幼崽继承双亲基因（等位基因遗传）"
+      }
+     ],
+     "time": "妊娠3晚；每晚判定受孕",
+     "conditions": "双方非饥饿/怀孕/绝育且未达交配上限；饥饿中75%/晚流产",
+     "notes": "当前生育力受惩罚：饥饿<200、年龄≥11天×长寿(-15%)、患病(-75%)、拥挤(-20%×等级)"
+    },
+    {
+     "name": "修理",
+     "inputs": [
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 1,
+       "note": "拖到笼子上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "animal_cage",
+       "name_zh": "耐久+50%上限",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "time": "即时",
+     "conditions": "耐久<上限（初始100/100）",
+     "notes": "每晚磨损=活鼠格数总和/4（拥挤时×2）"
+    },
+    {
+     "name": "扩建",
+     "inputs": [
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "拖到笼子上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "animal_cage",
+       "name_zh": "高度+1（最多到8）＋耐久上限+20",
+       "amount": 1,
+       "note": "起始高3，上限8；售价+40"
+      }
+     ],
+     "time": "即时",
+     "conditions": "< 8",
+     "notes": "笼宽恒为10格"
+    }
+   ]
+  },
+  {
+   "id": "mouse_trap",
+   "name_zh": "捕鼠夹",
+   "desc_zh": "放在店内的捕鼠器，用合成奶酪作饵每晚有几率抓到老鼠",
+   "value": 50,
+   "power": "无需电力",
+   "recipes": [
+    {
+     "name": "捕鼠",
+     "inputs": [
+      {
+       "id": "processed_cheese",
+       "name_zh": "合成奶酪（可选）",
+       "amount": 1,
+       "note": "槽位只接受合成奶酪或老鼠"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "rat",
+       "name_zh": "老鼠（3-7天龄，随机性别）",
+       "amount": 1,
+       "note": "PreBuiltItemHelper.)"
+      }
+     ],
+     "time": "每晚判定",
+     "conditions": "有奶酪：50%/晚抓到（抓住时奶酪被吃掉；未抓到时25%概率奶酪仍被偷吃）；无饵：仅1%/晚",
+     "notes": "抓到的老鼠留在夹槽里，可取出饲养或屠宰"
+    }
+   ]
+  },
+  {
+   "id": "vacuum_robot",
+   "name_zh": "清洁机器人",
+   "desc_zh": "每晚自动收集同笼的动物粪便到8×4储物格；可用电子元件升级为焚化模式自动销毁粪便",
+   "value": 250,
+   "power": "无需电力（电池槽隐藏）",
+   "recipes": [
+    {
+     "name": "收集粪便",
+     "inputs": [
+      {
+       "id": "tag:ANIMAL_FECES_TAG",
+       "name_zh": "动物粪便（小/中/大）",
+       "amount": 1,
+       "note": "允许放入笼中"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "存入自身储物格（可取出卖给化学回收）",
+       "amount": 1,
+       "note": "粪便含有机废物10/20/40ml＋碎屑＋微生物，可作化学品原料"
+      }
+     ],
+     "time": "每晚自动；也可手动激活",
+     "conditions": "同容器（笼）内有粪便",
+     "notes": "升级：拖1个电子元件（普通）到机器人上→，可开关焚化（每晚销毁储物格内全部粪便）；升级后价值+材料价"
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "【鱼类总表】6种：罗非鱼(tilapia)、阴沟罗非鱼(gutter_tilapia)、植皮罗非鱼(graft_tilapia)、鳗鱼(eel)、电鳗(electric_eel)、鲟鱼(sturgeon)。前3种可繁殖（breedChancePercent=15，卵/苗群6条，杂食）；后3种不可繁殖（breedChancePercent=0，无roe/fry物品），鳗鱼/电鳗肉食、鲟鱼肉食且固定雌性。",
+  "【生长阶段 FishStage】Roe鱼卵/Fry鱼苗/Juvenile幼年/Adolescent亚成年/Adult成年/Elder老年。各阶段起始日与体重（stageStartDays/stageWeightGrams）：罗非鱼 0,1,3,5,8,13天 → 0,0,50,200,450,600g；阴沟罗非鱼 0,1,3,6,10,16天 → 同罗非鱼；植皮罗非鱼同罗非鱼；鳗鱼 0,0,0,5,10,18天 → 0,0,150,600,1400,2400g；电鳗同鳗鱼；鲟鱼 0,0,0,10,18,34天 → 0,0,500,1500,3500,5000g。老龄期 oldAgeDays：罗非鱼27/阴沟33/植皮27/鳗鱼36/电鳗36/鲟鱼80；达到后每晚50%概率自然死亡（且只有吃饱的夜晚才增长年龄）。",
+  "【每阶段需水量 stageWaterNeedMl】罗非鱼类 100,100,100,350,750,1000ml；鳗鱼/电鳗 0,0,200,600,1200,2000ml；鲟鱼 0,0,500,1500,3000,4000ml。全缸需水=Σ各活体当前阶段需求；水箱容量12000ml。",
+  "【进食与饥饿】饥饿度=饱食度（满= maxHunger：罗非鱼700/鳗鱼800/电鳗1200/鲟鱼800）。每晚消耗= max(5, 维持+生长)：维持=体重g/100×maintenanceKcalPer100gPerNight（罗非鱼2/鳗鱼3/电鳗5.25/鲟鱼2；老年×0.5），生长=当晚增重g×growthKcalPerGram(1.2)。饥饿<75%上限时进食，进食顺序：①投喂器（喂到目标%，默认85）②缸中鱼尸（仅杂食/肉食，上限85%）③缸内散装食物（饲料粒/工业饲料上限85%；普通食物1件直接吃光上限100%，罐头除外）④捕食缸友（体重≤自己20%，肉食/杂食才会）。饥饿归零次晚死亡。",
+  "【食谱 FishDiet】杂食（罗非鱼类：荤素皆可）、肉食（鳗/电鳗/鲟鱼：仅肉类与活饵）、植食（暂无鱼种）。：植食不吃肉，肉食只吃肉，杂食全吃。",
+  "【生长速度】每晚成长进度+=生长倍率：生长倍率=1 - 近夜工业饲料份额×0.25 + 近夜肉食份额×meatGrowthBoost（IndustrialFishFeedHelper.；罗非鱼类meatGrowthBoost=0.25即，其余为0）。份额=上晚吸收热量中该类来源占比（/，UpdateRecentDiet）。饥饿<37.5%上限的夜晚不成长。",
+  "【体重与鱼肉】体重跟随累计进食：鱼肉热量= floor((累计进食千卡 - 卵克数×eggKcalPerGram) × conversionEfficiency)。conversionEfficiency：罗非鱼0.9/阴沟0.85/植皮0.7/鳗鱼0.9/电鳗0.75/鲟鱼0.9。体重映射按『全饱曲线』插值，超龄进食仍按1.2千卡/克增重。",
+  "【鱼片分解】宰鱼/尸体片切贪心分解：罗非鱼类 →鱼片400→小鱼片200→极小鱼片100千卡；鳗鱼类 →小鳗鱼片250→极小鱼片100。余量≥25千卡生成鱼类边角料（价值=max(1,千卡×4/100)），不足25千卡丢失。满卵鲟鱼先按每100g卵=1罐鱼子酱产出。",
+  "【鱼片价值】极小鱼片13/小鱼片26/鱼片57/大鱼片143（大鱼片为奢侈品）；小鳗鱼片68/鳗鱼片136（均为奢侈品）；鱼子酱240/鲟鱼卵120（各225千卡，奢侈品）；边角料4。",
+  "【污泥饲料粒污染】累计进食中饲料粒（gutterflow_pellet）占比>25%→ 该鱼所有产出降为『废品级』：移除类型不可食用，价值修正-75。阴沟罗非鱼 pelletProof=true 永不受污染。",
+  "【品种特性】阴沟罗非鱼：无视水质污染（ignoresWaste）、饲料粒免疫（pelletProof）、每晚每100g体重净化0.5ml重金属/化学/物理污染物转为清水（remediationMlPer100gPerNight=0.5）、转化率0.85、老龄33天。植皮罗非鱼：废物敏感×2（wasteSensitivity=2→伤害阈1.5%、致死4%）、排废1ml/100g/晚、转化率0.7、每200g体重(skinGraftGrams)宰杀时附1片罗非鱼植皮片（不降废品级）、鱼卵为医疗品（使用后伤口-3且止血）。",
+  "【水质机制】每晚全缸排废=Σ(体重/100×wasteMlPer100gPerNight)ml（罗非鱼0.5/阴沟0.5/植皮1/鳗2/电鳗2/鲟1）→等量清水变有机废物。水量比=水量/总需求：<0.5当晚全灭；<1每晚扣 maxHealth×(1-比例)。废物%=有机废物/总体积×100：>伤害阈(3%/wasteSensitivity）开始掉血，≥致死阈(8%/wasteSensitivity）当晚死亡；之间时每晚扣 maxHealth×0.5×(废物%-伤害阈)/(致死阈-伤害阈)（上限50%）。供电且（鱼卵或饥饿≥50%）时健康+10%上限/晚。断电：所有活体每晚-34%上限健康，滤水器停转。鱼离缸1晚即死（鱼苗直接消失）。",
+  "【健康度】鱼类上限 maxHealth：罗非鱼类100/鳗与电鳗120/鲟鱼150。死亡后变尸体（翻肚），尸体带尸肉热量，饥饿的肉食/杂食缸友会像饲料一样啃食尸体。",
+  "【鲟鱼鱼卵机制】成鱼起每晚+40g卵（eggGramsPerNight，需健康≥90%上限 eggRegrowHealthRatio=0.9），目标=当前阶段体重×15%（eggLoadBodyRatio：成年3500→525g，老年5000→750g），卵重按2.5千卡/克（eggKcalPerGram）从累计进食中预扣。手术取卵（外科手术工具套装）：每100g卵=1罐；产出规则 ：第1-10罐(surgeryCaviarJars)全是鱼子酱，第11-16罐(surgeryMixedJars)隔罐出鱼子酱（其余为鲟鱼卵），之后全鲟鱼卵；健康代价=maxHealth×(20%+30%×(1-卵满度))（surgeryHealthCostFull/Early）；健康不足时无法手术。用刀宰杀则把全部满罐按鱼子酱取出。",
+  "【鱼卵/鱼苗物品】未受精卵：60千卡，价值：罗非鱼卵30/阴沟罗非鱼卵15/植皮罗非鱼卵60（医疗品，伤口-3）。受精卵不可食用不可移动目标。鱼苗群价值0、不可离缸。",
+  "【鱼苗群体】每个卵=1群6条（groupCount）；苗群只按生长消耗进食（不耗维持）；到 stageStartDays[2] 拆为6条独立幼鱼，均分群内饥饿/进食/饲料粒记录。苗群/卵会被饥饿的肉食缸友整群吞食。",
+  "【电鳗发电】stagePowerPerNight={0,0,1,2,3,3}千焦/晚（按阶段）；每晚合计充给 循环水养殖系统 电池及相邻电池/可充机器；饥饿时不发电；与站点电网/停电无关。",
+  "【工业鱼饲料 industrial_fish_feed】不可合成！获取途径：开局赠予（水产老板开局 NewGameData）、网络升级 赠予2份、退休水产商（retired_aquafarmer）出售。默认5000千卡/份，价值=千卡/50（满份100信用点）；≥1000千卡可对半拆分、两份合计≤5000可合并；杂食/植食鱼可吃；吃过会导致生长倍率×0.75（见生长速度）。",
+  "【污泥饲料粒 gutterflow_pellet】同上不可合成，从退休水产商处购买；默认4000千卡，价值=千卡/100（满份40信用点）；≥1000可拆分、≤4000可合并；占比>25%污染鱼肉（见上）。",
+  "【投喂器（牲畜饲料分配器）细节】储物格6×4；吸收上限40000千卡；分桶：同物种肉（<物种>，如老鼠肉）、普通肉、素食、污泥饲料粒、工业鱼饲料；按比例投喂（SplitProportionally）；滑条『喂至x%饥饿』默认85%（范围0-100步进5）；自动搅拌开关；活鱼/活鼠放入即被屠宰搅拌。朊毒标记：含某物种肉的桶带该物种 Prion 标记，同物种动物吃到必然感染朊毒病。",
+  "【老鼠（唯一畜牧动物 ）】生长阶段 growthStages={0,1,3,5,11,14}天（幼崽/幼年/亚成年=性成熟3天/成年5天/老年11天），体重 weightStages={5,50,200,350,450,400}g（老年回落）。寿命：年龄≥14×长寿基因→每晚75%死亡。饥饿500上限，每晚-饥饿消耗率（基础65，个体0.5-1.5倍）。体重每晚按阶段斜率×生长率增减；饥饿<400减速、饥饿0转为挨饿状态（再一晚死亡）；增重≥30g/晚时排便（体重≥1000大便/≥600中便/小便）。基因7项（生长率/饥饿率/生育力/窝仔数/免疫力/生命上限/长寿），出生时在基础值0.5-1.5倍间随机（GeneticHelper），表达值=两等位基因均值，实际值=(表达+加成)×(1+百分比加成)；繁殖时子代从父母各随机继承1个等位基因。",
+  "【鼠病与免疫】拥挤等级：动物占用格/总格>55%/70%/90%→1/2/3级；2级每晚5%、3级每晚15%概率抓伤并杀死最小同类（带抓痕标记）。卫生：粪便+尸体占比≥25%→15%概率患病(致病系数0.15)；≥35%→35%(系数0.35)；再+拥挤0.2×等级。免疫力<50（immunityThreshold）每晚按 Lerp(25%→5%) 概率患病。患病：每晚-25%生命上限；roll(免疫力)%康复。免疫力>25时每晚回血=(免疫-25)/25×0.3×生命上限（≤30%）。同类相食（吃了本物种肉，含投喂器）：roll(100-免疫力)%感染朊毒病（若该肉带Prion标记则100%）；朊毒病：生长率/免疫力/长寿各-20%，永不痊愈。",
+  "【鼠屠宰分解 】体重（患病×0.75）→每400g 1×生肉（标准）＋每200g 1×生肉（小）＋每100g 1×一口食物＋每50g(进位) 1×一小口食物；朊毒鼠的肉带（喂回老鼠必染病）。例：450g健康鼠=1生肉+1一小口。全程用任意刀（近战刀具8种：玻璃刀/剥皮刀/战斗匕首/美工刀/切肉刀/厨刀/军用砍刀/手斧）点击：活体先杀死、尸体再点击分解；剥皮刀额外统计屠宰总数。",
+  "【外科手术工具套装 surgery_tool】对鼠：绝育（或终止妊娠）；对鲟鱼：活体取卵（见上）。",
+  "【标记笔 marking_pen】5色+橡皮擦模式；给鱼/鼠上色后自动屠宰机永不宰杀（自定义名同理）。",
+  "【血清】牲畜类固醇血清 serum_red（100信用，10次）：注入20µL，生效期+20%生长率、-40%免疫力、+25%饥饿消耗（每天代谢5µL≈4天）。牲畜免疫血清 serum_green（100信用，10次）：+75%免疫力、+25%饥饿消耗。",
+  "【饲料与动物获取】网络升级 （400信用，前置）解锁水产商与开局包（循环水养殖系统+水箱+受精罗非鱼卵×1+2份工业鱼饲料+厨刀+标记笔+50能源点+水壶）；（1200信用，前置）后退休水产商开始出售大鱼：鳗鱼/电鳗幼鱼100信用、鲟鱼亚成年雌鱼500信用（//），并出售3种罗非鱼受精卵、循环水养殖系统、滤水器、投喂器、屠宰机、标记笔、切肉刀、两种饲料。开局『水产养殖』出身送2台旧RAS等（NewGameData）。老鼠靠捕鼠夹捕捉（有合成奶酪50%/晚、无饵1%/晚）。",
+  "【活体售价】鱼/鼠本体 售价=0（无法直接卖）；从商店购入的鳗鱼/电鳗/鲟鱼保留购入价100/100/500可转卖。产出物（鱼片/鱼子酱/鱼卵/鼠肉）才是主要收入。",
+  "【鱼类在缸外】任何活鱼在非RAS槽位过夜即死；鱼苗群/鱼卵离缸即被销毁。RAS鱼池只接受鱼、鱼群与食物，不接受容器与机器。"
+ ],
+ "items": [
+  {
+   "id": "ras",
+   "name_zh": "循环水养殖系统",
+   "desc_zh": "采用封闭式水循环的养鱼设备，需要水箱、电力和滤水器",
+   "value": 300,
+   "note": "核心养鱼机；含电池/水箱/4滤槽/投喂器/鱼池/屠宰机7个分区"
+  },
+  {
+   "id": "ras_water_tank",
+   "name_zh": "循环水养殖系统水箱",
+   "desc_zh": "RAS的储水箱，容量12000ml",
+   "value": 0,
+   "note": "重要物品不可丢失；装水后可被污染"
+  },
+  {
+   "id": "livestock_feed_dispenser",
+   "name_zh": "牲畜饲料分配器",
+   "desc_zh": "能把食物加工成牲畜卡路里储备的设备",
+   "value": 300,
+   "note": "可放入动物笼"
+  },
+  {
+   "id": "auto_butcher",
+   "name_zh": "自动屠宰机",
+   "desc_zh": "可配置的自动屠宰机，装入动物笼或RAS，每晚按设置屠宰",
+   "value": 400,
+   "note": "10×10输出托盘；两页设置可复制粘贴"
+  },
+  {
+   "id": "animal_cage",
+   "name_zh": "动物笼",
+   "desc_zh": "饲养动物的小笼子",
+   "value": 250,
+   "note": "10×3格起步，最高10×8；耐久100"
+  },
+  {
+   "id": "mouse_trap",
+   "name_zh": "捕鼠夹",
+   "desc_zh": "放置合成奶酪诱捕老鼠",
+   "value": 50,
+   "note": "老鼠的唯一野外来源"
+  },
+  {
+   "id": "vacuum_robot",
+   "name_zh": "清洁机器人",
+   "desc_zh": "自动收集动物粪便，可升级焚化",
+   "value": 250,
+   "note": "电子元件（普通）升级"
+  },
+  {
+   "id": "marking_pen",
+   "name_zh": "标记笔",
+   "desc_zh": "给动物/鱼上色，自动屠宰机绝不宰杀已标记个体",
+   "value": 50,
+   "note": "5色+橡皮擦"
+  },
+  {
+   "id": "tilapia",
+   "name_zh": "罗非鱼",
+   "desc_zh": "可繁殖的杂食食用鱼，吃肉长得快(+25%)",
+   "value": 0,
+   "note": "幼鱼购入渠道：受精卵30信用孵化"
+  },
+  {
+   "id": "gutter_tilapia",
+   "name_zh": "阴沟罗非鱼",
+   "desc_zh": "耐脏污的罗非鱼变种，无视水质并净化污染物",
+   "value": 0,
+   "note": "pelletProof：饲料粒不污染"
+  },
+  {
+   "id": "graft_tilapia",
+   "name_zh": "植皮罗非鱼",
+   "desc_zh": "皮质特殊，宰杀附赠医疗植皮片；对污水极敏感",
+   "value": 0,
+   "note": "卵为医疗品"
+  },
+  {
+   "id": "eel",
+   "name_zh": "鳗鱼",
+   "desc_zh": "产高档鳗鱼片，不繁殖",
+   "value": 0,
+   "note": "退休水产商购入100信用"
+  },
+  {
+   "id": "electric_eel",
+   "name_zh": "电鳗",
+   "desc_zh": "活体发电机，亚成年起每晚发电1-3千焦",
+   "value": 0,
+   "note": "购入100信用"
+  },
+  {
+   "id": "sturgeon",
+   "name_zh": "鲟鱼",
+   "desc_zh": "产鱼子酱，可活体手术取卵，固定雌性，不繁殖",
+   "value": 0,
+   "note": "购入500信用（亚成年雌鱼）"
+  },
+  {
+   "id": "tilapia_roe",
+   "name_zh": "罗非鱼卵",
+   "desc_zh": "未受精卵，食物60千卡；受精后孵化6条苗",
+   "value": 30,
+   "note": "受精后不可食用"
+  },
+  {
+   "id": "gutter_tilapia_roe",
+   "name_zh": "阴沟罗非鱼卵",
+   "desc_zh": "同上",
+   "value": 15,
+   "note": ""
+  },
+  {
+   "id": "graft_tilapia_roe",
+   "name_zh": "植皮罗非鱼卵",
+   "desc_zh": "医疗品：伤口-3并止血；受精后失效",
+   "value": 60,
+   "note": "+"
+  },
+  {
+   "id": "tilapia_fry",
+   "name_zh": "罗非鱼苗",
+   "desc_zh": "6条一群，长到第3天拆为独立幼鱼",
+   "value": 0,
+   "note": "离缸即毁"
+  },
+  {
+   "id": "gutter_tilapia_fry",
+   "name_zh": "阴沟罗非鱼苗",
+   "desc_zh": "同上",
+   "value": 0,
+   "note": ""
+  },
+  {
+   "id": "graft_tilapia_fry",
+   "name_zh": "植皮罗非鱼苗",
+   "desc_zh": "同上",
+   "value": 0,
+   "note": ""
+  },
+  {
+   "id": "tiny_fish_fillet",
+   "name_zh": "鱼肉片（极小）",
+   "desc_zh": "100千卡",
+   "value": 13,
+   "note": "鱼肉分解最小单位"
+  },
+  {
+   "id": "small_fish_fillet",
+   "name_zh": "鱼肉片（小）",
+   "desc_zh": "200千卡",
+   "value": 26,
+   "note": ""
+  },
+  {
+   "id": "fish_fillet",
+   "name_zh": "鱼肉片",
+   "desc_zh": "400千卡",
+   "value": 57,
+   "note": ""
+  },
+  {
+   "id": "large_fish_fillet",
+   "name_zh": "鱼肉片（大）",
+   "desc_zh": "900千卡",
+   "value": 143,
+   "note": "奢侈品"
+  },
+  {
+   "id": "small_eel_fillet",
+   "name_zh": "鳗鱼肉片（小）",
+   "desc_zh": "250千卡",
+   "value": 68,
+   "note": "奢侈品"
+  },
+  {
+   "id": "eel_fillet",
+   "name_zh": "鳗鱼肉片",
+   "desc_zh": "500千卡",
+   "value": 136,
+   "note": "奢侈品"
+  },
+  {
+   "id": "fish_scrap",
+   "name_zh": "鱼类边角料",
+   "desc_zh": "分解余料，价值=max(1,千卡×4/100)，非食物",
+   "value": 4,
+   "note": "千卡数浮动"
+  },
+  {
+   "id": "caviar",
+   "name_zh": "鱼子酱",
+   "desc_zh": "225千卡奢侈品",
+   "value": 240,
+   "note": "鲟鱼手术/宰杀产出"
+  },
+  {
+   "id": "sturgeon_roe",
+   "name_zh": "鲟鱼卵",
+   "desc_zh": "225千卡奢侈品（手术后期产出）",
+   "value": 120,
+   "note": ""
+  },
+  {
+   "id": "tilapia_skin_graft",
+   "name_zh": "罗非鱼植皮片",
+   "desc_zh": "消毒鱼皮，止血并使伤口闭合（伤口-2）",
+   "value": 24,
+   "note": "植皮罗非鱼每200g体重1片"
+  },
+  {
+   "id": "gutterflow_pellet",
+   "name_zh": "污泥饲料粒",
+   "desc_zh": "阴沟污泥压制的廉价杂食鱼饲料；占比>25%污染鱼肉为废品级",
+   "value": 40,
+   "note": "满份4000千卡，价值=千卡/100；可拆分合并"
+  },
+  {
+   "id": "industrial_fish_feed",
+   "name_zh": "工业鱼饲料",
+   "desc_zh": "工厂批产鱼饲料，杂食/植食鱼可吃；生长速度×75%",
+   "value": 100,
+   "note": "满份5000千卡，价值=千卡/50；可拆分合并；无合成配方"
+  },
+  {
+   "id": "rat",
+   "name_zh": "老鼠",
+   "desc_zh": "唯一畜牧动物，产肉/繁殖/基因育种",
+   "value": 0,
+   "note": "每日结算单位价值归零"
+  },
+  {
+   "id": "raw_meat",
+   "name_zh": "生肉（标准）",
+   "desc_zh": "1200千卡，奢侈品",
+   "value": 159,
+   "note": "鼠屠宰每400g体重1块"
+  },
+  {
+   "id": "small_raw_meat",
+   "name_zh": "生肉（小）",
+   "desc_zh": "550千卡",
+   "value": 65,
+   "note": "每200g体重1块"
+  },
+  {
+   "id": "morsel",
+   "name_zh": "一口食物",
+   "desc_zh": "275千卡",
+   "value": 30,
+   "note": "每100g体重1块"
+  },
+  {
+   "id": "small_morsel",
+   "name_zh": "一小口食物",
+   "desc_zh": "140千卡",
+   "value": 15,
+   "note": "每50g体重1块（进位）"
+  },
+  {
+   "id": "processed_cheese",
+   "name_zh": "合成奶酪",
+   "desc_zh": "450千卡，捕鼠夹诱饵",
+   "value": 20,
+   "note": ""
+  },
+  {
+   "id": "feces_small",
+   "name_zh": "动物粪便（小）",
+   "desc_zh": "含有机废物10ml+碎屑1ml+微生物4ml，可化学品回收",
+   "value": 0,
+   "note": "体重<600g鼠排泄"
+  },
+  {
+   "id": "feces_medium",
+   "name_zh": "动物粪便",
+   "desc_zh": "有机废物20ml",
+   "value": 0,
+   "note": "体重600-999g"
+  },
+  {
+   "id": "feces_large",
+   "name_zh": "动物粪便（大）",
+   "desc_zh": "有机废物40ml",
+   "value": 0,
+   "note": "体重≥1000g"
+  },
+  {
+   "id": "serum_red",
+   "name_zh": "牲畜类固醇血清",
+   "desc_zh": "+20%生长率/-40%免疫力/+25%饥饿消耗，10次使用",
+   "value": 100,
+   "note": "每次注入20µL"
+  },
+  {
+   "id": "serum_green",
+   "name_zh": "牲畜免疫血清",
+   "desc_zh": "+75%免疫力/+25%饥饿消耗，10次使用",
+   "value": 100,
+   "note": ""
+  },
+  {
+   "id": "water_filter",
+   "name_zh": "滤水器",
+   "desc_zh": "RAS滤槽用，400耐久，每耐久滤1ml废物",
+   "value": 25,
+   "note": "标签"
+  },
+  {
+   "id": "water_filter_adv",
+   "name_zh": "高级滤水器",
+   "desc_zh": "同上（过滤更强液体参数见WaterHelper）",
+   "value": 350,
+   "note": "奢侈品"
+  },
+  {
+   "id": "surgery_tool",
+   "name_zh": "外科手术工具套装",
+   "desc_zh": "对鼠绝育/终止妊娠；对鲟鱼活体取卵",
+   "value": 200,
+   "note": "医疗工具"
+  }
+ ],
+ "unresolved": []
+}

@@ -1,0 +1,938 @@
+{
+ "system": "其他生产机器",
+ "version": "0.46D",
+ "source_files": [
+  "MachineFurnace.cs",
+  "MachineDesequencer.cs",
+  "MachineFridge.cs",
+  "MachineBottlePrinter.cs",
+  "MachineBoxDispenser.cs",
+  "MachineRecharger.cs",
+  "MachineRAS.cs",
+  "VendingMachineHelper.cs",
+  "VendingFountainHelper.cs",
+  "VendingRecipeManager.cs",
+  "CanteenHelper.cs",
+  "FoodItemHelper.cs",
+  "IngotPurityHelper.cs",
+  "MaterialDirectory.cs",
+  "MiscItemDirectory.cs",
+  "FoodItemDirectory.cs",
+  "ModuleDirectory.cs",
+  "FurnitureItemDirectory.cs",
+  "MachineryHelper.cs",
+  "MachineHelper.cs",
+  "MachineProgressHelper.cs",
+  "ModuleHelper.cs",
+  "PowerHelper.cs",
+  "ItemFeatureList.cs",
+  "ItemConditionList.cs",
+  "WaterFeatureHelper.cs",
+  "PlayerStore.cs"
+ ],
+ "machines": [
+  {
+   "id": "furnace",
+   "name_zh": "熔炉",
+   "desc_zh": "夜间把废金属/金属矿石冶炼成金属锭，锭的纯度由原料与模组决定；装上专用模组后还能处理垃圾",
+   "value": 200,
+   "power": "每周期 8（模组能效会修改；高炉模组使耗电翻倍至 16）",
+   "recipes": [
+    {
+     "name": "标准冶炼（2 材料 → 1 锭）",
+     "inputs": [
+      {
+       "id": "scrap_metal|common_ore",
+       "name_zh": "废金属 / 金属矿石（可混装）",
+       "amount": 2,
+       "note": "两者合计任意 2 个；混装时先耗矿石"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "纯度由配方决定（见机制详解）；基准价 50，纯度修正 −25%~+200%"
+      }
+     ],
+     "time": "1 游戏日（夜间结算）",
+     "conditions": "输入格 ≥2 个材料（scrap_metal/common_ore）；电池槽有电池且电量 ≥ 当前耗电；输出格能容纳 metal_ingot（输出满时产出的锭会被直接销毁，材料照常消耗）",
+     "notes": "输入槽 9×6；输出槽 9×6；模组槽 9 格（仅 / ）。每晚只处理 1 批。flux_agent / advanced_flux_agent 可与材料同放（见助熔剂条目）"
+    },
+    {
+     "name": "高炉冶炼（3 材料 → 2 锭，需高炉模组）",
+     "inputs": [
+      {
+       "id": "scrap_metal|common_ore",
+       "name_zh": "废金属 / 金属矿石（可混装）",
+       "amount": 3,
+       "note": "两者合计任意 3 个；混装时先耗矿石"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 2,
+       "note": "纯度等级在标准结果上 −1 级（blast 模组 num3--），且品质模组加成照常计入后再 −1"
+      }
+     ],
+     "time": "1 游戏日（夜间结算）",
+     "conditions": "模组槽装有 furnace_module_blast（高炉模组，不可叠加）；输入 ≥3 个材料；电池电量 ≥16（该模组能效 −100%，耗电 8→16）",
+     "notes": "产量翻倍但纯度降 1 级、耗电翻倍；每夜 1 批"
+    },
+    {
+     "name": "垃圾回收（需垃圾处理模组）",
+     "inputs": [
+      {
+       "id": "junk",
+       "name_zh": "垃圾",
+       "amount": 6,
+       "note": "只有装了 furnace_module_junk 才能往熔炉里放垃圾"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "scrap_metal",
+       "name_zh": "废金属",
+       "amount": 4,
+       "note": "输出满时产出的废金属被销毁，垃圾照常消耗"
+      }
+     ],
+     "time": "1 游戏日（夜间结算）",
+     "conditions": "模组槽装有 furnace_module_junk；垃圾 ≥6；电池电量 ≥8；输出格能容纳 scrap_metal；且本夜标准冶炼没有成功执行（两者互斥，冶炼优先）",
+     "notes": "6 垃圾(3×6=18) → 4 废金属(4×10=40)，价值净增；模组本身无属性修正（性能/能效/品质均为 0）"
+    },
+    {
+     "name": "助熔剂（冶炼添加剂，非独立配方）",
+     "inputs": [
+      {
+       "id": "flux_agent",
+       "name_zh": "助熔剂（基础）",
+       "amount": 1,
+       "note": "与材料同放在输入格。仅当计算出的纯度加成等级 <1 时生效：等级抬到 1，并消耗 1 个（Destroy）"
+      },
+      {
+       "id": "advanced_flux_agent",
+       "name_zh": "助熔剂（高级）",
+       "amount": 1,
+       "note": "与材料同放。把纯度加成等级下限钳到 1，但永不消耗（可重复使用）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "",
+       "amount": 0,
+       "note": "作用在当夜产出的金属锭纯度上"
+      }
+     ],
+     "time": "随冶炼即时判定",
+     "conditions": "当夜执行了标准/高炉冶炼",
+     "notes": "基础与高级不会同时触发消耗逻辑；两个都放时高级优先生效"
+    }
+   ]
+  },
+  {
+   "id": "desequencer",
+   "name_zh": "密码解序器",
+   "desc_zh": "插入密码芯片与识别卡，夜间持续工作，把对应权限写入卡片——即批量伪造一次性钥匙卡的非法生产机器",
+   "value": 350,
+   "power": "每周期 10（进行中每夜扣 10；通用模组可降低）",
+   "recipes": [
+    {
+     "name": "伪造指挥钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_cmd",
+       "name_zh": "密码解序器芯片（指挥）",
+       "amount": 1,
+       "note": "放入芯片槽；不会被消耗，可反复使用；违禁品等级 4，基准价 350"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡（通常用空白卡）",
+       "amount": 1,
+       "note": "输入槽接受任意 类物品（ 类型判定）（blank_keycard 一次性钥匙卡（空白）基准价 15 最常用；放入有权限的卡也会被覆盖销毁）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "cmd_keycard",
+       "name_zh": "一次性钥匙卡（指挥）",
+       "amount": 1,
+       "note": "违禁品等级 3，基准价 125"
+      }
+     ],
+     "time": "5 游戏日（工作量 150 ÷ 基础速度 33/夜，向上取整）",
+     "conditions": "输出槽为空、电池电量 ≥10/夜；开始后输入卡被锁定",
+     "notes": "完成后机器回到就绪态，芯片保留，可立刻塞下一张卡继续生产"
+    },
+    {
+     "name": "伪造治安钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_sec",
+       "name_zh": "密码解序器芯片（治安）",
+       "amount": 1,
+       "note": "芯片不消耗；违禁品等级 3，基准价 300"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡",
+       "amount": 1,
+       "note": "同上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "sec_keycard",
+       "name_zh": "一次性钥匙卡（治安）",
+       "amount": 1,
+       "note": "违禁品等级 2，基准价 100"
+      }
+     ],
+     "time": "4 游戏日（工作量 125）",
+     "conditions": "同上",
+     "notes": ""
+    },
+    {
+     "name": "伪造医疗钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_med",
+       "name_zh": "密码解序器芯片（医疗）",
+       "amount": 1,
+       "note": "芯片不消耗；违禁品等级 2，基准价 250"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡",
+       "amount": 1,
+       "note": "同上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "med_keycard",
+       "name_zh": "一次性钥匙卡（医疗）",
+       "amount": 1,
+       "note": "违禁品等级 1，基准价 75"
+      }
+     ],
+     "time": "4 游戏日（工作量 100）",
+     "conditions": "同上",
+     "notes": ""
+    },
+    {
+     "name": "伪造工程钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_eng",
+       "name_zh": "密码解序器芯片（工程）",
+       "amount": 1,
+       "note": "芯片不消耗；违禁品等级 2，基准价 250"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡",
+       "amount": 1,
+       "note": "同上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "eng_keycard",
+       "name_zh": "一次性钥匙卡（工程）",
+       "amount": 1,
+       "note": "违禁品等级 1，基准价 75"
+      }
+     ],
+     "time": "4 游戏日（工作量 100）",
+     "conditions": "同上",
+     "notes": ""
+    },
+    {
+     "name": "伪造补给钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_sup",
+       "name_zh": "密码解序器芯片（补给）",
+       "amount": 1,
+       "note": "芯片不消耗；违禁品等级 1，基准价 200"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡",
+       "amount": 1,
+       "note": "同上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "sup_keycard",
+       "name_zh": "一次性钥匙卡（补给）",
+       "amount": 1,
+       "note": "违禁品等级 1，基准价 40"
+      }
+     ],
+     "time": "3 游戏日（工作量 75）",
+     "conditions": "同上",
+     "notes": ""
+    },
+    {
+     "name": "伪造服务钥匙卡",
+     "inputs": [
+      {
+       "id": "crypto_module_ser",
+       "name_zh": "密码解序器芯片（服务）",
+       "amount": 1,
+       "note": "芯片不消耗；违禁品等级 1，基准价 200"
+      },
+      {
+       "id": "tag:ACCESS_CARD",
+       "name_zh": "任意识别卡",
+       "amount": 1,
+       "note": "同上"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "ser_keycard",
+       "name_zh": "一次性钥匙卡（服务）",
+       "amount": 1,
+       "note": "违禁品等级 1，基准价 40"
+      }
+     ],
+     "time": "3 游戏日（工作量 75）",
+     "conditions": "同上",
+     "notes": "无『科研(sci)』芯片——sci_keycard 无法用解序器伪造"
+    }
+   ]
+  },
+  {
+   "id": "fridge",
+   "name_zh": "冰箱",
+   "desc_zh": "夜间为饮品/食品添加冰镇/冷冻/冰凉加价特征，并为液体容器降温；本身没有合成配方",
+   "value": 100,
+   "power": "每周期 2（基准）；公式 = 2 + 储藏升级数×2 − 节能升级数×2，下限 2（FRIDGE_MIN_POWER_USE）。只要格内有物品，每夜固定扣一次",
+   "recipes": [
+    {
+     "name": "冰镇（冷藏区或冷冻区均可）",
+     "inputs": [
+      {
+       "id": "tag:BREVAGE",
+       "name_zh": "任意饮料类物品",
+       "amount": 1,
+       "note": "满足 （ 类型判定）： 或 类型，或 bottled_water_premium（瓶装泉水）。物品的子物品若也可冰镇则一并生效"
+      },
+      {
+       "id": "bottled_water_premium",
+       "name_zh": "瓶装泉水",
+       "amount": 1,
+       "note": "唯一的非饮料类可冰镇物（基准价 325）"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "同一物品（获得 chilled 特征）",
+       "amount": 1,
+       "note": "chilled 特征：+20% 价值（冰镇+20%，冰镇加价）"
+      }
+     ],
+     "time": "1 游戏日（过夜生效，冰淇淋风味文本：『冷冻过程耗时一夜』）",
+     "conditions": "放入冷藏区(5×2起)或冷冻区(3×2起)；电池供电成功（整箱一次）",
+     "notes": "两个区域都会给可冰镇物加 chilled；wine_bottle（葡萄酒瓶）、机器、储物箱不可放入；未密封水容器按 规则另行降温（见机制）"
+    },
+    {
+     "name": "冷冻（仅冷冻区）",
+     "inputs": [
+      {
+       "id": "beis_icecream",
+       "name_zh": "贝氏优质香草冰淇淋",
+       "amount": 1,
+       "note": "唯一可冷冻物（ 仅判定该 id）；基准价 40"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "beis_icecream",
+       "name_zh": "同一物品（获得 frozen 特征）",
+       "amount": 1,
+       "note": "frozen 特征：+25% 价值；子物品中同名冰淇淋一并生效"
+      }
+     ],
+     "time": "1 游戏日",
+     "conditions": "放入冷冻区；供电成功",
+     "notes": "风味文本：按法律分类属于『人工香料调味冷冻乳制品』，不冷藏也不会融化——但冷冻后卖价更高"
+    },
+    {
+     "name": "冰凉（仅冷冻区，烈酒）",
+     "inputs": [
+      {
+       "id": "nudka",
+       "name_zh": "努特加",
+       "amount": 1,
+       "note": "唯一『烈酒』判定物（ 仅该 id）；基准价 85"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "nudka",
+       "name_zh": "同一物品（获得 iceCold 特征）",
+       "amount": 1,
+       "note": "iceCold 特征：+25% 价值；若已有 chilled 会被移除替换"
+      }
+     ],
+     "time": "1 游戏日",
+     "conditions": "放入冷冻区；供电成功（放冷藏区只会得到 chilled +20%）",
+     "notes": ""
+    },
+    {
+     "name": "容器降温（持续机制，非配方）",
+     "inputs": [
+      {
+       "id": "tag:LIQUID_CONTAINER_TAG",
+       "name_zh": "任意非空液体容器",
+       "amount": 1,
+       "note": "仅影响 （水温/酒温），由其他系统（加热板化学、酿酒等）消费"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "",
+       "amount": 0,
+       "note": ""
+      }
+     ],
+     "time": "实时（每真实秒）",
+     "conditions": "电池槽内电池电量 ≥1（只检查不扣电）；冰箱放置在店内",
+     "notes": "冷藏区目标 3°C、降温速率 0.5°C/秒（/）；冷冻区目标 −18°C、1.0°C/秒（/）；同时打上"
+    }
+   ]
+  },
+  {
+   "id": "bottle_printer",
+   "name_zh": "水瓶打印机",
+   "desc_zh": "按下按钮立即打印空水瓶（液体容器），越大越费电；高级瓶型需用电子元件升级解锁",
+   "value": 100,
+   "power": "无周期耗电；按次扣电池：小瓶 4、标准瓶 6、大瓶 11（SMALL/NORMAL/LARGE_PRINT_COST）",
+   "recipes": [
+    {
+     "name": "打印小号水瓶",
+     "inputs": [
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池能量",
+       "amount": 4,
+       "note": "从机器电池槽的任意电池扣除 4 点能量"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "small_bottled_water",
+       "name_zh": "瓶装水（小）·空瓶",
+       "amount": 1,
+       "note": "450ml 液体容器，基准价 4；出生时为空瓶（装水后价值由水量/水质决定）"
+      }
+     ],
+     "time": "即时（点击按钮）",
+     "conditions": "电池槽有电池且电量 ≥4；输出格（4×4 起）有空间",
+     "notes": "开局 NewGameData 会附赠一台并预充 25 能量"
+    },
+    {
+     "name": "打印标准水瓶",
+     "inputs": [
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池能量",
+       "amount": 6,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "bottled_water",
+       "name_zh": "瓶装水（标准）·空瓶",
+       "amount": 1,
+       "note": "750ml 容器，基准价 5"
+      }
+     ],
+     "time": "即时",
+     "conditions": "升级数 ≥3；电量 ≥6；输出格有空间（解锁后输出格扩为 5×4）",
+     "notes": ""
+    },
+    {
+     "name": "打印大号水瓶",
+     "inputs": [
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池能量",
+       "amount": 11,
+       "note": ""
+      }
+     ],
+     "outputs": [
+      {
+       "id": "large_bottled_water",
+       "name_zh": "瓶装水（大）·空瓶",
+       "amount": 1,
+       "note": "2000ml 容器，基准价 9"
+      }
+     ],
+     "time": "即时",
+     "conditions": "升级数 ≥9（3+6）；电量 ≥11；输出格有空间（解锁后输出格扩为 6×4）",
+     "notes": ""
+    },
+    {
+     "name": "升级（非配方：用电子元件强化打印机）",
+     "inputs": [
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": "手持电子元件对准打印机使用（UpgradePrinter），每次 +1 升级数，上限 9；机器基准价随之累加"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "bottle_printer",
+       "name_zh": "打印机（升级后）",
+       "amount": 1,
+       "note": "3 级解锁标准瓶、9 级解锁大瓶，输出格逐格加宽"
+      }
+     ],
+     "time": "即时",
+     "conditions": "升级数 <9",
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "vending_machine",
+   "name_zh": "自动售货机",
+   "desc_zh": "店内固定设备：夜里自动以零售加价+10% 卖出库存商品，货款存入机身，按按钮取现",
+   "value": 0,
+   "power": "每周期 2 + 容量升级数×1（UpdatePowerUsage：POWER_USE=2，CAPACITY_UPGRADE_POWER_INCREASE=1）",
+   "recipes": [
+    {
+     "name": "夜间自动售卖（通用，非投币配方）",
+     "inputs": [
+      {
+       "id": "any",
+       "name_zh": "放入库存格的任意可售商品",
+       "amount": 1,
+       "note": "收货规则（mayInventoryAddItemFunc 谓词，非标签）：非违禁品、非 （目前仅 nuclear_waste 放射性废料）、非容器（ 葡萄酒瓶除外）、非机器、须为本店物品。库存格 8×2 起"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "现金（信用点）",
+       "amount": 1,
+       "note": "成交价 = 零售加价后现值 ×（1+10% 自动售货加成 VendingMachineBonus），不含事件修正；商品被销毁，货款进入机身 ，点『全部转移』入账"
+      }
+     ],
+     "time": "1 游戏日（夜间结算，库存非空且供电成功时执行）",
+     "conditions": "电池电量 ≥ 当晚耗电；详见机制详解中的 eligibility/成交率公式",
+     "notes": "售出的赃物/违禁品会走 StolenOrContrabandSale 留下销赃记录；贴假标签的商品会累积欺诈/危害罪与声望损失（见机制）"
+    },
+    {
+     "name": "升级容量（金属锭 → 库存行 +1）",
+     "inputs": [
+      {
+       "id": "metal_ingot",
+       "name_zh": "金属锭",
+       "amount": 1,
+       "note": "手持金属锭对准机身内的『自动售货机核心』使用（UpgradeCapacity）；每枚 +1 行（8 格），上限 12 行（初始 2 行，共 10 次）；耗电每次 +1"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "vending_machine",
+       "name_zh": "自动售货机（容量提升）",
+       "amount": 1,
+       "note": ""
+      }
+     ],
+     "time": "即时",
+     "conditions": "当前行数 <12",
+     "notes": ""
+    },
+    {
+     "name": "升级吸引力（电子元件 → 吸引力 +5）",
+     "inputs": [
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": "对核心使用（UpgradeAttractiveness）；初始 15，每枚 +5，上限 100，共 17 次"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "vending_machine",
+       "name_zh": "自动售货机（吸引力提升）",
+       "amount": 1,
+       "note": "吸引力直接放大 nightly 成交率与保底数"
+      }
+     ],
+     "time": "即时",
+     "conditions": "吸引力 <100",
+     "notes": "售货机不增加耗电；饮料机的同类升级每 2 次才 +1 耗电"
+    }
+   ]
+  },
+  {
+   "id": "vending_fountain",
+   "name_zh": "自动售水机",
+   "desc_zh": "店内固定设备：接三个水箱（基础/优质/纯），夜里自动灌瓶卖水；瓶身标签按水箱档位贴，可能与实际水质不符（掺假风险）",
+   "value": 0,
+   "power": "每周期 2 + 吸引力升级次数÷2（取整）（PARTS_PER_POWER_STEP=2，POWER_STEP=1）",
+   "recipes": [
+    {
+     "name": "夜间自动售水（按吸引力分档，每夜最多 6 瓶）",
+     "inputs": [
+      {
+       "id": "tag:WATER",
+       "name_zh": "水箱水源（3 槽）",
+       "amount": 1,
+       "note": "基础水箱/优质水箱/纯水箱各 1 槽；可放 类型液体容器，也可直接整机接入 water_purifier（净水器）或 moisture_farm（水分收集器）（实际读取其 2 号槽的产出容器）。水源为铁锈水/沟渠水时该槽不参与售卖"
+      },
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "电池能量",
+       "amount": 2,
+       "note": "任一水箱有水即整晚扣电一次"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "",
+       "name_zh": "现金（信用点）",
+       "amount": 1,
+       "note": "每瓶成交价 = 灌装瓶的零售加价现值 ×（1+10%）；瓶内水量取决于水箱剩余（TransferLiquid 灌满或抽干），卖完即销毁，货款入"
+      }
+     ],
+     "time": "1 游戏日（夜间结算）",
+     "conditions": "至少一个水箱有水；电池电量 ≥ 当晚耗电",
+     "notes": "固定 2 瓶：基础水箱 750ml 瓶（标签『基础水』）、优质水箱 450ml 小瓶（标签『优质水』）。随吸引力追加：≥20 纯水箱 1 瓶（标签『纯水』，瓶型 250/450/750/2000ml 随 20/50/75/100 档）；≥20 基础水箱第 2 瓶（20-29→250ml、30-39→450ml、40-49→750ml、≥50→2000ml）；≥70 基础水箱第 3 瓶（70-79→250ml、80-89→450ml、90-99→750ml、100→2000ml）；≥25 优质水箱第 2 瓶（25-49→250ml、50-74→450ml、75-99→750ml、100→2000ml）。标签纯度与实际水质不符时按 计入掺假声望损失"
+    },
+    {
+     "name": "升级吸引力（电子元件 → 吸引力 +5）",
+     "inputs": [
+      {
+       "id": "common_electronic",
+       "name_zh": "电子元件（普通）",
+       "amount": 1,
+       "note": "对『自动售水机核心』使用；初始 15、每枚 +5、上限 100（17 次）；每 2 次升级 nightly 耗电 +1"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "vending_fountain",
+       "name_zh": "自动售水机（吸引力提升）",
+       "amount": 1,
+       "note": "提高追加瓶数与瓶型档位"
+      }
+     ],
+     "time": "即时",
+     "conditions": "吸引力 <100",
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "recharger",
+   "name_zh": "充能器",
+   "desc_zh": "店内电网设备：夜里为插入的能量电池充电，无需自带电池，但要求已支付电力服务费",
+   "value": 150,
+   "power": "不耗电池；走店内供电（PlayerStore.isPowerOn）",
+   "recipes": [
+    {
+     "name": "夜间充电",
+     "inputs": [
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "可充电电池（4×2 共 8 槽）",
+       "amount": 1,
+       "note": "只接受非一次性（非 ）的 power_source_item；如 energy_credit（能量电池，容量 100）等"
+      }
+     ],
+     "outputs": [
+      {
+       "id": "tag:power_source_item",
+       "name_zh": "同一电池（+3 或 +6 能量）",
+       "amount": 1,
+       "note": "普通电力：每夜每槽 +3；解锁 （商业电力）电网升级后 +6。充至 max 封顶；停电事件（blackout）影响玩家时不充"
+      }
+     ],
+     "time": "1 游戏日（夜间结算）",
+     "conditions": "已支付当日电力服务费（isPowerOn）；电池未满也会持续小充",
+     "notes": "电池价值 = 剩余能量 + 底价（energy_credit：能量 + 10），充满一颗空能量电池 100÷3≈34 天（商业电力 17 天）"
+    }
+   ]
+  }
+ ],
+ "mechanics": [
+  "锭纯度等级（IngotPurityHelper）：共 6 级——完美 (级10, +200%)、极高 (9, +50%)、高 (8, +25%)、普通 (7, 0%)、低 LOW(6, −15%)、极低 (5, −25%)。金属锭基准价 50，纯度修正乘在基准价上（0.5 时按银行家舍入：低≈42~43、极低≈37~38、高≈62~63、极高 75、完美 150）。",
+  "熔炉纯度计算：设本批消耗的材料中 common_ore 有 n 个、共 c 个，则矿石加成 = 2*n/c（整数除法）；最终等级 = 6(LOW) + 矿石加成 + 助熔等级。例：2 废金属→LOW；1矿1废→；2 矿→；高炉 3 矿→；高炉 2矿1废→(2*2/3=1)；高炉 3 废金属→LOW。",
+  "熔炉助熔等级：初始 = 模组品质加成总和÷100（/100，整数除法；装高炉模组再 −1）。advanced_flux_agent 在场时下限钳为 1（不消耗）；否则 flux_agent 在场且等级<1 时抬到 1 并消耗 1 个。等级上限自动钳到 、下限到 。",
+  "熔炉模组：模组槽 9 格，接受 与 。品质加成每 +100 点 = 纯度 +1 级（如 4×精炼模组(system_module_fineness, 品质+25)或 2×受限神经核心(+50)或 1×无限制神经核心(+100)）；能效加成按百分比降耗（高炉模组能效 −100% → 耗电 8→16）；性能对熔炉无作用（说明便签原文：效率影响功耗/性能无影响/质量影响纯度上限）。",
+  "熔炉输出保护缺失：产出前只检查输出格能否容纳 1 个 metal_ingot；输出满时 直接销毁产出（日志『furnace output full』），输入材料已被消耗。垃圾回收分支同样。",
+  "解序器进度（MachineProgressHelper）：机器基础处理速度 33/夜；芯片自带工作量 （150/125/100/100/75/75），每夜 +当前速度，≥工作量即完成。性能模组提高速度（新速度 = 33 + 33×性能%/100），能效模组降低每晚 10 的耗电（下限 1）。模组槽 9 格，接受 与 。",
+  "解序器产出卡是违禁品：cmd(违禁3/125)、sec(2/100)、med(1/75)、eng(1/75)、sup(1/40)、ser(1/40)；芯片本身违禁 1~4 级、解序器整机违禁 2 级——整条生产线都是黑产。芯片不消耗，可在不同容器间对拖交换。",
+  "冰箱加价特征的时效：夜间结算开始时 ClearColdMarkers 清掉所有『保温』标记→冰箱夜运转给机内物品重新打标记→结算末尾 把没有标记物品上的 chilled/frozen/iceCold 特征移除。即冰镇/冷冻加价只保到次日清晨，取出冰箱摆货架的加价品应当天卖掉。",
+  "冰箱升级：储藏（scrap_metal 废金属对机身使用，+1 行高度，冷藏 5×(2+n)、冷冻 3×(2+n)，各最多 7 次，每次 +2 耗电）；效率（common_electronic，最多 7 次，每次 −2 耗电，总耗电下限 2）。每次升级把耗材价值累加进机器售价。",
+  "售货机成交模型（VendingMachineHelper）：①资格：售价>0；同 identifier 的第 n 件以 0.5^(n-1) 概率进入候选。②成交率(%)= 吸引力 × 品类系数 × 200/(200+售价)，其中品类系数：模组/节点/枪械模组/化学原料=0.15，奢侈品=0.165，材料=0.33，能量电池/工具=0.5，食品/水配给/饮料/加工食品/零食=1.5，其余按售价 100~200=0.5、>200=0.25、<100=1。③保底成交数：吸引力≥50→3、≥25→2、否则 1（从候选中挑非奢侈品且售价≤50 者，零食饮料优先）。④售价 = 当前价值(零售加价,含子物品,不含事件,强制加价) 再乘 VendingMachineBonus +10%。",
+  "售货机贴标欺诈结算：成交时若商品（含子物品）存在未曝光且与真实不符的特征→ 记 vend­ingMislabel 一笔：按售价累积 （欺诈）或 （危害，含假冒注射器/毒性/致死）罪行；声望损失 = Σ售价/100，夜间按当前上下层声望比例分摊到 / ，单阵营每夜上限 −20。",
+  "饮料机标签掺假：每瓶的标签档位由所在水箱决定（基础→『基础水』、优质→『优质水』、纯水箱→『纯水』），瓶内实际水质 = 水箱真实纯度（幽灵水也能照卖，仅铁锈水/沟渠水停卖）。掺假权重 掺假权重>0 时按售价加权累计声望损失，且分摊随标签档位变化：贴『纯水』标签的损失 100% 记给上层、贴『优质』各半、贴『基础』100% 记给下层。",
+  "两台售货设备均为店内固定设施：放置后 mayInventoryRemoveItemFunc=false 不可搬走；机器本体 售价 未设置（0）；核心（vending_machine_core/vending_fountain_core）是升级操作的对拖目标。解锁途径：电网升级 / 、初始天赋（附 50 预充电）、剧情客户。",
+  "水瓶打印机/纸箱机为即按即得（无周期结算），只检查电池剩余能量 后 ；输出格只能放液体容器（打印机）或任意物品（纸箱机）。",
+  "充能器与商用电力：/夜·槽；NetworkUpgrade 解锁后翻倍为 6。充电免费但依赖 isPowerOn（电费）且受停电事件影响；一次性电池与超技/变流器类不可充。"
+ ],
+ "items": [
+  {
+   "id": "metal_ingot",
+   "name_zh": "金属锭",
+   "desc_zh": "熔炉产物/售货机容量升级材料；带纯度特征（−25%~+200% 价值）",
+   "value": 50,
+   "note": "可用手电/金属分析仪检验纯度（低纯度可被手电照出）"
+  },
+  {
+   "id": "scrap_metal",
+   "name_zh": "废金属",
+   "desc_zh": "熔炉原料；垃圾回收产物；冰箱/循环水养殖系统 储藏升级材料",
+   "value": 10,
+   "note": ""
+  },
+  {
+   "id": "junk",
+   "name_zh": "垃圾",
+   "desc_zh": "垃圾处理模组回收线的原料",
+   "value": 3,
+   "note": "EnableTag 但 id 不同"
+  },
+  {
+   "id": "common_ore",
+   "name_zh": "金属矿石",
+   "desc_zh": "熔炉原料，矿石占比决定纯度",
+   "value": 15,
+   "note": ""
+  },
+  {
+   "id": "flux_agent",
+   "name_zh": "助熔剂（基础）",
+   "desc_zh": "冶炼时保证纯度加成≥1 级，触发时消耗 1 个",
+   "value": 4,
+   "note": ""
+  },
+  {
+   "id": "advanced_flux_agent",
+   "name_zh": "助熔剂（高级）",
+   "desc_zh": "同上但永不消耗",
+   "value": 300,
+   "note": ""
+  },
+  {
+   "id": "common_electronic",
+   "name_zh": "电子元件（普通）",
+   "desc_zh": "冰箱节能/打印机/售货机与饮料机吸引力升级材料",
+   "value": 33,
+   "note": ""
+  },
+  {
+   "id": "furnace_module_blast",
+   "name_zh": "熔炉模组（高炉）",
+   "desc_zh": "3 材料→2 锭，纯度 −1 级，能效 −100%（耗电翻倍）",
+   "value": 150,
+   "note": "不可叠加（同槽位检测唯一）"
+  },
+  {
+   "id": "furnace_module_junk",
+   "name_zh": "熔炉模组（垃圾处理）",
+   "desc_zh": "解锁 6 垃圾→4 废金属回收",
+   "value": 120,
+   "note": "无属性修正"
+  },
+  {
+   "id": "crypto_module_cmd",
+   "name_zh": "密码解序器芯片（指挥）",
+   "desc_zh": "解序器芯片，产出 cmd_keycard，工作量 150",
+   "value": 350,
+   "note": "违禁品 4"
+  },
+  {
+   "id": "crypto_module_sec",
+   "name_zh": "密码解序器芯片（治安）",
+   "desc_zh": "产出 sec_keycard，工作量 125",
+   "value": 300,
+   "note": "违禁品 3"
+  },
+  {
+   "id": "crypto_module_med",
+   "name_zh": "密码解序器芯片（医疗）",
+   "desc_zh": "产出 med_keycard，工作量 100",
+   "value": 250,
+   "note": "违禁品 2"
+  },
+  {
+   "id": "crypto_module_eng",
+   "name_zh": "密码解序器芯片（工程）",
+   "desc_zh": "产出 eng_keycard，工作量 100",
+   "value": 250,
+   "note": "违禁品 2"
+  },
+  {
+   "id": "crypto_module_sup",
+   "name_zh": "密码解序器芯片（补给）",
+   "desc_zh": "产出 sup_keycard，工作量 75",
+   "value": 200,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "crypto_module_ser",
+   "name_zh": "密码解序器芯片（服务）",
+   "desc_zh": "产出 ser_keycard，工作量 75",
+   "value": 200,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "blank_keycard",
+   "name_zh": "一次性钥匙卡（空白）",
+   "desc_zh": "解序器输入卡（最廉价选择）",
+   "value": 15,
+   "note": ""
+  },
+  {
+   "id": "cmd_keycard",
+   "name_zh": "一次性钥匙卡（指挥）",
+   "desc_zh": "解序器产物",
+   "value": 125,
+   "note": "违禁品 3，开 锁"
+  },
+  {
+   "id": "sec_keycard",
+   "name_zh": "一次性钥匙卡（治安）",
+   "desc_zh": "解序器产物",
+   "value": 100,
+   "note": "违禁品 2，开 锁"
+  },
+  {
+   "id": "med_keycard",
+   "name_zh": "一次性钥匙卡（医疗）",
+   "desc_zh": "解序器产物",
+   "value": 75,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "eng_keycard",
+   "name_zh": "一次性钥匙卡（工程）",
+   "desc_zh": "解序器产物",
+   "value": 75,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "sup_keycard",
+   "name_zh": "一次性钥匙卡（补给）",
+   "desc_zh": "解序器产物",
+   "value": 40,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "ser_keycard",
+   "name_zh": "一次性钥匙卡（服务）",
+   "desc_zh": "解序器产物",
+   "value": 40,
+   "note": "违禁品 1"
+  },
+  {
+   "id": "energy_credit",
+   "name_zh": "能量电池",
+   "desc_zh": "通用机器电池（容量 100）；可在充能器充电",
+   "value": 10,
+   "note": "实际价值 = 剩余能量 + 10"
+  },
+  {
+   "id": "mini_bottle",
+   "name_zh": "瓶装水（微型）",
+   "desc_zh": "250ml 空瓶（打印机不直接产此型号，饮料机低档售水用）",
+   "value": 3,
+   "note": ""
+  },
+  {
+   "id": "small_bottled_water",
+   "name_zh": "瓶装水（小）",
+   "desc_zh": "450ml 容器；打印机产物（空瓶）/饮料机售水容器",
+   "value": 4,
+   "note": ""
+  },
+  {
+   "id": "bottled_water",
+   "name_zh": "瓶装水（标准）",
+   "desc_zh": "750ml 容器；打印机产物（空瓶）/饮料机售水容器",
+   "value": 5,
+   "note": ""
+  },
+  {
+   "id": "large_bottled_water",
+   "name_zh": "瓶装水（大）",
+   "desc_zh": "2000ml 容器；打印机产物（空瓶）/饮料机售水容器",
+   "value": 9,
+   "note": ""
+  },
+  {
+   "id": "bottled_water_premium",
+   "name_zh": "瓶装泉水",
+   "desc_zh": "唯一可冰镇的奢侈水",
+   "value": 325,
+   "note": "冰镇 +20%"
+  },
+  {
+   "id": "nudka",
+   "name_zh": "努特加",
+   "desc_zh": "烈酒；冷冻区放一夜变『冰凉』+25%",
+   "value": 85,
+   "note": "也可倒进水容器掺酒（属净水/酒系统）"
+  },
+  {
+   "id": "beis_icecream",
+   "name_zh": "贝氏优质香草冰淇淋",
+   "desc_zh": "唯一可冷冻食品；冷冻 +25%",
+   "value": 40,
+   "note": ""
+  },
+  {
+   "id": "nuclear_waste",
+   "name_zh": "放射性废料",
+   "desc_zh": "唯一被售货机拉黑的物品",
+   "value": 0,
+   "note": ""
+  },
+  {
+   "id": "vending_machine_core",
+   "name_zh": "自动售货机核心",
+   "desc_zh": "售货机升级对拖目标（锭→容量、电子→吸引力）",
+   "value": 0,
+   "note": ""
+  },
+  {
+   "id": "vending_fountain_core",
+   "name_zh": "自动售水机核心",
+   "desc_zh": "饮料机升级对拖目标（电子→吸引力）",
+   "value": 0,
+   "note": ""
+  },
+  {
+   "id": "ingot_book",
+   "name_zh": "冶金手册",
+   "desc_zh": "游戏内图鉴，展示锭纯度体系",
+   "value": 25,
+   "note": "拥有熔炉后由剧情客户出售"
+  }
+ ],
+ "unresolved": []
+}
