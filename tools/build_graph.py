@@ -2,6 +2,7 @@ import json, os, re
 
 ROOT = r"D:\nazarick\probably-stolen-wiki"
 OUT = os.path.join(ROOT, "wiki", "assets", "graph-data.json")
+SRC_DIR = os.path.join(ROOT, "tools", "rip", "ExportedProject", "Assets", "Scripts", "Assembly-CSharp")
 
 SYSTEMS = [
     {"id": "wine", "name": "酿酒与陈化", "color": "#be514c"},
@@ -238,28 +239,86 @@ for nid, label, why in dropped:
     print(f"   - {label} ({nid}) [{why}]")
 
 # attach acquisition evidence to surviving item nodes
+
+
+
+# --- upgrade name lookup: item -> specific upgrade names ---
+_loc_data = json.load(open(os.path.join(ROOT, "data", "localization.json"), encoding="utf-8"))
+_upgrade_names = {}
+for _k, _v in _loc_data.items():
+    _m = re.match(r'network_(\w+)_title', _k)
+    if _m and _v.get("zh"):
+        _upgrade_names[_m.group(1)] = _v["zh"]
+
+_upgrade_grants = {}
+_nul_path = os.path.join(ROOT, "tools", "rip", "ExportedProject", "Assets", "Scripts", "Assembly-CSharp", "NetworkUpgradeList.cs")
+if os.path.exists(_nul_path):
+    _nul = open(_nul_path, encoding="utf-8").read()
+    _cur = None
+    for _ln in _nul.split("\n"):
+        _m2 = re.match(r'\s*"(\w+)",\s*$', _ln)
+        if _m2:
+            _cur = _m2.group(1)
+        if _cur and _cur in _upgrade_names:
+            for _im in re.finditer(r'DirectoryMaster\.Item\("([\w]+)"\)|ItemSpawner\.Spawn\("([\w]+)"\)', _ln):
+                _iid = _im.group(1) or _im.group(2)
+                _upgrade_grants.setdefault(_iid, [])
+                if _upgrade_names[_cur] not in _upgrade_grants[_iid]:
+                    _upgrade_grants[_iid].append(_upgrade_names[_cur])
+
 def evidence_zh(srcs):
     out = []
     for s in srcs:
         if s.startswith("loot:"):
-            out.append(f"战利品/搜刮掉落（{s[5:]}）")
+            out.append(f"探险搜刮或客户携带（{s[5:]}）")
         elif "vendor" in s:
             out.append("商人/退休专家出售")
         elif "guarantee" in s:
             out.append("锁箱保底出售")
+        elif "NetworkUpgradeList" in s and "grant" in s:
+            out.append("网络升级赠送")  # replaced below with specific names
+        elif "StartingPerk" in s:
+            out.append("开局特长赠送")
+        elif "DebrisHelper" in s:
+            out.append("太空残骸打捞")
+        elif "StoreClientList" in s and "grant" in s:
+            out.append("剧情事件发放")
         elif "grant" in s:
-            out.append("网络升级赠送")
+            out.append("开局/事件赠送")
         elif "spawn" in s or "table-ref" in s:
             out.append("事件/场景生成")
         else:
             out.append(s)
-    return out
+    # dedupe while preserving order
+    seen = set()
+    return [x for x in out if not (x in seen or seen.add(x))]
 
+# 只统计"真正制作"的工艺：物品在输出中且不在输入中，且机器不是该物品自身
+produced_by = {}
+for p in processes:
+    input_ids = set(i["id"] for i in p["in"])
+    for o in p["out"]:
+        if o["id"] in input_ids:  # 同一工艺的输入=输出，是状态转换不是制作
+            continue
+        if p["machine"] == o["id"]:  # 机器就是该物品自身（如酒瓶发酵）
+            continue
+        if o["id"] not in produced_by:
+            produced_by[o["id"]] = []
+        mz = p["machine_zh"]
+        if mz not in produced_by[o["id"]]:
+            produced_by[o["id"]].append(mz)
 for n in nodes.values():
+    obtain = []
+    if n["id"] in produced_by:
+        obtain.append("、".join(produced_by[n["id"]]) + " 制作")
     if n["type"] == "item" and n["id"] in evidence:
-        n["obtain"] = evidence_zh(evidence_dict[n["id"]])
-    else:
-        n["obtain"] = []
+        for x in evidence_zh(evidence_dict[n["id"]]):
+            if x == "网络升级赠送" and n["id"] in _upgrade_grants:
+                for u in _upgrade_grants[n["id"]]:
+                    obtain.append(f"“{u}”升级赠送")
+            else:
+                obtain.append(x)
+    n["obtain"] = obtain
 
 # hub = participates in >=2 systems
 for n in nodes.values():

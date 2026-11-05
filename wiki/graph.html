@@ -453,8 +453,9 @@ cv.addEventListener("pointermove", e => {
 });
 addEventListener("pointerup", e => {
   if (draggingNode) { delete draggingNode.drag; draggingNode = null; simAlpha = Math.max(simAlpha, .12); }
+  const wasCanvas = mouseDown; // 只有起点在画布上的点击才处理
   mouseDown = false; cv.classList.remove("grabbing");
-  if (!moved) {
+  if (!moved && wasCanvas) {
     const n = hitTest(e.clientX, e.clientY);
     const now = performance.now();
     if (n) {
