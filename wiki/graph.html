@@ -690,18 +690,14 @@ function frame(now) {
     if (!l.s.visible || !l.t.visible) continue;
     const a = edgeAlpha(l); if (a <= 0.01) continue;
     const s = w2s(l.s.x, l.s.y), t = w2s(l.t.x, l.t.y);
-    const mx = (s.x + t.x) / 2, my = (s.y + t.y) / 2;
     const dx = t.x - s.x, dy = t.y - s.y;
     const len = Math.hypot(dx, dy) || 1;
-    const nx = -dy / len, ny = dx / len;
-    const off = len * l.curve;
-    const cx = mx + nx * off, cy = my + ny * off;
     ctx.strokeStyle = l.color;
     ctx.globalAlpha = a;
     ctx.lineWidth = Math.max(0.6, 1.4 * cam.zoom);
     ctx.beginPath();
     ctx.moveTo(s.x, s.y);
-    ctx.quadraticCurveTo(cx, cy, t.x, t.y);
+    ctx.lineTo(t.x, t.y);
     ctx.stroke();
 
     /* particles */
@@ -709,8 +705,8 @@ function frame(now) {
     if (l.flow >= 1) l.flow = 0;
     if (a > 0.2) {
       const f = l.flow;
-      const px = (1 - f) * (1 - f) * s.x + 2 * (1 - f) * f * cx + f * f * t.x;
-      const py = (1 - f) * (1 - f) * s.y + 2 * (1 - f) * f * cy + f * f * t.y;
+      const px = s.x + (t.x - s.x) * f;
+      const py = s.y + (t.y - s.y) * f;
       ctx.globalAlpha = Math.min(1, a * 1.6) * (0.4 + 0.6 * Math.sin(f * Math.PI));
       ctx.fillStyle = l.color;
       ctx.beginPath();
