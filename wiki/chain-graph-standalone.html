@@ -625,7 +625,7 @@ function renderProcessPanel(p) {
   if (p.time) h += `<div class="kv"><span>耗时</span><b>${esc(p.time)}</b></div>`;
   if (p.conditions) h += `<div class="sec"><h3>条件</h3><div class="note-block">${esc(p.conditions)}</div></div>`;
   if (p.notes) h += `<div class="sec"><h3>备注</h3><div class="note-block">${esc(p.notes)}</div></div>`;
-  h += `<div class="sec"><a class="wiki-link" href="systems/${p.system}.html">查看${SYS[p.system].name}详情</a></div>`;
+  h += `<div class="sec"><a class="wiki-link" href="systems/${p.system}.html">${SYS[p.system].name}</a></div>`;
   panelTitle.innerHTML = ""; panelBody.innerHTML = h;
 }
 function bindCards() {
